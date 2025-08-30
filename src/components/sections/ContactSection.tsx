@@ -1,4 +1,6 @@
 import { Button } from "@/components/ui/button";
+import React from "react";
+import logoUrl from "../../assets/Zskillup Black.png";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
@@ -11,10 +13,12 @@ const ContactSection = () => {
         <div className="py-16 grid lg:grid-cols-12 gap-12">
           {/* Company Info - 5 columns */}
           <div className="lg:col-span-5 space-y-6">
-            <img 
-              src="/src/assets/Zskillup Black.png" 
-              alt="ZSkillup Logo" 
-              className="h-12 w-auto brightness-0 invert"
+            <img
+              src={logoUrl}
+              alt="ZSkillup Logo"
+              className="h-10 w-auto"
+              loading="eager"
+              decoding="async"
             />
             <p className="text-gray-300 max-w-md">
               Empowering institutions to bridge the gap between education and employability through AI-driven training, technology, and placements.

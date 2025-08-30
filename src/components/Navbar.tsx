@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import logoUrl from "../assets/Zskillup Black.png";
 import { motion } from "framer-motion";
 
 const Navbar = () => {
@@ -34,10 +35,12 @@ const Navbar = () => {
         <div className="flex justify-between items-center py-3">
           {/* Logo */}
           <a href="#home" className="flex items-center space-x-2">
-            <img 
-              src="/src/assets/Zskillup Black.png" 
-              alt="ZSkillup Logo" 
+            <img
+              src={logoUrl}
+              alt="ZSkillup Logo"
               className="h-10 w-auto"
+              loading="eager"
+              decoding="async"
             />
           </a>
 
