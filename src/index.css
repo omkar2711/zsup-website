@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ZSkillup Design System - Professional Purple Theme
+All colors MUST be HSL.
+*/
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 312 73% 19%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 312 73% 19%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 312 73% 19%;
+
+    /* ZSkillup Brand Colors */
+    --primary: 312 73% 19%; /* #60164f */
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 312 45% 28%; /* #722e63 */
+    
+    --secondary: 312 45% 28%; /* #722e63 */
+    --secondary-foreground: 0 0% 100%;
+    
+    --muted: 312 20% 96%;
+    --muted-foreground: 312 25% 45%;
+
+    --accent: 312 100% 95%;
+    --accent-foreground: 312 73% 19%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 312 20% 90%;
+    --input: 312 20% 94%;
+    --ring: 312 73% 19%;
+
+    --radius: 0.75rem;
+
+    /* ZSkillup Custom Design Tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(312 73% 19%), hsl(312 45% 28%));
+    --gradient-secondary: linear-gradient(180deg, hsl(312 100% 98%), hsl(312 20% 96%));
+    --gradient-hero: linear-gradient(135deg, hsl(312 73% 19%) 0%, hsl(312 45% 28%) 50%, hsl(312 35% 35%) 100%);
+    
+    --shadow-elegant: 0 10px 30px -10px hsl(312 73% 19% / 0.2);
+    --shadow-card: 0 4px 20px -4px hsl(312 73% 19% / 0.1);
+    --shadow-glow: 0 0 40px hsl(312 45% 28% / 0.3);
+    
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .dark {
+    --background: 312 73% 4%;
+    --foreground: 0 0% 100%;
+
+    --card: 312 73% 8%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 312 73% 8%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 0 0% 100%;
+    --primary-foreground: 312 73% 19%;
+
+    --secondary: 312 45% 15%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 312 30% 12%;
+    --muted-foreground: 312 20% 70%;
+
+    --accent: 312 30% 12%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 312 30% 15%;
+    --input: 312 30% 15%;
+    --ring: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+  
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+  
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+}
