@@ -60,7 +60,7 @@ const TestimonialsSection = () => {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(99,102,241,0.08),transparent_35%),radial-gradient(circle_at_85%_80%,rgba(236,72,153,0.08),transparent_35%)]" />
       <div className="container mx-auto px-6 relative z-10">
         <SectionHeader
-          eyebrow="Testimonials"
+          // eyebrow="Testimonials"
           title="Outcomes That Speak For Themselves"
           subtitle="Real stories from students and institutions who achieved career success"
           align="center"
@@ -69,7 +69,7 @@ const TestimonialsSection = () => {
         <Carousel setApi={setApi} className="relative" onMouseEnter={stop} onMouseLeave={start}>
           <CarouselContent>
             {testimonials.map((testimonial, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pt-4">
                 <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
                   <Card className="shadow-card transition-smooth hover:shadow-elegant hover:-translate-y-2 relative h-full">
                     <div className="absolute -top-4 left-6">

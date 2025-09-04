@@ -18,10 +18,8 @@ const Navbar = () => {
 
   const navItems = [
     { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
+    { name: "About Us", href: "#about" },
     { name: "Programs", href: "#programs" },
-    { name: "Partners", href: "#partners" },
-    { name: "Success Stories", href: "#success" },
     { name: "Contact", href: "#contact" }
   ];
 
@@ -51,13 +49,13 @@ const Navbar = () => {
                 key={item.name}
                 href={item.href}
                 onClick={() => setActive(item.href)}
-                className="relative text-gray-700 hover:text-primary transition-colors duration-200 font-medium"
+                className="relative text-gray-700 hover:text-accent transition-colors duration-200 font-medium"
               >
                 {item.name}
                 {active === item.href && (
                   <motion.span
                     layoutId="nav-underline"
-                    className="absolute -bottom-1 left-0 h-0.5 w-full bg-primary"
+                    className="absolute -bottom-1 left-0 h-0.5 w-full bg-highlight"
                   />
                 )}
               </a>
@@ -66,10 +64,10 @@ const Navbar = () => {
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <a href="#contact" className="text-gray-700 hover:text-primary transition-colors duration-300 font-medium">
+            {/* <a href="#contact" className="text-gray-700 hover:text-accent transition-colors duration-300 font-medium">
               Book a Call
-            </a>
-            <Button className="bg-primary hover:bg-secondary text-white">
+            </a> */}
+            <Button className="bg-highlight text-highlight-foreground hover:bg-highlight/90">
               Partner With Us
             </Button>
           </div>
@@ -88,7 +86,7 @@ const Navbar = () => {
                     <a
                       key={item.name}
                       href={item.href}
-                      className="block text-gray-800 hover:text-primary transition-colors duration-200 font-medium py-2"
+                      className="block text-gray-800 hover:text-accent transition-colors duration-200 font-medium py-2"
                       onClick={() => {
                         setActive(item.href);
                         setIsMenuOpen(false);
@@ -100,12 +98,12 @@ const Navbar = () => {
                   <div className="flex flex-col space-y-3 pt-4 border-t border-gray-200">
                     <a 
                       href="#contact"
-                      className="text-gray-800 hover:text-primary transition-colors duration-200 font-medium text-center"
+                      className="text-gray-800 hover:text-accent transition-colors duration-200 font-medium text-center"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       Book a Call
                     </a>
-                    <Button className="bg-primary hover:bg-secondary text-white">
+                    <Button className="bg-highlight text-highlight-foreground hover:bg-highlight/90">
                       Partner With Us
                     </Button>
                   </div>

@@ -5,7 +5,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 const AchievementsSection = () => {
   const achievements = [
     {
-      number: "20+",
+      number: "25+",
       label: "Universities & Colleges Onboarded"
     },
     {
@@ -48,8 +48,8 @@ const AchievementsSection = () => {
       <div className="container mx-auto px-4">
         <SectionHeader
           eyebrow="Metrics"
-          title="Proven Track Record"
-          subtitle="Numbers that speak for our commitment to excellence"
+          title="Our Numbers Tell the Story"
+          subtitle="Real Impact. Real Outcomes"
           align="center"
         />
 
@@ -62,8 +62,8 @@ const AchievementsSection = () => {
         >
           {achievements.map((achievement, index) => (
             <motion.div key={index} variants={item} whileHover={{ y: -6 }}>
-              <Card className="border border-border/60 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/70">
-                <CardContent className="text-center p-6">
+              <Card className="border border-border/60 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/70 h-36 w-full flex items-center justify-center">
+                <CardContent className="text-center p-6 flex flex-col items-center justify-center h-full">
                   <div className="text-2xl md:text-3xl font-bold mb-2 text-primary">
                     {achievement.number}
                   </div>

@@ -26,7 +26,7 @@ export default function FAQSection() {
     <section className="py-16 bg-muted/40">
       <div className="container mx-auto px-4">
         <SectionHeader
-          eyebrow="FAQ"
+          // eyebrow="FAQ"
           title="Frequently Asked Questions"
           subtitle="Everything you need to know about partnering with ZSkillup"
         />

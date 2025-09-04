@@ -11,6 +11,8 @@ import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import WhyChooseSection from "@/components/sections/WhyChooseSection";
 import ContactSection from "@/components/sections/ContactSection";
 import HiringPartnersSection from "@/components/sections/HiringPartnersSection";
+import VirtualInternshipSection from "@/components/sections/VirtualInternshipSection";
+import UniversityCertificatesSection from "@/components/sections/UniversityCertificatesSection";
 import CertificatesSection from "@/components/sections/CertificatesSection";
 import FAQSection from "@/components/sections/FAQSection";
 import CTASection from "@/components/sections/CTASection";
@@ -32,7 +34,9 @@ const Index = () => {
         <CohortsSection />
       </div>
       <HiringPartnersSection />
-      <CertificatesSection />
+      <VirtualInternshipSection />
+      {/* <UniversityCertificatesSection /> */}
+      {/* <CertificatesSection /> */}
       <div id="success">
         <PosterSection />
       </div>
@@ -42,7 +46,7 @@ const Index = () => {
       <TestimonialsSection />
       <WhyChooseSection />
       <FAQSection />
-      <CTASection />
+      {/* <CTASection /> */}
       <div id="contact">
         <ContactSection />
       </div>

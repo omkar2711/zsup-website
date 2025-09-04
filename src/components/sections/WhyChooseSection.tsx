@@ -32,10 +32,10 @@ const WhyChooseSection = () => {
   ];
 
   return (
-    <section className="py-12 bg-gradient-secondary">
+    <section className="py-12 bg-gradient-secondary flex justify-center">
       <div className="container mx-auto px-6">
         <div className="text-center mb-10">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-primary">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary">
             Why Institutions Choose ZSkillup
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -43,11 +43,11 @@ const WhyChooseSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="flex flex-wrap justify-center gap-8 mb-12">
           {reasons.map((reason, index) => (
             <Card 
               key={index}
-              className="shadow-card transition-smooth hover:shadow-elegant hover:-translate-y-2 text-center"
+              className="shadow-card transition-smooth hover:shadow-elegant hover:-translate-y-2 text-center w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.33rem)] max-w-md"
             >
               <CardHeader className="pb-4">
                 <div className="mx-auto mb-4 w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center">

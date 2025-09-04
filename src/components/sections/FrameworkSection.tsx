@@ -1,11 +1,9 @@
-import { Brain, Target, Trophy, HeartHandshake } from "lucide-react";
+import React, { useState } from "react";
+import { Brain, Target, Trophy, HeartHandshake, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion, type Variants } from "framer-motion";
-
-const fadeIn: Variants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.8 } }
-};
+import { motion, type Variants, AnimatePresence } from "framer-motion";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import "./framework-section.css";
 
 const slideInFromTop: Variants = {
   hidden: { y: -100, opacity: 0 },
@@ -20,57 +18,84 @@ const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: { 
     opacity: 1, 
-    transition: { staggerChildren: 0.2 } 
+    transition: { staggerChildren: 0.15 } 
   }
 };
 
-const cardAnimation: Variants = {
+const fadeInUp: Variants = {
   hidden: { y: 20, opacity: 0 },
   visible: { 
     y: 0, 
     opacity: 1, 
-    transition: { type: "spring", duration: 0.8 } 
+    transition: { type: "spring", duration: 0.6 } 
   }
 };
 
-const hoverCard = {
-  scale: 1.05,
-  transition: { type: "spring" as const, stiffness: 300, damping: 20 }
+type FrameworkPillar = {
+  id: string;
+  icon: React.ElementType;
+  title: string;
+  description: string;
+  stats: string;
+  color: string;
+  details: string[];
 };
 
 const FrameworkSection = () => {
-  const frameworks = [
+  const [activeSegment, setActiveSegment] = useState<number | null>(null);
+
+  const frameworks: FrameworkPillar[] = [
     {
+      id: "foundation",
       icon: Brain,
       title: "Skill Foundation",
-      description: "Industry-aligned curriculum, aptitude, coding & communication skills",
+      description: "Partner institutions benefit from an industry-aligned curriculum in aptitude, coding, and communication, ensuring students build a strong foundation from day one.",
       stats: "95% industry-relevant",
-      color: "bg-white",
-      iconBg: "bg-[#4287f5]"
+      color: "hsl(330, 80%, 25%)", // primary (Deep Burgundy)
+      details: [
+        "Industry-aligned curriculum", 
+        "Aptitude, coding & communication skills",
+        "Strong foundation from day one"
+      ]
     },
     {
+      id: "readiness",
       icon: Target,
-      title: "Placement Readiness", 
-      description: "AI-powered mock interviews + ATS-optimized resumes + mentorship",
+      title: "Placement Readiness",
+      description: "Through unlimited AI-powered mock interviews, ATS-optimized resumes, and personalized mentorship, students graduate with the tools to clear hiring filters and perform in real interviews.",
       stats: "85% success rate",
-      color: "bg-white",
-      iconBg: "bg-[#9747ff]"
+      color: "hsl(210, 70%, 40%)", // accent (Royal Blue)
+      details: [
+        "AI-powered mock interviews",
+        "ATS-optimized resumes",
+        "Personalized mentorship"
+      ]
     },
     {
+      id: "outcomes",
       icon: Trophy,
       title: "Career Outcomes",
-      description: "250+ placements delivered, avg. CTC ₹5.6 LPA, highest ₹19 LPA",
-      stats: "₹19 LPA highest",
-      color: "bg-white",
-      iconBg: "bg-[#ff4785]"
+      description: "With 250+ successful placements, we help institutions deliver measurable results that strengthen their placement records.",
+      stats: "250+ placements",
+      color: "hsl(45, 95%, 55%)", // highlight (Rich Gold)
+      details: [
+        "Measurable placement results",
+        "Institution record strengthening",
+        "High-value career outcomes"
+      ]
     },
     {
+      id: "support",
       icon: HeartHandshake,
       title: "Extended Support",
-      description: "Last-mile and post-graduation career assistance",
+      description: "We go beyond graduation with last-mile assistance and ongoing career guidance, helping institutions sustain alumni success and strengthen their employer networks.",
       stats: "Lifetime access",
-      color: "bg-white",
-      iconBg: "bg-[#ff6b2c]"
+      color: "hsl(330, 70%, 35%)", // primary-light (Medium Burgundy)
+      details: [
+        "Last-mile assistance",
+        "Ongoing career guidance",
+        "Alumni success & employer networks"
+      ]
     }
   ];
 
@@ -78,292 +103,264 @@ const FrameworkSection = () => {
     <motion.section 
       initial="hidden"
       animate="visible"
-      className="py-20 md:py-24 relative overflow-hidden bg-white dark:bg-gray-900 group"
+      className="py-20 md:py-24 relative overflow-hidden bg-background dark:bg-gray-900"
     >
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-[linear-gradient(30deg,rgba(99,102,241,0.05)_12%,transparent_20%),linear-gradient(150deg,rgba(129,140,248,0.05)_12%,transparent_20%),linear-gradient(270deg,rgba(99,102,241,0.05)_12%,transparent_20%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(99,102,241,0.1),transparent_25%)]" />
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-[0.03] dark:opacity-[0.05]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(125,10,50,0.15),transparent_40%),radial-gradient(circle_at_70%_60%,rgba(30,98,176,0.1),transparent_30%)]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gradient-to-r from-primary/5 to-accent/5 blur-3xl -z-10" />
+      <div className="absolute w-96 h-96 -top-48 -left-48 bg-primary/10 rounded-full blur-3xl" />
+      <div className="absolute w-96 h-96 -bottom-48 -right-48 bg-highlight/10 rounded-full blur-3xl" />
       
       <div className="container mx-auto px-4 relative z-10">
         <motion.div 
           variants={slideInFromTop}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+          <h2
+            className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-highlight"
+            style={{ lineHeight: "1.15", paddingBottom: "0.2em" }}
+          >
             The ZSkillup Employability Framework
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            From classrooms to careers, our integrated framework ensures you're industry-ready, placement-ready, and future-ready.
+            Our comprehensive framework delivers end-to-end career support, helping institutions bridge the gap between education and employability.
           </p>
         </motion.div>
         
-        <div className="relative max-w-7xl mx-auto">
-          {/* Hover Glow */}
-          <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 blur-3xl bg-[radial-gradient(closest-side,rgba(99,102,241,0.20),transparent_70%)]" />
+        <div className="max-w-6xl mx-auto relative">
+          <div className="flex flex-col md:flex-row items-center md:items-start justify-center">
+            {/* Interactive Circle */}
+            <div className="md:w-1/2 relative flex justify-center">
+              <div className="relative p-8 max-w-full" style={{ width: '520px', height: '520px' }}>
+                <svg viewBox="0 0 400 400" className="w-full h-auto drop-shadow-xl filter-drop-shadow(0px 8px 24px rgba(0, 0, 0, 0.15))"
+                     style={{ overflow: 'visible' }}>
+                  {/* Center circle */}
+                  <circle cx="200" cy="200" r="70" fill="white" className="drop-shadow-md" />
+                  <text x="200" y="190" textAnchor="middle" className="fill-slate-900 font-bold" fontSize="20">
+                    Employability
+                  </text>
+                  <text x="200" y="215" textAnchor="middle" className="fill-slate-900 font-medium" fontSize="16">
+                    Framework
+                  </text>
+                  
+                  {/* Framework segments */}
+                  {frameworks.map((framework, index) => {
+                    const startAngle = index * 90;
+                    const endAngle = (index + 1) * 90;
+                    const isActive = activeSegment === index;
+                    
+                    // Calculate path for segment
+                    const innerRadius = 90;
+                    const outerRadius = 190;
+                    const startRadians = (startAngle - 90) * Math.PI / 180;
+                    const endRadians = (endAngle - 90) * Math.PI / 180;
+                    
+                    const startOuterX = 200 + outerRadius * Math.cos(startRadians);
+                    const startOuterY = 200 + outerRadius * Math.sin(startRadians);
+                    const endOuterX = 200 + outerRadius * Math.cos(endRadians);
+                    const endOuterY = 200 + outerRadius * Math.sin(endRadians);
+                    
+                    const startInnerX = 200 + innerRadius * Math.cos(startRadians);
+                    const startInnerY = 200 + innerRadius * Math.sin(startRadians);
+                    const endInnerX = 200 + innerRadius * Math.cos(endRadians);
+                    const endInnerY = 200 + innerRadius * Math.sin(endRadians);
+                    
+                    // SVG path
+                    const path = [
+                      `M ${startOuterX} ${startOuterY}`,
+                      `A ${outerRadius} ${outerRadius} 0 0 1 ${endOuterX} ${endOuterY}`,
+                      `L ${endInnerX} ${endInnerY}`,
+                      `A ${innerRadius} ${innerRadius} 0 0 0 ${startInnerX} ${startInnerY}`,
+                      'Z'
+                    ].join(' ');
+                    
+                    // Calculate icon position
+                    const iconAngle = startAngle + 45; // middle of segment
+                    const iconRadius = innerRadius + (outerRadius - innerRadius) / 2 + (isActive ? 5 : 0);
+                    const iconX = 200 + iconRadius * Math.cos((iconAngle - 90) * Math.PI / 180);
+                    const iconY = 200 + iconRadius * Math.sin((iconAngle - 90) * Math.PI / 180);
+                    
+                    // Calculate label position
+                    const labelRadius = outerRadius + 25;
+                    const labelX = 200 + labelRadius * Math.cos((iconAngle - 90) * Math.PI / 180);
+                    const labelY = 200 + labelRadius * Math.sin((iconAngle - 90) * Math.PI / 180);
+                    
+                    return (
+                      <g key={framework.id} className="cursor-pointer transition-all duration-300">
+                        {/* Segment path */}
+                        <path 
+                          d={path} 
+                          fill={framework.color}
+                          fillOpacity={isActive ? 1 : 0.7}
+                          stroke="white"
+                          strokeWidth="2"
+                          className="transition-all duration-300 hover:opacity-90"
+                          style={{
+                            transform: isActive ? `scale(1.05)` : 'scale(1)',
+                            transformOrigin: '200px 200px',
+                            filter: isActive ? 'drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.2))' : '',
+                          }}
+                          onClick={() => setActiveSegment(activeSegment === index ? null : index)}
+                        />
+                        
+                        {/* Icon */}
+                        <foreignObject 
+                          x={iconX - 20} 
+                          y={iconY - 20} 
+                          width="40" 
+                          height="40"
+                          className="pointer-events-none"
+                        >
+                          <div className="w-full h-full flex items-center justify-center bg-white rounded-full border-2 border-white shadow-md">
+                            {React.createElement(framework.icon, {
+                              size: 24,
+                              className: 'text-slate-900',
+                            })}
+                          </div>
+                        </foreignObject>
+                        
+                        {/* Label */}
+                        <foreignObject
+                          x={labelX - 60}
+                          y={labelY - 15}
+                          width="120"
+                          height="30"
+                          className="pointer-events-none"
+                        >
+                          <div className="w-full h-full flex items-center justify-center">
+                            <span className={`text-sm font-semibold ${isActive ? 'text-slate-900' : 'text-slate-600'} bg-white/80 rounded-full px-3 py-1 shadow-sm`}>
+                              {framework.title.split(' ')[0]}
+                            </span>
+                          </div>
+                        </foreignObject>
+                      </g>
+                    );
+                  })}
+                </svg>
+              </div>
+            </div>
+            
+            {/* Details panel */}
+            <div className="md:w-1/2 mt-8 md:mt-0">
+              <AnimatePresence mode="wait">
+                {activeSegment !== null ? (
+                  <motion.div
+                    key={frameworks[activeSegment].id}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.3 }}
+                    className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 p-6"
+                  >
+                    <div className="flex items-start gap-3 mb-5">
+                      <div 
+                        className="w-12 h-12 rounded-full grid place-items-center flex-shrink-0 mt-1" 
+                        style={{ backgroundColor: frameworks[activeSegment].color }}
+                      >
+                        {React.createElement(frameworks[activeSegment].icon, {
+                          size: 24,
+                          className: 'text-white',
+                        })}
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                          {frameworks[activeSegment].title}
+                        </h3>
+                        <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
+                          {frameworks[activeSegment].description}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="mb-5 p-4 bg-slate-50 dark:bg-slate-800 rounded-lg">
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="text-sm font-medium text-slate-500 dark:text-slate-400">Key Features:</div>
+                      </div>
+                      <ul className="space-y-2">
+                        {frameworks[activeSegment].details.map((detail, idx) => (
+                          <li key={idx} className="flex items-start gap-3">
+                            <div className="w-5 h-5 rounded-full grid place-items-center flex-shrink-0 mt-0.5" 
+                                style={{ backgroundColor: frameworks[activeSegment].color }}>
+                              <ChevronRight size={12} className="text-white" />
+                            </div>
+                            <span className="text-slate-700 dark:text-slate-300">{detail}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
-          {/* Circular Framework Visualization with hover scale/highlight */}
-          <div className="relative mx-auto w-fit transition-transform duration-300 group-hover:scale-[1.02] [&_path]:transition-[filter] [&_path]:duration-300 group-hover:[&_path]:brightness-110">
-            <FrameworkCircle size={520} thickness={80} />
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center gap-2">
+                        <div className="text-sm font-medium text-slate-500 dark:text-slate-400">Key Metric:</div>
+                        <div className="text-lg font-bold" style={{ color: frameworks[activeSegment].color }}>
+                          {frameworks[activeSegment].stats}
+                        </div>
+                      </div>
+                      <Button 
+                        variant="outline" 
+                        size="sm"
+                        className="rounded-full border-slate-200 text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                        onClick={() => setActiveSegment(null)}
+                      >
+                        Close
+                      </Button>
+                    </div>
+                  </motion.div>
+                ) : (
+                  <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 p-6 text-center"
+                  >
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                      Explore Our Framework
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4">
+                      Click on any segment of the circle to see the details.
+                    </p>
+                    <div className="grid grid-cols-2 gap-3 mt-4">
+                      {frameworks.map((framework, idx) => (
+                        <button
+                          key={idx}
+                          className="flex items-center gap-2 p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-left"
+                          onClick={() => setActiveSegment(idx)}
+                        >
+                          <div 
+                            className="w-8 h-8 rounded-full grid place-items-center flex-shrink-0" 
+                            style={{ backgroundColor: framework.color }}
+                          >
+                            {React.createElement(framework.icon, {
+                              size: 16,
+                              className: 'text-white',
+                            })}
+                          </div>
+                          <span className="text-sm font-medium">{framework.title}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
 
           {/* Call to Action */}
-          <div className="mt-16 text-center">
-            <div className="inline-flex items-center gap-3 bg-white/10 dark:bg-white/5 rounded-full px-8 py-4 border border-primary/10 shadow-lg">
-              <span className="text-gray-700 dark:text-gray-300">Ready to transform your career?</span>
-              <Button variant="default" size="lg" className="rounded-full px-8">
-                Get Started
+          <motion.div 
+            variants={fadeInUp}
+            className="mt-16 text-center"
+          >
+            <div className="inline-flex flex-col md:flex-row items-center gap-4 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl px-8 py-6 border border-primary/10 shadow-lg">
+              <span className="text-lg text-gray-700 dark:text-gray-300 font-medium">Ready to future-proof your institution?</span>
+              <Button variant="default" size="lg" className="rounded-full px-8 shadow-md hover:shadow-lg transition-shadow bg-primary text-primary-foreground hover:bg-primary/90">
+                Let’s get started<ChevronRight size={16} className="ml-1" />
               </Button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </motion.section>
   );
 };
-
-// --- FrameworkCircle component ---
-import React, { useState } from "react";
-
-type Phase = {
-  key: string;
-  title: string;
-  description: string;
-  color: string; // e.g. 'cyan-500'
-};
-
-type FrameworkCircleProps = {
-  size?: number;
-  thickness?: number;
-  gapDeg?: number;
-  phases?: Phase[];
-};
-
-function describeArc(
-  cx: number,
-  cy: number,
-  innerR: number,
-  outerR: number,
-  startAngle: number,
-  endAngle: number
-) {
-  const startOuter = polarToCartesian(cx, cy, outerR, endAngle);
-  const endOuter = polarToCartesian(cx, cy, outerR, startAngle);
-  const startInner = polarToCartesian(cx, cy, innerR, endAngle);
-  const endInner = polarToCartesian(cx, cy, innerR, startAngle);
-
-  const largeArcFlag = endAngle - startAngle <= 180 ? 0 : 1;
-
-  return [
-    "M",
-    startOuter.x,
-    startOuter.y,
-    "A",
-    outerR,
-    outerR,
-    0,
-    largeArcFlag,
-    0,
-    endOuter.x,
-    endOuter.y,
-    "L",
-    endInner.x,
-    endInner.y,
-    "A",
-    innerR,
-    innerR,
-    0,
-    largeArcFlag,
-    1,
-    startInner.x,
-    startInner.y,
-    "Z",
-  ].join(" ");
-}
-
-function polarToCartesian(
-  cx: number,
-  cy: number,
-  r: number,
-  angleInDegrees: number
-) {
-  const angleInRadians = ((angleInDegrees - 90) * Math.PI) / 180.0;
-  return {
-    x: cx + r * Math.cos(angleInRadians),
-    y: cy + r * Math.sin(angleInRadians),
-  };
-}
-
-const defaultPhases: Phase[] = [
-  {
-    key: "foundation",
-    title: "Foundation",
-    description: "Build core skills: aptitude, coding, communication, and industry knowledge.",
-    color: "purple-600",
-  },
-  {
-    key: "readiness",
-    title: "Readiness",
-    description: "Placement prep: AI mock interviews, resume building, mentorship.",
-    color: "teal-500",
-  },
-  {
-    key: "outcomes",
-    title: "Outcomes",
-    description: "Achieve results: 250+ placements, ₹19L highest CTC, 450+ partners.",
-    color: "orange-400",
-  },
-  {
-    key: "support",
-    title: "Support",
-    description: "Ongoing help: last-mile guidance and post-graduation career support.",
-    color: "blue-500",
-  },
-];
-
-function FrameworkCircle({
-  size = 600,
-  thickness = 90,
-  gapDeg = 4,
-  phases = defaultPhases,
-}: FrameworkCircleProps) {
-  const [hovered, setHovered] = useState<number | null>(null);
-  const center = size / 2;
-  const outerR = center - 8;
-  const innerR = outerR - thickness;
-  const segAngle = 360 / phases.length;
-
-  return (
-    <div className="w-full flex flex-col items-center justify-center">
-      <div className="relative" style={{ width: size, height: size, maxWidth: "100%" }}>
-        <svg
-          viewBox={`0 0 ${size} ${size}`}
-          className="w-full h-auto"
-          role="img"
-          aria-label="Framework diagram"
-        >
-          {/* Use direct hex colors for each phase */}
-          {phases.map((p, i) => {
-            // Map Tailwind color names to hex values
-            const colorMap: Record<string, string> = {
-              'purple-600': '#7c3aed',
-              'teal-500': '#14b8a6',
-              'orange-400': '#fb923c',
-              'blue-500': '#3b82f6',
-            };
-            const fillColor = colorMap[p.color] || '#888';
-            const start = i * segAngle + gapDeg / 2;
-            const end = (i + 1) * segAngle - gapDeg / 2;
-            const d = describeArc(center, center, innerR, outerR, start, end);
-            const isDim = hovered !== null && hovered !== i;
-            return (
-              <path
-                key={p.key}
-                d={d}
-                fill={fillColor}
-                className="transition-all duration-300 cursor-pointer"
-                style={{
-                  filter: hovered === i
-                    ? "drop-shadow(0 10px 28px rgba(0,0,0,0.18))"
-                    : "drop-shadow(0 6px 24px rgba(0,0,0,0.12))",
-                  opacity: isDim ? 0.45 : 1,
-                  transform: hovered === i ? "scale(1.06)" : "scale(1)",
-                  transformBox: "fill-box",
-                  transformOrigin: "50% 50%",
-                }}
-                onMouseEnter={() => setHovered(i)}
-                onMouseLeave={() => setHovered(null)}
-              />
-            );
-          })}
-          <circle cx={center} cy={center} r={innerR - 18} fill="#fff" />
-          <text
-            x={center}
-            y={center - 8}
-            textAnchor="middle"
-            className="fill-slate-900 font-bold"
-            fontSize={24}
-          >
-            Employability Framework
-          </text>
-          <text
-            x={center}
-            y={center + 24}
-            textAnchor="middle"
-            className="fill-slate-500"
-            fontSize={15}
-          >
-            4 pillars from foundation to support
-          </text>
-        </svg>
-        {/* Number pins + labels */}
-        <div className="absolute inset-0 pointer-events-none">
-          {phases.map((p, i) => {
-            const angle = i * segAngle + segAngle / 2;
-            const r = outerR + 20;
-            const pos = polarToCartesian(center, center, r, angle);
-            const alignX = pos.x < center ? "left" : "right";
-            const isTop = pos.y < center;
-            const isDim = hovered !== null && hovered !== i;
-            const isActive = hovered === i;
-            return (
-              <div
-                key={`pin-${p.key}`}
-                className={`absolute flex items-center gap-2 ${
-                  alignX === "left" ? "-translate-x-full" : "translate-x-0"
-                } -translate-y-1/2 pointer-events-auto`}
-                style={{ left: pos.x, top: pos.y, opacity: isDim ? 0.55 : 1 }}
-                onMouseEnter={() => setHovered(i)}
-                onMouseLeave={() => setHovered(null)}
-              >
-                {alignX === "right" && (
-                  <span
-                    className={`pointer-events-auto grid place-items-center size-8 rounded-full text-white font-bold shadow transition-transform duration-300 ${isActive ? "scale-125" : "scale-100"}`}
-                    style={{ backgroundColor: (() => {
-                      const colorMap = {
-                        'purple-600': '#7c3aed',
-                        'teal-500': '#14b8a6',
-                        'orange-400': '#fb923c',
-                        'blue-500': '#3b82f6',
-                      };
-                      return colorMap[p.color] || '#888';
-                    })() }}
-                    aria-hidden
-                  >
-                    {i + 1}
-                  </span>
-                )}
-                <div className="pointer-events-auto w-48 max-w-[40vw] select-none">
-                  <div className={`leading-tight transition-all duration-300 ${isActive ? "text-primary font-bold text-lg" : "text-slate-900 font-semibold text-base"}`}>
-                    {p.title}
-                  </div>
-                  <div className={`text-sm leading-snug transition-colors duration-300 ${isActive ? "text-slate-700" : "text-slate-600"}`}>
-                    {p.description}
-                  </div>
-                </div>
-                {alignX === "left" && (
-                  <span
-                    className={`pointer-events-auto grid place-items-center size-8 rounded-full text-white font-bold shadow transition-transform duration-300 ${isActive ? "scale-125" : "scale-100"}`}
-                    style={{ backgroundColor: (() => {
-                      const colorMap = {
-                        'purple-600': '#7c3aed',
-                        'teal-500': '#14b8a6',
-                        'orange-400': '#fb923c',
-                        'blue-500': '#3b82f6',
-                      };
-                      return colorMap[p.color] || '#888';
-                    })() }}
-                    aria-hidden
-                  >
-                    {i + 1}
-                  </span>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export default FrameworkSection;

@@ -46,7 +46,7 @@ const CertificatesSection = () => {
           <Badge variant="outline" className="mb-4 text-primary border-primary/20">
             CERTIFICATION & INTERNSHIP
           </Badge>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
             Certificates & Virtual Internships
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">

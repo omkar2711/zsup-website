@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function CTASection() {
   return (
-    <section className="py-16 bg-gradient-to-br from-primary/10 via-secondary/10 to-transparent">
+    <section className="py-16 bg-gradient-to-br from-primary/10 via-accent/10 to-transparent">
       <div className="container mx-auto px-4">
         <SectionHeader
           eyebrow="Get Started"
@@ -18,10 +18,10 @@ export default function CTASection() {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.4 }}
         >
-          <Button size="lg" className="bg-primary text-white hover:bg-secondary px-8 py-6 text-base">
+          <Button size="lg" className="bg-highlight text-highlight-foreground hover:bg-highlight/90 px-8 py-6 text-base">
             Partner With Us
           </Button>
-          <Button variant="outline" size="lg" className="px-8 py-6 text-base">
+          <Button variant="outline" size="lg" className="px-8 py-6 text-base border-accent text-accent hover:bg-accent/5">
             Book a Call
           </Button>
         </motion.div>
