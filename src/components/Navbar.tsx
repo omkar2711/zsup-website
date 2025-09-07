@@ -4,11 +4,13 @@ import { Menu } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import logoUrl from "../assets/Zskillup Black.png";
 import { motion } from "framer-motion";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [active, setActive] = useState<string>(typeof window !== "undefined" ? window.location.hash || "#home" : "#home");
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 10);
@@ -16,11 +18,25 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Handle navigation for both regular links and hash links
+  const handleNavigation = (to: string) => {
+    if (to.startsWith('/#')) {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.querySelector(to.substring(1));
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      navigate(to);
+    }
+    setIsMenuOpen(false);
+  };
+
   const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "About Us", href: "#about" },
-    { name: "Programs", href: "#programs" },
-    { name: "Contact", href: "#contact" }
+    { name: "Home", to: "/" },
+    { name: "About Us", to: "/about-us" },
+    { name: "Offerings", to: "/offerings" },
+    { name: "Contact Us", to: "/contact-us" }
   ];
 
   return (
@@ -32,7 +48,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-3">
           {/* Logo */}
-          <a href="#home" className="flex items-center space-x-2">
+          <button onClick={() => handleNavigation("/")} className="flex items-center space-x-2">
             <img
               src={logoUrl}
               alt="ZSkillup Logo"
@@ -40,34 +56,35 @@ const Navbar = () => {
               loading="eager"
               decoding="async"
             />
-          </a>
+          </button>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <a
+              <button
                 key={item.name}
-                href={item.href}
-                onClick={() => setActive(item.href)}
+                onClick={() => handleNavigation(item.to)}
                 className="relative text-gray-700 hover:text-accent transition-colors duration-200 font-medium"
               >
                 {item.name}
-                {active === item.href && (
+                {(location.pathname === item.to || 
+                  (location.pathname === '/' && item.to === '/') ||
+                  (item.to.startsWith('/#') && location.pathname === '/')) && (
                   <motion.span
                     layoutId="nav-underline"
                     className="absolute -bottom-1 left-0 h-0.5 w-full bg-highlight"
                   />
                 )}
-              </a>
+              </button>
             ))}
           </div>
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            {/* <a href="#contact" className="text-gray-700 hover:text-accent transition-colors duration-300 font-medium">
-              Book a Call
-            </a> */}
-            <Button className="bg-highlight text-highlight-foreground hover:bg-highlight/90">
+            <Button 
+              className="bg-highlight text-highlight-foreground hover:bg-highlight/90"
+              onClick={() => handleNavigation("/contact-us")}
+            >
               Partner With Us
             </Button>
           </div>
@@ -83,27 +100,25 @@ const Navbar = () => {
               <SheetContent side="right" className="w-72 sm:w-80">
                 <div className="mt-8 space-y-4">
                   {navItems.map((item) => (
-                    <a
+                    <button
                       key={item.name}
-                      href={item.href}
-                      className="block text-gray-800 hover:text-accent transition-colors duration-200 font-medium py-2"
-                      onClick={() => {
-                        setActive(item.href);
-                        setIsMenuOpen(false);
-                      }}
+                      onClick={() => handleNavigation(item.to)}
+                      className="block text-gray-800 hover:text-accent transition-colors duration-200 font-medium py-2 w-full text-left"
                     >
                       {item.name}
-                    </a>
+                    </button>
                   ))}
                   <div className="flex flex-col space-y-3 pt-4 border-t border-gray-200">
-                    <a 
-                      href="#contact"
+                    <button 
+                      onClick={() => handleNavigation("/contact-us")}
                       className="text-gray-800 hover:text-accent transition-colors duration-200 font-medium text-center"
-                      onClick={() => setIsMenuOpen(false)}
                     >
                       Book a Call
-                    </a>
-                    <Button className="bg-highlight text-highlight-foreground hover:bg-highlight/90">
+                    </button>
+                    <Button 
+                      className="bg-highlight text-highlight-foreground hover:bg-highlight/90"
+                      onClick={() => handleNavigation("/contact-us")}
+                    >
                       Partner With Us
                     </Button>
                   </div>

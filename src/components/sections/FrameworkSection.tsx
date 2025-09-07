@@ -42,7 +42,7 @@ type FrameworkPillar = {
 };
 
 const FrameworkSection = () => {
-  const [activeSegment, setActiveSegment] = useState<number | null>(null);
+  const [activeSegment, setActiveSegment] = useState<number>(0); // Set first framework (index 0) as default
 
   const frameworks: FrameworkPillar[] = [
     {
@@ -187,7 +187,7 @@ const FrameworkSection = () => {
                     const labelY = 200 + labelRadius * Math.sin((iconAngle - 90) * Math.PI / 180);
                     
                     return (
-                      <g key={framework.id} className="cursor-pointer transition-all duration-300">
+                        <g key={framework.id} className="cursor-pointer transition-all duration-300">
                         {/* Segment path */}
                         <path 
                           d={path} 
@@ -197,44 +197,51 @@ const FrameworkSection = () => {
                           strokeWidth="2"
                           className="transition-all duration-300 hover:opacity-90"
                           style={{
-                            transform: isActive ? `scale(1.05)` : 'scale(1)',
-                            transformOrigin: '200px 200px',
-                            filter: isActive ? 'drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.2))' : '',
+                          transform: isActive ? `scale(1.05)` : 'scale(1)',
+                          transformOrigin: '200px 200px',
+                          filter: isActive ? 'drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.2))' : '',
                           }}
-                          onClick={() => setActiveSegment(activeSegment === index ? null : index)}
+                          onClick={() => setActiveSegment(index)}
                         />
                         
                         {/* Icon */}
                         <foreignObject 
-                          x={iconX - 20} 
-                          y={iconY - 20} 
-                          width="40" 
-                          height="40"
+                          x={iconX - 22} 
+                          y={iconY - 22} 
+                          width="44" 
+                          height="44"
                           className="pointer-events-none"
                         >
                           <div className="w-full h-full flex items-center justify-center bg-white rounded-full border-2 border-white shadow-md">
-                            {React.createElement(framework.icon, {
-                              size: 24,
-                              className: 'text-slate-900',
-                            })}
+                          {React.createElement(framework.icon, {
+                            size: 26,
+                            className: 'text-slate-900',
+                          })}
                           </div>
                         </foreignObject>
                         
                         {/* Label */}
                         <foreignObject
-                          x={labelX - 60}
+                          x={labelX - 90}
                           y={labelY - 15}
-                          width="120"
-                          height="30"
+                          width="180"
+                          height="40"
                           className="pointer-events-none"
                         >
                           <div className="w-full h-full flex items-center justify-center">
-                            <span className={`text-sm font-semibold ${isActive ? 'text-slate-900' : 'text-slate-600'} bg-white/80 rounded-full px-3 py-1 shadow-sm`}>
-                              {framework.title.split(' ')[0]}
-                            </span>
+                          <span className={`text-sm font-semibold ${isActive ? 'text-slate-900' : 'text-slate-600'} bg-white/80 rounded-full px-4 py-1 shadow-sm whitespace-nowrap`} style={{
+                            display: 'inline-block',
+                            minWidth: '140px',
+                            maxWidth: '200px',
+                            height: 'auto',
+                            overflow: 'visible',
+                            textOverflow: 'ellipsis'
+                          }}>
+                            {framework.title}
+                          </span>
                           </div>
                         </foreignObject>
-                      </g>
+                        </g>
                     );
                   })}
                 </svg>
@@ -244,15 +251,14 @@ const FrameworkSection = () => {
             {/* Details panel */}
             <div className="md:w-1/2 mt-8 md:mt-0">
               <AnimatePresence mode="wait">
-                {activeSegment !== null ? (
-                  <motion.div
-                    key={frameworks[activeSegment].id}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    transition={{ duration: 0.3 }}
-                    className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 p-6"
-                  >
+                <motion.div
+                  key={frameworks[activeSegment].id}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.3 }}
+                  className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 p-6"
+                >
                     <div className="flex items-start gap-3 mb-5">
                       <div 
                         className="w-12 h-12 rounded-full grid place-items-center flex-shrink-0 mt-1" 
@@ -297,50 +303,8 @@ const FrameworkSection = () => {
                           {frameworks[activeSegment].stats}
                         </div>
                       </div>
-                      <Button 
-                        variant="outline" 
-                        size="sm"
-                        className="rounded-full border-slate-200 text-slate-600 hover:bg-slate-50 hover:text-slate-900"
-                        onClick={() => setActiveSegment(null)}
-                      >
-                        Close
-                      </Button>
                     </div>
-                  </motion.div>
-                ) : (
-                  <motion.div 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 p-6 text-center"
-                  >
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                      Explore Our Framework
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300 mb-4">
-                      Click on any segment of the circle to see the details.
-                    </p>
-                    <div className="grid grid-cols-2 gap-3 mt-4">
-                      {frameworks.map((framework, idx) => (
-                        <button
-                          key={idx}
-                          className="flex items-center gap-2 p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-left"
-                          onClick={() => setActiveSegment(idx)}
-                        >
-                          <div 
-                            className="w-8 h-8 rounded-full grid place-items-center flex-shrink-0" 
-                            style={{ backgroundColor: framework.color }}
-                          >
-                            {React.createElement(framework.icon, {
-                              size: 16,
-                              className: 'text-white',
-                            })}
-                          </div>
-                          <span className="text-sm font-medium">{framework.title}</span>
-                        </button>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
+                </motion.div>
               </AnimatePresence>
             </div>
           </div>

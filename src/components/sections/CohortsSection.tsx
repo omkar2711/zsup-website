@@ -16,6 +16,7 @@ const CohortsSection = () => {
       description: "Master aptitude, communication, and employability skills with AI-driven practice and real placement support.",
       icon: CheckCircle,
       badge: "Popular",
+      color: "hsl(215, 70%, 50%)", // Blue
       highlights: [
         "Aptitude + Communication Training",
         "AI-Powered Mock Interviews", 
@@ -36,6 +37,7 @@ const CohortsSection = () => {
       description: "Blended program combining coding, aptitude, and communication for diverse career pathways.",
       icon: Star,
       badge: "Comprehensive",
+      color: "hsl(330, 70%, 40%)", // Purple
       highlights: [
         "All Non-Tech Features Included",
         "Coding & Domain Skills",
@@ -56,6 +58,7 @@ const CohortsSection = () => {
       description: "Exclusive track for high-potential students aiming for premium recruiter access and top CTCs.",
       icon: Crown,
       badge: "Elite",
+      color: "hsl(45, 90%, 50%)", // Gold
       highlights: [
         "Handpicked, High-Potential Students",
         "Personalized Mentorship from Experts",
@@ -115,6 +118,12 @@ const CohortsSection = () => {
                         ? "bg-white text-foreground shadow-lg" 
                         : "text-muted-foreground hover:text-foreground"
                     }`}
+                    style={{
+                      ...(activeTab === cohort.id ? { 
+                        borderBottom: `3px solid ${cohort.color}`,
+                        color: cohort.color 
+                      } : {})
+                    }}
                   >
                     {cohort.title.split('–')[0].trim()}
                   </TabsTrigger>
@@ -140,18 +149,19 @@ const CohortsSection = () => {
                   key={cohort.id}
                   className="bg-white rounded-2xl overflow-hidden shadow-xl border border-muted"
                 >
-                  <div className="bg-primary h-2 w-full"></div>
+                  <div className="bg-primary h-2 w-full" style={{ backgroundColor: cohort.color }}></div>
                   
                   <div className="p-8 md:p-10">
                     <div className="flex flex-col md:flex-row gap-10">
                       {/* Left column - Overview */}
                       <div className="flex-1">
                         <div className="flex items-center gap-4 mb-6">
-                          <div className="w-12 h-12 bg-primary bg-opacity-10 rounded-xl flex items-center justify-center">
-                            <cohort.icon className="w-6 h-6 text-primary" />
+                          <div className="w-12 h-12 rounded-xl flex items-center justify-center" 
+                               style={{ backgroundColor: `${cohort.color}10` }}>
+                            <cohort.icon className="w-6 h-6" style={{ color: cohort.color }} />
                           </div>
                           <div>
-                            <Badge className="bg-primary text-white mb-1">
+                            <Badge className="text-white mb-1" style={{ backgroundColor: cohort.color }}>
                               {cohort.badge}
                             </Badge>
                             <h3 className="text-2xl font-bold text-foreground">{cohort.title}</h3>
@@ -164,16 +174,18 @@ const CohortsSection = () => {
                         
                         <div className="grid grid-cols-2 gap-4 mb-8">
                           {cohort.features.map((feature, idx) => (
-                            <div key={idx} className="bg-secondary/50 p-4 rounded-lg">
+                            <div key={idx} className="p-4 rounded-lg" 
+                                 style={{ backgroundColor: `${cohort.color}10` }}>
                               <div className="text-sm text-muted-foreground">{feature.name}</div>
-                              <div className="text-foreground font-medium">{feature.value}</div>
+                              <div className="text-foreground font-medium" style={{ color: cohort.color }}>{feature.value}</div>
                             </div>
                           ))}
                         </div>
                         
                         <Button 
                           size="lg" 
-                          className="bg-primary text-primary-foreground hover:bg-primary/90 font-medium px-8"
+                          className="font-medium px-8 text-white hover:opacity-90 transition-opacity"
+                          style={{ backgroundColor: cohort.color, borderColor: cohort.color }}
                         >
                           Request Demo
                           <ChevronRight className="w-4 h-4 ml-2" />
@@ -186,8 +198,9 @@ const CohortsSection = () => {
                         <div className="space-y-5">
                           {cohort.highlights.map((highlight, idx) => (
                             <div key={idx} className="flex items-start gap-3 group/item">
-                              <div className="w-6 h-6 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <CheckCircle className="w-4 h-4 text-primary" />
+                              <div className="w-6 h-6 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
+                                   style={{ backgroundColor: `${cohort.color}20` }}>
+                                <CheckCircle className="w-4 h-4" style={{ color: cohort.color }} />
                               </div>
                               <span className="text-foreground">{highlight}</span>
                             </div>
@@ -200,6 +213,23 @@ const CohortsSection = () => {
               </TabsContent>
             ))}
           </Tabs>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-16 text-center"
+          >
+            <Button 
+              size="lg" 
+              className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg rounded-full group"
+              onClick={() => window.location.href = '/offerings'}
+            >
+              View All Program Offerings
+              <ChevronRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </motion.div>
         </div>
       </div>
     </section>

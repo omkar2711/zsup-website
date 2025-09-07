@@ -43,9 +43,10 @@ const ContactSection = () => {
           <div className="lg:col-span-3 space-y-6">
             <h3 className="text-lg font-semibold">Quick Links</h3>
             <ul className="space-y-3 text-gray-300">
-              <li><a href="#home" className="hover:text-white transition-colors">Home</a></li>
-              <li><a href="#about" className="hover:text-white transition-colors">About Us</a></li>
-              <li><a href="#programs" className="hover:text-white transition-colors">Programs</a></li>
+              <li><a href="/" className="hover:text-white transition-colors">Home</a></li>
+              <li><a href="/about-us" className="hover:text-white transition-colors">About Us</a></li>
+              <li><a href="/offerings" className="hover:text-white transition-colors">Offerings</a></li>
+              <li><a href="/contact-us" className="hover:text-white transition-colors">Contact Us</a></li>
               <li><a href="#success" className="hover:text-white transition-colors">Success Stories</a></li>
             </ul>
           </div>
@@ -67,9 +68,17 @@ const ContactSection = () => {
                 placeholder="Your Message"
                 className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 focus:border-white resize-none h-24"
               />
-              <Button className="w-full bg-white hover:bg-gray-100 text-[#722e63] font-semibold">
-                Send Message
-              </Button>
+              <div className="flex gap-4">
+                <Button className="flex-1 bg-white hover:bg-gray-100 text-[#722e63] font-semibold">
+                  Send Message
+                </Button>
+                <Button 
+                  className="flex-1 bg-white/20 hover:bg-white/30 text-white border border-white/30"
+                  onClick={() => window.location.href = '/contact-us'}
+                >
+                  Full Contact Page
+                </Button>
+              </div>
             </div>
           </div>
         </div>
