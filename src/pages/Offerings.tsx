@@ -153,6 +153,135 @@ const Offerings = () => {
         </div>
       </section>
       
+      {/* Specialized Programs */}
+      <section className="py-16 bg-white dark:bg-gray-900">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <SectionHeader
+              title="Our Specialized Programs"
+              subtitle="Focused readiness programs tailored to your career goals"
+              align="center"
+            />
+            
+            <div className="grid md:grid-cols-3 gap-8 mt-12">
+              {/* Corporate Readiness Program */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                <Card className="h-full hover:shadow-lg transition-shadow bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800/30">
+                  <CardContent className="p-6 flex flex-col h-full">
+                    <div className="bg-blue-100 dark:bg-blue-800/40 p-3 rounded-xl inline-block mb-4 w-fit">
+                      <Building className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-3">Corporate Readiness Program</h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
+                      Prepare for success in the corporate world with our comprehensive readiness program.
+                    </p>
+                    <ul className="space-y-2 mb-6">
+                      {["Business communication", "Corporate etiquette", "Team collaboration", "Leadership skills"].map((item, index) => (
+                        <li key={index} className="flex items-start">
+                          <CheckCircle className="h-4 w-4 text-blue-600 dark:text-blue-400 mr-2 mt-0.5 flex-shrink-0" />
+                          <span className="text-gray-600 dark:text-gray-300 text-sm">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Button 
+                      variant="outline" 
+                      className="w-full border-blue-200 dark:border-blue-700 hover:bg-blue-100 dark:hover:bg-blue-800/50 group"
+                      onClick={() => {
+                        window.location.href = '/corporate-readiness-program';
+                      }}
+                    >
+                      Learn More
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </CardContent>
+                </Card>
+              </motion.div>
+              
+              {/* Tech Readiness Program */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+              >
+                <Card className="h-full hover:shadow-lg transition-shadow bg-purple-50 dark:bg-purple-900/20 border border-purple-100 dark:border-purple-800/30">
+                  <CardContent className="p-6 flex flex-col h-full">
+                    <div className="bg-purple-100 dark:bg-purple-800/40 p-3 rounded-xl inline-block mb-4 w-fit">
+                      <Zap className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-3">Tech Readiness Program</h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
+                      Build the technical skills needed to excel in today's technology-driven industries.
+                    </p>
+                    <ul className="space-y-2 mb-6">
+                      {["Coding fundamentals", "Technical problem solving", "System design", "Industry-specific tech stacks"].map((item, index) => (
+                        <li key={index} className="flex items-start">
+                          <CheckCircle className="h-4 w-4 text-purple-600 dark:text-purple-400 mr-2 mt-0.5 flex-shrink-0" />
+                          <span className="text-gray-600 dark:text-gray-300 text-sm">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Button 
+                      variant="outline" 
+                      className="w-full border-purple-200 dark:border-purple-700 hover:bg-purple-100 dark:hover:bg-purple-800/50 group"
+                      onClick={() => {
+                        window.location.href = '/tech-readiness-program';
+                      }}
+                    >
+                      Learn More
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </CardContent>
+                </Card>
+              </motion.div>
+              
+              {/* Smart Generalists Readiness Program */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                <Card className="h-full hover:shadow-lg transition-shadow bg-amber-50 dark:bg-amber-900/20 border border-amber-100 dark:border-amber-800/30">
+                  <CardContent className="p-6 flex flex-col h-full">
+                    <div className="bg-amber-100 dark:bg-amber-800/40 p-3 rounded-xl inline-block mb-4 w-fit">
+                      <Users className="h-6 w-6 text-amber-600 dark:text-amber-400" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-3">Smart Generalists Program</h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
+                      Develop versatile skills for adaptable professionals in the modern workplace.
+                    </p>
+                    <ul className="space-y-2 mb-6">
+                      {["Critical thinking", "Adaptability training", "Cross-functional skills", "Business acumen"].map((item, index) => (
+                        <li key={index} className="flex items-start">
+                          <CheckCircle className="h-4 w-4 text-amber-600 dark:text-amber-400 mr-2 mt-0.5 flex-shrink-0" />
+                          <span className="text-gray-600 dark:text-gray-300 text-sm">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Button 
+                      variant="outline" 
+                      className="w-full border-amber-200 dark:border-amber-700 hover:bg-amber-100 dark:hover:bg-amber-800/50 group"
+                      onClick={() => {
+                        window.location.href = '/smart-generalists-program';
+                      }}
+                    >
+                      Learn More
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       {/* Program Categories */}
       <section className="py-16 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-4">

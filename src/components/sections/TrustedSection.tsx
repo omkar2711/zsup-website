@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
-import { duplicatedLogos } from "@/lib/dummy-logos";
+import { duplicatedCollegeLogos } from "@/lib/college-logos";
 import "../sections/framework-section.css";
 
 const MarqueeContent = () => (
   <div className="flex gap-8">
-    {duplicatedLogos.map((item, index) => (
+    {duplicatedCollegeLogos.map((item, index) => (
       <div
         key={index}
         className="flex-shrink-0 w-[200px] h-[140px] bg-white dark:bg-gray-800 rounded-xl p-4 flex flex-col items-center justify-between border border-gray-100 dark:border-gray-700 group hover:shadow-md transition-all duration-300"
@@ -37,7 +37,7 @@ const TrustedSection = () => {
             Trusted By Leading Institutions
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300">
-            Proudly partnering with 25+ leading institutions
+            Proudly partnering with 15+ leading institutions
           </p>
         </div>
 

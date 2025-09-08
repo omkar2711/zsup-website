@@ -1,39 +1,69 @@
 import { motion } from "framer-motion";
 import "../sections/framework-section.css";
 
-// Hiring partner logos with tech company themes
+// Import company logos
+import amazonLogo from "../../assets/Companies_logos/Amazon.jpeg";
+import flipkartLogo from "../../assets/Companies_logos/Flipkart-Logo.png";
+import razorpayLogo from "../../assets/Companies_logos/razorpay9274.jpg";
+import meeshoLogo from "../../assets/Companies_logos/MEESHO.png";
+import growLogo from "../../assets/Companies_logos/Grow logo.png";
+import haptikLogo from "../../assets/Companies_logos/haptik_logo.png";
+import magicpinLogo from "../../assets/Companies_logos/MAGICPIN.png";
+import pepperFryLogo from "../../assets/Companies_logos/pepperfry-logo.png";
+import sutherlandLogo from "../../assets/Companies_logos/3886_Sutherland-Global-Logo-1.png";
+import appScripLogo from "../../assets/Companies_logos/AppScrip-logo-1598953593530.avif";
+import convegeniusLogo from "../../assets/Companies_logos/Convegenius.png";
+import merkleLogo from "../../assets/Companies_logos/Merkle-Sokrati.jpg";
+
+// Hiring partner logos from the assets/Companies_logos directory
 const hiringPartners = [
   {
-    name: "TechCorp",
-    logo: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3QgeD0iMjAiIHk9IjIwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHJ4PSI4IiBzdHJva2U9IiM3MjJlNjMiIHN0cm9rZS13aWR0aD0iMyIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjE1IiBzdHJva2U9IiM3MjJlNjMiIHN0cm9rZS13aWR0aD0iMyIvPjwvc3ZnPg=="
+    name: "Amazon",
+    logo: amazonLogo
   },
   {
-    name: "InnovateSoft",
-    logo: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iMzAiIHN0cm9rZT0iIzcyMmU2MyIgc3Ryb2tlLXdpZHRoPSIzIi8+PHBhdGggZD0iTTM1IDUwTDQ1IDYwTDY1IDQwIiBzdHJva2U9IiM3MjJlNjMiIHN0cm9rZS13aWR0aD0iMyIvPjwvc3ZnPg=="
+    name: "Flipkart",
+    logo: flipkartLogo
   },
   {
-    name: "DataDynamics",
-    logo: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTIwIDgwTDUwIDIwTDgwIDgwIiBzdHJva2U9IiM3MjJlNjMiIHN0cm9rZS13aWR0aD0iMyIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjE1IiBzdHJva2U9IiM3MjJlNjMiIHN0cm9rZS13aWR0aD0iMyIvPjwvc3ZnPg=="
+    name: "Razorpay",
+    logo: razorpayLogo
   },
   {
-    name: "CloudSphere",
-    logo: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iMzAiIHN0cm9rZT0iIzcyMmU2MyIgc3Ryb2tlLXdpZHRoPSIzIi8+PHBhdGggZD0iTTM1IDUwSDY1TTUwIDM1VjY1IiBzdHJva2U9IiM3MjJlNjMiIHN0cm9rZS13aWR0aD0iMyIvPjwvc3ZnPg=="
+    name: "Meesho",
+    logo: meeshoLogo
   },
   {
-    name: "AI Systems",
-    logo: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3QgeD0iMjAiIHk9IjIwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHN0cm9rZT0iIzcyMmU2MyIgc3Ryb2tlLXdpZHRoPSIzIi8+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iMTUiIGZpbGw9IiM3MjJlNjMiLz48L3N2Zz4="
+    name: "Grow",
+    logo: growLogo
   },
   {
-    name: "DevStack",
-    logo: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTIwIDgwTDUwIDIwTDgwIDgwSDIwWiIgc3Ryb2tlPSIjNzIyZTYzIiBzdHJva2Utd2lkdGg9IjMiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIxNSIgc3Ryb2tlPSIjNzIyZTYzIiBzdHJva2Utd2lkdGg9IjMiLz48L3N2Zz4="
+    name: "Haptik",
+    logo: haptikLogo
   },
   {
-    name: "CodeRealm",
-    logo: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3QgeD0iMjAiIHk9IjM1IiB3aWR0aD0iNjAiIGhlaWdodD0iMzAiIHJ4PSI0IiBzdHJva2U9IiM3MjJlNjMiIHN0cm9rZS13aWR0aD0iMyIvPjxwYXRoIGQ9Ik0zNSA1MEw0NSA0MEw1NSA1MEw0NSA2MCIgc3Ryb2tlPSIjNzIyZTYzIiBzdHJva2Utd2lkdGg9IjMiLz48L3N2Zz4="
+    name: "Magicpin",
+    logo: magicpinLogo
   },
   {
-    name: "ByteWave",
-    logo: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTIwIDUwQzIwIDQwIDMwIDMwIDUwIDMwQzcwIDMwIDgwIDQwIDgwIDUwQzgwIDYwIDcwIDcwIDUwIDcwQzMwIDcwIDIwIDYwIDIwIDUwWiIgc3Ryb2tlPSIjNzIyZTYzIiBzdHJva2Utd2lkdGg9IjMiLz48L3N2Zz4="
+    name: "Pepperfry",
+    logo: pepperFryLogo
+  },
+  {
+    name: "Sutherland",
+    logo: sutherlandLogo
+  },
+  {
+    name: "AppScrip",
+    logo: appScripLogo
+  },
+  {
+    name: "Convegenius",
+    logo: convegeniusLogo
+  },
+  {
+    name: "Merkle Sokrati",
+    logo: merkleLogo
   }
 ];
 
@@ -48,14 +78,14 @@ const MarqueeContent = () => (
         whileHover={{ y: -8, scale: 1.05 }}
         className="flex-shrink-0 h-[140px] w-[180px] rounded-xl bg-white/10 backdrop-blur-md p-6 flex flex-col items-center justify-center border border-white/20 group hover:bg-white/15 transition-all duration-300"
       >
-        <div className="w-16 h-16 mb-3">
+        <div className="w-16 h-16 mb-3 flex items-center justify-center">
           <img
             src={partner.logo}
             alt={partner.name}
-            className="w-full h-full object-contain filter brightness-0 invert opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+            className="max-w-full max-h-full object-contain bg-white/90 rounded-md p-1"
           />
         </div>
-        <p className="text-white/70 group-hover:text-white text-sm font-medium transition-colors">
+        <p className="text-white/80 group-hover:text-white text-sm font-medium transition-colors text-center">
           {partner.name}
         </p>
       </motion.div>

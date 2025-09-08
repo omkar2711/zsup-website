@@ -7,7 +7,10 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
-import Offerings from "./pages/Offerings";
+import CorporateReadinessProgram from "./pages/CorporateReadinessProgram";
+import TechReadinessProgram from "./pages/TechReadinessProgram";
+import SmartGeneralistsProgram from "./pages/SmartGeneralistsProgram";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -17,11 +20,14 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact-us" element={<ContactUs />} />
-          <Route path="/offerings" element={<Offerings />} />
+          <Route path="/corporate-readiness-program" element={<CorporateReadinessProgram />} />
+          <Route path="/tech-readiness-program" element={<TechReadinessProgram />} />
+          <Route path="/smart-generalists-program" element={<SmartGeneralistsProgram />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

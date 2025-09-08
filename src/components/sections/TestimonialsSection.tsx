@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Quote, Star } from "lucide-react";
+import { ExternalLink, Quote, Star } from "lucide-react";
 import { motion } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { EmblaCarouselType } from "embla-carousel";
@@ -9,22 +9,18 @@ import { SectionHeader } from "@/components/SectionHeader";
 const TestimonialsSection = () => {
   const testimonials = [
     {
-      content: "ZSkillup transformed our placement outcomes. Our students now get job offers from top-tier companies with 40% higher average packages.",
-      author: "Dr. Rajesh Kumar",
-      position: "Placement Director, Premier University",
-      rating: 5
+      content: "Hi, I'm Ishita Pandey, a CSE (Data Science) student at Galgotias College. Thrilled to share that I've received an Analyst Trainee offer from DWAO! A huge shoutout to Aimerz for their unwavering support—your guidance, resources, and encouragement made all the difference. If you're prepping for placements, Aimerz is your go-to!",
+      author: "Ishita Pandey",
+      position: "Analyst Trainee, DWAO",
+      rating: 5,
+      linkedInUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7231302427436572672"
     },
     {
-      content: "The AI-powered mock interviews and industry-aligned curriculum gave me confidence to crack my dream job at a Fortune 500 company.",
-      author: "Priya Sharma",
-      position: "Software Engineer, Microsoft",
-      rating: 5
-    },
-    {
-      content: "450+ hiring partners and personalized mentorship - ZSkillup delivered exactly what they promised. Our campus placements increased by 60%.",
-      author: "Prof. Anita Desai",
-      position: "Career Services Head, Tech Institute",
-      rating: 5
+      content: "I am thrilled to have been selected as an Analyst Trainee at DWAO, and I owe a huge thanks to AIMERZ for making this possible. AIMERZ streamlined the entire hiring process and connected me with DWAO. The mock interviews and guidance provided by the team were invaluable in securing this opportunity.",
+      author: "Utkarsh Singh",
+      position: "Analyst Trainee, DWAO",
+      rating: 5,
+      linkedInUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7228022503888105472"
     }
   ];
 
@@ -61,15 +57,15 @@ const TestimonialsSection = () => {
       <div className="container mx-auto px-6 relative z-10">
         <SectionHeader
           // eyebrow="Testimonials"
-          title="Outcomes That Speak For Themselves"
-          subtitle="Real stories from students and institutions who achieved career success"
+          title="Success Stories That Inspire"
+          subtitle="Real experiences from students who launched their careers with our support"
           align="center"
         />
 
         <Carousel setApi={setApi} className="relative" onMouseEnter={stop} onMouseLeave={start}>
           <CarouselContent>
             {testimonials.map((testimonial, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pt-4">
+              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/2 pt-4">
                 <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
                   <Card className="shadow-card transition-smooth hover:shadow-elegant hover:-translate-y-2 relative h-full">
                     <div className="absolute -top-4 left-6">
@@ -87,12 +83,26 @@ const TestimonialsSection = () => {
                         "{testimonial.content}"
                       </p>
                       <div className="border-t pt-4">
-                        <h4 className="font-semibold text-primary text-lg">
-                          {testimonial.author}
-                        </h4>
-                        <p className="text-sm text-muted-foreground">
-                          {testimonial.position}
-                        </p>
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <h4 className="font-semibold text-primary text-lg">
+                              {testimonial.author}
+                            </h4>
+                            <p className="text-sm text-muted-foreground">
+                              {testimonial.position}
+                            </p>
+                          </div>
+                          {/* {testimonial.linkedInUrl && (
+                            <a 
+                              href={testimonial.linkedInUrl} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="text-blue-600 hover:text-blue-800 transition-colors"
+                            >
+                              <ExternalLink className="w-5 h-5" />
+                            </a>
+                          )} */}
+                        </div>
                       </div>
                     </CardContent>
                   </Card>

@@ -3,6 +3,14 @@ import { motion } from 'framer-motion';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
+// Import college logos
+import dyPatilLogo from "../../assets/college_logos/DY Patil University.jpg";
+import lnmiitLogo from "../../assets/college_logos/LNMIIT.jpg";
+import kleBelgaumLogo from "../../assets/college_logos/KLE, Belgaum.jpeg";
+import ajeenkyaLogo from "../../assets/college_logos/Ajeenkya dy patil.jpeg";
+import apShahLogo from "../../assets/college_logos/AP-Shah.webp";
+import atharvaLogo from "../../assets/college_logos/Atharva College of Engineering.png";
+
 interface UniversityCertProps {
   name: string;
   logo: string;
@@ -13,46 +21,46 @@ interface UniversityCertProps {
 
 const universities: UniversityCertProps[] = [
   {
-    name: "Harvard University",
-    logo: "https://upload.wikimedia.org/wikipedia/en/thumb/2/29/Harvard_shield_wreath.svg/1200px-Harvard_shield_wreath.svg.png",
-    programs: ["CS50: Introduction to Computer Science", "Data Science Professional Certificate"],
-    description: "Gain skills and credentials from one of the world's leading academic institutions.",
-    link: "#harvard-certificates"
+    name: "DY Patil University",
+    logo: dyPatilLogo,
+    programs: ["B.Tech in Computer Science", "MBA in Technology Management"],
+    description: "Partner with one of India's premier technical education institutions for comprehensive training programs.",
+    link: "#dy-patil-certificates"
   },
   {
-    name: "MIT",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MIT_logo.svg/1200px-MIT_logo.svg.png",
-    programs: ["MicroMasters in Data Science", "Professional Certificate in Coding"],
-    description: "Access cutting-edge technology education from the Massachusetts Institute of Technology.",
-    link: "#mit-certificates"
+    name: "LNMIIT",
+    logo: lnmiitLogo,
+    programs: ["B.Tech in Computer Engineering", "M.Tech in AI & Data Science"],
+    description: "Access cutting-edge technology education from The LNM Institute of Information Technology.",
+    link: "#lnmiit-certificates"
   },
   {
-    name: "IBM",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/1200px-IBM_logo.svg.png",
-    programs: ["Data Science Professional Certificate", "AI Engineering Professional Certificate"],
-    description: "Develop job-ready skills with professional certificates from a technology leader.",
-    link: "#ibm-certificates"
+    name: "KLE Belgaum",
+    logo: kleBelgaumLogo,
+    programs: ["B.Tech in Information Technology", "M.Tech in Computer Science"],
+    description: "Develop job-ready skills with professional certificates from a leading technical institution.",
+    link: "#kle-certificates"
   },
   {
-    name: "Google",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png",
-    programs: ["Google IT Support Professional Certificate", "Google Data Analytics Certificate"],
-    description: "Master in-demand skills with certificates designed by Google experts.",
-    link: "#google-certificates"
+    name: "Ajeenkya DY Patil",
+    logo: ajeenkyaLogo,
+    programs: ["B.Tech in AI & Machine Learning", "MBA in Digital Business"],
+    description: "Master in-demand skills with certificates designed by industry experts.",
+    link: "#ajeenkya-certificates"
   },
   {
-    name: "Stanford University",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Stanford_Cardinal_logo.svg/1200px-Stanford_Cardinal_logo.svg.png",
-    programs: ["Machine Learning Specialization", "Computer Security Certificate"],
-    description: "Enhance your expertise with world-class education from Stanford University.",
-    link: "#stanford-certificates"
+    name: "AP Shah Institute",
+    logo: apShahLogo,
+    programs: ["B.E. in Computer Engineering", "Diploma in Software Development"],
+    description: "Enhance your expertise with world-class education from AP Shah Institute of Technology.",
+    link: "#apshah-certificates"
   },
   {
-    name: "Microsoft",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/1200px-Microsoft_logo.svg.png",
-    programs: ["Microsoft Azure Fundamentals", "Microsoft Data Scientist Associate"],
-    description: "Build your skills and validate your expertise with Microsoft's professional certifications.",
-    link: "#microsoft-certificates"
+    name: "Atharva College of Engineering",
+    logo: atharvaLogo,
+    programs: ["B.Tech in Information Technology", "M.Tech in Computer Networks"],
+    description: "Build your skills and validate your expertise with industry-recognized certifications.",
+    link: "#atharva-certificates"
   }
 ];
 
@@ -83,10 +91,10 @@ const UniversityCertificatesSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Earn Recognized Certificates
+            Our Academic Partners
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Enhance your resume with prestigious certifications from world-renowned universities and industry-leading companies.
+            ZSkillup collaborates with leading educational institutions across India to provide industry-recognized programs and certifications.
           </p>
         </div>
 
@@ -103,7 +111,7 @@ const UniversityCertificatesSection = () => {
                 <CardContent className="p-0">
                   <div className="p-6">
                     <div className="flex items-center mb-4">
-                      <div className="w-16 h-16 mr-4 flex-shrink-0">
+                      <div className="w-20 h-20 mr-4 flex-shrink-0 bg-white p-1 rounded-md shadow-sm border border-gray-100">
                         <img 
                           src={university.logo} 
                           alt={`${university.name} logo`} 
@@ -134,7 +142,7 @@ const UniversityCertificatesSection = () => {
                       variant="outline" 
                       className="w-full mt-2 border-primary text-primary hover:bg-primary hover:text-white transition-colors"
                     >
-                      View Certificates
+                      View Partnership Programs
                     </Button>
                   </div>
                 </CardContent>
@@ -145,7 +153,7 @@ const UniversityCertificatesSection = () => {
 
         <div className="text-center mt-12">
           <Button variant="default" size="lg" className="bg-primary hover:bg-primary/90">
-            Browse All Certificate Programs
+            Explore All Academic Partnerships
           </Button>
         </div>
       </div>

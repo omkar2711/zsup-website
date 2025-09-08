@@ -1,10 +1,19 @@
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
+import { 
+  Menu, 
+  ChevronDown 
+} from "lucide-react";
 import React, { useEffect, useState } from "react";
 import logoUrl from "../assets/Zskillup Black.png";
 import { motion } from "framer-motion";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,10 +41,23 @@ const Navbar = () => {
     setIsMenuOpen(false);
   };
 
-  const navItems = [
+  type NavItem = {
+    name: string;
+    to?: string;
+    hasDropdown?: boolean;
+    dropdownItems?: { name: string; to: string }[];
+  }
+
+  const offeringsDropdownItems = [
+    { name: "Corporate Readiness Program", to: "/corporate-readiness-program" },
+    { name: "Tech Readiness Program", to: "/tech-readiness-program" },
+    { name: "Smart Generalists Program", to: "/smart-generalists-program" }
+  ];
+
+  const navItems: NavItem[] = [
     { name: "Home", to: "/" },
     { name: "About Us", to: "/about-us" },
-    { name: "Offerings", to: "/offerings" },
+    { name: "Programs", hasDropdown: true, dropdownItems: offeringsDropdownItems },
     { name: "Contact Us", to: "/contact-us" }
   ];
 
@@ -61,21 +83,51 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <button
-                key={item.name}
-                onClick={() => handleNavigation(item.to)}
-                className="relative text-gray-700 hover:text-accent transition-colors duration-200 font-medium"
-              >
-                {item.name}
-                {(location.pathname === item.to || 
-                  (location.pathname === '/' && item.to === '/') ||
-                  (item.to.startsWith('/#') && location.pathname === '/')) && (
-                  <motion.span
-                    layoutId="nav-underline"
-                    className="absolute -bottom-1 left-0 h-0.5 w-full bg-highlight"
-                  />
-                )}
-              </button>
+              item.hasDropdown ? (
+                <DropdownMenu key={item.name}>
+                  <DropdownMenuTrigger asChild>
+                    <button className="relative group flex items-center text-gray-700 hover:text-accent transition-colors duration-200 font-medium">
+                      {item.name}
+                      <ChevronDown className="ml-1 h-4 w-4 transition-transform group-data-[state=open]:rotate-180" />
+                      {(location.pathname.includes("/corporate-readiness-program") || 
+                        location.pathname.includes("/tech-readiness-program") || 
+                        location.pathname.includes("/smart-generalists-program")) && (
+                        <motion.span
+                          layoutId="nav-underline"
+                          className="absolute -bottom-1 left-0 h-0.5 w-full bg-highlight"
+                        />
+                      )}
+                    </button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="center" className="bg-white shadow-lg rounded-md p-2 min-w-[220px]">
+                    {item.dropdownItems?.map((subItem) => (
+                      <DropdownMenuItem 
+                        key={subItem.name} 
+                        className="cursor-pointer"
+                        onClick={() => handleNavigation(subItem.to)}
+                      >
+                        {subItem.name}
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ) : (
+                <button
+                  key={item.name}
+                  onClick={() => handleNavigation(item.to)}
+                  className="relative text-gray-700 hover:text-accent transition-colors duration-200 font-medium"
+                >
+                  {item.name}
+                  {(location.pathname === item.to || 
+                    (location.pathname === '/' && item.to === '/') ||
+                    (item.to.startsWith('/#') && location.pathname === '/')) && (
+                    <motion.span
+                      layoutId="nav-underline"
+                      className="absolute -bottom-1 left-0 h-0.5 w-full bg-highlight"
+                    />
+                  )}
+                </button>
+              )
             ))}
           </div>
 
@@ -100,13 +152,33 @@ const Navbar = () => {
               <SheetContent side="right" className="w-72 sm:w-80">
                 <div className="mt-8 space-y-4">
                   {navItems.map((item) => (
-                    <button
-                      key={item.name}
-                      onClick={() => handleNavigation(item.to)}
-                      className="block text-gray-800 hover:text-accent transition-colors duration-200 font-medium py-2 w-full text-left"
-                    >
-                      {item.name}
-                    </button>
+                    <div key={item.name}>
+                      {item.hasDropdown ? (
+                        <div className="mb-2">
+                          <p className="block text-gray-800 font-medium py-2 w-full text-left">
+                            {item.name}
+                          </p>
+                          <div className="ml-4 mt-1 space-y-2 border-l-2 border-gray-200 pl-4">
+                            {item.dropdownItems?.map((subItem) => (
+                              <button
+                                key={subItem.name}
+                                onClick={() => handleNavigation(subItem.to)}
+                                className="block text-gray-700 hover:text-accent transition-colors duration-200 py-1 w-full text-left"
+                              >
+                                {subItem.name}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      ) : (
+                        <button
+                          onClick={() => handleNavigation(item.to)}
+                          className="block text-gray-800 hover:text-accent transition-colors duration-200 font-medium py-2 w-full text-left"
+                        >
+                          {item.name}
+                        </button>
+                      )}
+                    </div>
                   ))}
                   <div className="flex flex-col space-y-3 pt-4 border-t border-gray-200">
                     <button 
