@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 
-const ContactSection = () => {
+const FooterSection = () => {
   return (
     <footer className="bg-[#722e63] text-white">
       <div className="container mx-auto px-6">
@@ -92,4 +92,4 @@ const ContactSection = () => {
   );
 };
 
-export default ContactSection;
+export default FooterSection;

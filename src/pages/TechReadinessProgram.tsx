@@ -31,6 +31,7 @@ import {
   Zap,
   ArrowRight
 } from 'lucide-react';
+import FooterSection from '@/components/sections/Footer';
 
 const TechnologyReadinessProgram = () => {
   const [selectedTrack, setSelectedTrack] = useState("fsd");
@@ -948,71 +949,7 @@ const TechnologyReadinessProgram = () => {
     </section>
       
       {/* Contact Form */}
-      <section id="contact" className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            <SectionHeader 
-              title="Ready to Elevate Your Institution's Tech Placements?" 
-              subtitle="Schedule a call with our team to discuss how we can tailor our program to your needs"
-              align="center"
-            />
-            
-            <div className="mt-12 grid md:grid-cols-2 gap-10 items-center">
-              <div>
-                <img 
-                  src="/placeholder.svg" 
-                  alt="Contact Us" 
-                  className="max-w-full rounded-lg" 
-                />
-                <div className="mt-8 space-y-4">
-                  <h3 className="text-xl font-bold">Connect With Us</h3>
-                  <p className="flex items-center gap-3">
-                    <Calendar className="h-5 w-5 text-purple-600" />
-                    <span>Schedule a demo at your convenience</span>
-                  </p>
-                  <p className="flex items-center gap-3">
-                    <Users className="h-5 w-5 text-purple-600" />
-                    <span>Bring your key stakeholders</span>
-                  </p>
-                  <p className="flex items-center gap-3">
-                    <Target className="h-5 w-5 text-purple-600" />
-                    <span>Get a customized program proposal</span>
-                  </p>
-                </div>
-              </div>
-              
-              <div className="bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm">
-                <h3 className="text-2xl font-bold mb-6">Contact Us</h3>
-                <form className="space-y-6">
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Institution Name</label>
-                    <input type="text" className="w-full p-3 border border-gray-300 rounded-lg" placeholder="Enter your institution name" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Your Name</label>
-                    <input type="text" className="w-full p-3 border border-gray-300 rounded-lg" placeholder="Enter your name" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Email Address</label>
-                    <input type="email" className="w-full p-3 border border-gray-300 rounded-lg" placeholder="Enter your email" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Phone Number</label>
-                    <input type="tel" className="w-full p-3 border border-gray-300 rounded-lg" placeholder="Enter your phone number" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Message (Optional)</label>
-                    <textarea className="w-full p-3 border border-gray-300 rounded-lg" rows={4} placeholder="Tell us about your requirements"></textarea>
-                  </div>
-                  <Button className="w-full bg-purple-600 hover:bg-purple-700">
-                    Submit Request
-                  </Button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+     <FooterSection />
     </div>
   );
 };

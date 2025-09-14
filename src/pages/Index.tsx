@@ -9,7 +9,7 @@ import PosterSection from "@/components/sections/PosterSection";
 import AdvisorySection from "@/components/sections/AdvisorySection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import WhyChooseSection from "@/components/sections/WhyChooseSection";
-import ContactSection from "@/components/sections/ContactSection";
+import FooterSection from "@/components/sections/Footer";
 import HiringPartnersSection from "@/components/sections/HiringPartnersSection";
 import VirtualInternshipSection  from "@/components/sections/VirtualInternshipSection";
 import { internshipConfigs } from "@/lib/internship-config";
@@ -49,7 +49,7 @@ const Index = () => {
       <FAQSection />
       {/* <CTASection /> */}
       <div id="contact">
-        <ContactSection />
+        <FooterSection />
       </div>
     </div>
   );
