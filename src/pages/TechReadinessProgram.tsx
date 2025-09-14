@@ -6,6 +6,8 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import VirtualInternshipSection from '@/components/sections/VirtualInternshipSection';
+import { internshipConfigs } from '@/lib/internship-config';
 import { motion } from 'framer-motion';
 import { 
   CheckCircle, 
@@ -77,6 +79,23 @@ const TechnologyReadinessProgram = () => {
               >
                 Partner With Us <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
+            </motion.div>
+
+            {/* Right side: Tech image */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="hidden md:flex justify-center items-center"
+            >
+                <div className="relative">
+                <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 to-blue-600 rounded-xl blur-sm opacity-70"></div>
+                <img
+                src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80"
+                alt="Software developers collaborating on code"
+                className="w-full max-w-xl rounded-xl shadow-lg relative z-10 object-cover h-[450px]"
+                />
+                </div>
             </motion.div>
           </div>
         </div>
@@ -867,6 +886,9 @@ const TechnologyReadinessProgram = () => {
           </div>
         </div>
       </section>
+      
+      {/* Virtual Internships */}
+      <VirtualInternshipSection config={internshipConfigs.tech} variant="tech" />
       
       {/* FAQs */}
     <section className="py-20 bg-gray-50">

@@ -5,9 +5,11 @@ import { CheckCircle, Star, Crown, ChevronRight, BookOpen, Code, Users } from "l
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const CohortsSection = () => {
   const [activeTab, setActiveTab] = useState("management");
+  const isMobile = useIsMobile();
 
   const cohorts = [
     {
@@ -111,24 +113,28 @@ const CohortsSection = () => {
             className="w-full"
           >
             <div className="flex flex-col items-center mb-12">
-              <TabsList className="h-14 p-1 bg-muted/80 backdrop-blur-sm rounded-full mb-2 w-auto">
+              <TabsList className={`${isMobile ? 'flex-col w-full gap-2 h-auto p-2' : 'h-14 p-1 w-auto'} bg-muted/80 backdrop-blur-sm rounded-xl md:rounded-full mb-2`}>
                 {cohorts.map((cohort) => (
                   <TabsTrigger 
                     key={cohort.id} 
                     value={cohort.id}
-                    className={`px-6 py-3 rounded-full text-base transition-all duration-300 font-medium ${
+                    className={`${isMobile ? 'w-full justify-start pl-4 py-3' : 'px-6 py-3 rounded-full'} text-base transition-all duration-300 font-medium ${
                       activeTab === cohort.id 
                         ? "bg-white text-foreground shadow-lg" 
                         : "text-muted-foreground hover:text-foreground"
                     }`}
                     style={{
                       ...(activeTab === cohort.id ? { 
-                        borderBottom: `3px solid ${cohort.color}`,
+                        borderLeft: isMobile ? `3px solid ${cohort.color}` : 'none',
+                        borderBottom: !isMobile ? `3px solid ${cohort.color}` : 'none',
                         color: cohort.color 
                       } : {})
                     }}
                   >
-                    {cohort.title.split('–')[0].trim()}
+                    <div className="flex items-center">
+                      {isMobile && <cohort.icon className="w-5 h-5 mr-2" style={{ color: activeTab === cohort.id ? cohort.color : 'currentColor' }} />}
+                      {cohort.title.split('–')[0].trim()}
+                    </div>
                   </TabsTrigger>
                 ))}
               </TabsList>
@@ -149,10 +155,10 @@ const CohortsSection = () => {
                 >
                   <div className="bg-primary h-2 w-full" style={{ backgroundColor: cohort.color }}></div>
                   
-                  <div className="p-8 md:p-10">
+                  <div className={`p-6 ${isMobile ? 'p-4' : 'p-8 md:p-10'}`}>
                     <div className="flex flex-col md:flex-row gap-10">
                       {/* Left column - Overview */}
-                      <div className="flex-1">
+                      <div className="flex-1 mb-8 md:mb-0">
                         <div className="flex items-center gap-4 mb-6">
                           <div className="w-12 h-12 rounded-xl flex items-center justify-center" 
                                style={{ backgroundColor: `${cohort.color}10` }}>
@@ -170,7 +176,7 @@ const CohortsSection = () => {
                           {cohort.description}
                         </p>
                         
-                        <div className="grid grid-cols-2 gap-4 mb-8">
+                        <div className={`grid ${isMobile ? 'grid-cols-1' : 'grid-cols-2'} gap-4 mb-8`}>
                           {cohort.features.map((feature, idx) => (
                             <div key={idx} className="p-4 rounded-lg" 
                                  style={{ backgroundColor: `${cohort.color}10` }}>
@@ -179,28 +185,19 @@ const CohortsSection = () => {
                             </div>
                           ))}
                         </div>
-                        
-                        <Button 
-                          size="lg" 
-                          className="font-medium px-8 text-white hover:opacity-90 transition-opacity"
-                          style={{ backgroundColor: cohort.color, borderColor: cohort.color }}
-                        >
-                          Request Demo
-                          <ChevronRight className="w-4 h-4 ml-2" />
-                        </Button>
                       </div>
                       
                       {/* Right column - Highlights */}
-                      <div className="flex-1 bg-secondary/30 rounded-xl p-6">
-                        <h4 className="font-semibold text-foreground text-lg mb-6">Key Highlights:</h4>
-                        <div className="space-y-5">
+                      <div className={`flex-1 bg-secondary/30 rounded-xl p-6 ${isMobile ? 'p-4' : 'p-6'}`}>
+                        <h4 className="font-semibold text-foreground text-lg mb-4 md:mb-6">Key Highlights:</h4>
+                        <div className="space-y-3 md:space-y-5">
                           {cohort.highlights.map((highlight, idx) => (
-                            <div key={idx} className="flex items-start gap-3 group/item">
-                              <div className="w-6 h-6 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
+                            <div key={idx} className="flex items-start gap-2 md:gap-3 group/item">
+                              <div className="w-5 h-5 md:w-6 md:h-6 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
                                    style={{ backgroundColor: `${cohort.color}20` }}>
-                                <CheckCircle className="w-4 h-4" style={{ color: cohort.color }} />
+                                <CheckCircle className="w-3 h-3 md:w-4 md:h-4" style={{ color: cohort.color }} />
                               </div>
-                              <span className="text-foreground">{highlight}</span>
+                              <span className={`text-foreground ${isMobile ? 'text-sm' : ''}`}>{highlight}</span>
                             </div>
                           ))}
                         </div>
@@ -217,15 +214,26 @@ const CohortsSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-16 text-center"
+            className="mt-10 md:mt-16 text-center"
           >
             <Button 
-              size="lg" 
-              className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg rounded-full group"
-              onClick={() => window.location.href = '/offerings'}
+              size={isMobile ? "default" : "lg"} 
+              className={`bg-primary hover:bg-primary/90 text-white ${isMobile ? 'px-4 py-2 text-base' : 'px-8 py-6 text-lg'} rounded-full group`}
+              onClick={() => {
+                const currentCohort = cohorts.find(cohort => cohort.id === activeTab);
+                let path = "/";
+                if (activeTab === "management") {
+                  path = "/corporate-readiness-program";
+                } else if (activeTab === "technology") {
+                  path = "/tech-readiness-program";
+                } else if (activeTab === "generalist") {
+                  path = "/smart-generalists-program";
+                }
+                window.location.href = path;
+              }}
             >
-              Explore All Program Details
-              <ChevronRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              Explore {cohorts.find(cohort => cohort.id === activeTab)?.badge} Program Details
+              <ChevronRight className={`ml-2 h-4 w-4 md:h-5 md:w-5 group-hover:translate-x-1 transition-transform`} />
             </Button>
           </motion.div>
         </div>

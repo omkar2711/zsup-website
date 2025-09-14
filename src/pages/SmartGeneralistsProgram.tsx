@@ -84,13 +84,13 @@ const SmartGeneralistsProgram = () => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.7 }}
-                className="relative max-h-[400px] overflow-hidden"
+                className="relative max-h-[500px] overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-indigo-500 rounded-3xl blur-xl opacity-20 transform scale-105"></div>
                 <img 
-                  src="/placeholder.svg" 
-                  alt="Smart Generalist Program" 
-                  className="relative z-10 rounded-3xl shadow-xl w-full" 
+                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1800&q=80" 
+                  alt="Diverse team collaborating on multi-disciplinary project" 
+                  className="relative z-10 rounded-3xl shadow-xl w-full object-cover h-[500px]" 
                 />
               </motion.div>
             </div>
@@ -883,15 +883,15 @@ const SmartGeneralistsProgram = () => {
               transition={{ duration: 0.5 }}
               className="flex flex-wrap justify-center gap-8 mb-12"
             >
-              {['/assets/college_logos/AP-Shah.webp', 
-                '/assets/college_logos/DY Patil University.jpg', 
-                '/assets/college_logos/LNMIIT.jpg',
-                '/assets/college_logos/KLE, Belgaum.jpeg',
-                '/assets/college_logos/Ajeenkya dy patil.jpeg'
+              {['./src/assets/college_logos/AGM LOGO.jpeg', 
+                './src/assets/college_logos/DY Patil University.jpg', 
+                './src/assets/college_logos/LNMIIT.jpg',
+                './src/assets/college_logos/KLE, Belgaum.jpeg',
+                './src/assets/college_logos/Ajeenkya dy patil.jpeg'
               ].map((logo, index) => (
                 <div 
                   key={index} 
-                  className="w-32 h-32 bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300"
+                  className="w-32 h-32 bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center justify-center  hover:grayscale-0 transition-all duration-300"
                 >
                   <img src={logo} alt="Academic Partner" className="max-w-full max-h-full object-contain" />
                 </div>
@@ -905,15 +905,15 @@ const SmartGeneralistsProgram = () => {
               transition={{ duration: 0.5 }}
               className="flex flex-wrap justify-center gap-8"
             >
-              {['/assets/Companies_logos/Amazon.jpeg', 
-                '/assets/Companies_logos/Flipkart-Logo.png', 
-                '/assets/Companies_logos/razorpay9274.jpg',
-                '/assets/Companies_logos/MEESHO.png',
-                '/assets/Companies_logos/Grow logo.png'
+              {['./src/assets/Companies_logos/Amazon.jpeg', 
+                './src/assets/Companies_logos/Flipkart-Logo.png', 
+                './src/assets/Companies_logos/razorpay9274.jpg',
+                './src/assets/Companies_logos/MEESHO.png',
+                './src/assets/Companies_logos/Grow logo.png'
               ].map((logo, index) => (
                 <div 
                   key={index} 
-                  className="w-32 h-32 bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300"
+                  className="w-32 h-32 bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center justify-center  hover:grayscale-0 transition-all duration-300"
                 >
                   <img src={logo} alt="Corporate Partner" className="max-w-full max-h-full object-contain" />
                 </div>

@@ -11,7 +11,8 @@ import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import WhyChooseSection from "@/components/sections/WhyChooseSection";
 import ContactSection from "@/components/sections/ContactSection";
 import HiringPartnersSection from "@/components/sections/HiringPartnersSection";
-import VirtualInternshipSection from "@/components/sections/VirtualInternshipSection";
+import VirtualInternshipSection  from "@/components/sections/VirtualInternshipSection";
+import { internshipConfigs } from "@/lib/internship-config";
 import UniversityCertificatesSection from "@/components/sections/UniversityCertificatesSection";
 import CertificatesSection from "@/components/sections/CertificatesSection";
 import FAQSection from "@/components/sections/FAQSection";
@@ -34,7 +35,7 @@ const Index = () => {
         <CohortsSection />
       </div>
       <HiringPartnersSection />
-      <VirtualInternshipSection />
+      <VirtualInternshipSection config={internshipConfigs.home} variant="home" />
       {/* <UniversityCertificatesSection /> */}
       {/* <CertificatesSection /> */}
       <div id="success">

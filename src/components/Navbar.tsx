@@ -86,24 +86,27 @@ const Navbar = () => {
               item.hasDropdown ? (
                 <DropdownMenu key={item.name}>
                   <DropdownMenuTrigger asChild>
-                    <button className="relative group flex items-center text-gray-700 hover:text-accent transition-colors duration-200 font-medium">
+                    <button className="relative group flex items-center text-gray-700 hover:text-primary transition-colors duration-200 font-medium">
                       {item.name}
-                      <ChevronDown className="ml-1 h-4 w-4 transition-transform group-data-[state=open]:rotate-180" />
+                      <ChevronDown className="ml-1 h-4 w-4 transition-transform group-data-[state=open]:rotate-180 text-gray-500 group-hover:text-primary" />
                       {(location.pathname.includes("/corporate-readiness-program") || 
                         location.pathname.includes("/tech-readiness-program") || 
                         location.pathname.includes("/smart-generalists-program")) && (
                         <motion.span
                           layoutId="nav-underline"
-                          className="absolute -bottom-1 left-0 h-0.5 w-full bg-highlight"
+                          className="absolute -bottom-1 left-0 h-0.5 w-full bg-primary"
                         />
                       )}
                     </button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="center" className="bg-white shadow-lg rounded-md p-2 min-w-[220px]">
+                  <DropdownMenuContent 
+                    align="center" 
+                    className="bg-white shadow-lg rounded-md p-3 min-w-[280px] border border-gray-100"
+                  >
                     {item.dropdownItems?.map((subItem) => (
                       <DropdownMenuItem 
                         key={subItem.name} 
-                        className="cursor-pointer"
+                        className="cursor-pointer py-2.5 px-3 text-gray-700 hover:text-primary hover:bg-secondary/50 rounded-md my-1 transition-colors duration-200 font-medium"
                         onClick={() => handleNavigation(subItem.to)}
                       >
                         {subItem.name}
@@ -115,7 +118,7 @@ const Navbar = () => {
                 <button
                   key={item.name}
                   onClick={() => handleNavigation(item.to)}
-                  className="relative text-gray-700 hover:text-accent transition-colors duration-200 font-medium"
+                  className="relative text-gray-700 hover:text-primary transition-colors duration-200 font-medium"
                 >
                   {item.name}
                   {(location.pathname === item.to || 
@@ -123,7 +126,7 @@ const Navbar = () => {
                     (item.to.startsWith('/#') && location.pathname === '/')) && (
                     <motion.span
                       layoutId="nav-underline"
-                      className="absolute -bottom-1 left-0 h-0.5 w-full bg-highlight"
+                      className="absolute -bottom-1 left-0 h-0.5 w-full bg-primary"
                     />
                   )}
                 </button>
@@ -134,7 +137,7 @@ const Navbar = () => {
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             <Button 
-              className="bg-highlight text-highlight-foreground hover:bg-highlight/90"
+              className="bg-primary text-primary-foreground hover:bg-primary/90"
               onClick={() => handleNavigation("/contact-us")}
             >
               Partner With Us
@@ -163,7 +166,7 @@ const Navbar = () => {
                               <button
                                 key={subItem.name}
                                 onClick={() => handleNavigation(subItem.to)}
-                                className="block text-gray-700 hover:text-accent transition-colors duration-200 py-1 w-full text-left"
+                                className="block text-gray-700 hover:text-primary transition-colors duration-200 py-1 w-full text-left"
                               >
                                 {subItem.name}
                               </button>
@@ -173,7 +176,7 @@ const Navbar = () => {
                       ) : (
                         <button
                           onClick={() => handleNavigation(item.to)}
-                          className="block text-gray-800 hover:text-accent transition-colors duration-200 font-medium py-2 w-full text-left"
+                          className="block text-gray-800 hover:text-primary transition-colors duration-200 font-medium py-2 w-full text-left"
                         >
                           {item.name}
                         </button>
@@ -183,12 +186,12 @@ const Navbar = () => {
                   <div className="flex flex-col space-y-3 pt-4 border-t border-gray-200">
                     <button 
                       onClick={() => handleNavigation("/contact-us")}
-                      className="text-gray-800 hover:text-accent transition-colors duration-200 font-medium text-center"
+                      className="text-gray-800 hover:text-primary transition-colors duration-200 font-medium text-center"
                     >
                       Book a Call
                     </button>
                     <Button 
-                      className="bg-highlight text-highlight-foreground hover:bg-highlight/90"
+                      className="bg-primary text-primary-foreground hover:bg-primary/90"
                       onClick={() => handleNavigation("/contact-us")}
                     >
                       Partner With Us

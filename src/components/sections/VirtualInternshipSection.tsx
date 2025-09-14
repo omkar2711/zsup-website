@@ -6,55 +6,38 @@ import { Button } from "@/components/ui/button";
 // Custom CSS for equal height cards
 import "./framework-section.css"; // Reusing the existing CSS file
 
-// Company logos for virtual internships
-const internshipCompanies = [
-  {
-    name: "Jupiter",
-    logo: "/company-logo.svg"
-  },
-  {
-    name: "NoBroker",
-    logo: "/company-logo.svg"
-  },
-  {
-    name: "Practo",
-    logo: "/company-logo.svg"
-  },
-  {
-    name: "Snapdeal",
-    logo: "/company-logo.svg"
-  },
-  {
-    name: "Uber",
-    logo: "/company-logo.svg"
-  },
-  {
-    name: "ATAL",
-    logo: "/company-logo.svg"
-  },
-  {
-    name: "Accionlabs",
-    logo: "/company-logo.svg"
-  },
-  {
-    name: "Avetti",
-    logo: "/company-logo.svg"
-  },
-  {
-    name: "Cars24",
-    logo: "/company-logo.svg"
-  },
-  {
-    name: "CultFit",
-    logo: "/company-logo.svg"
+// Company logos for virtual internships based on variant
+const getCompanies = (variant: string) => {
+  if (variant === "management") {
+    return [
+      { name: "Cars24", logo: "/src/assets/virtualInternshipLogos/management_logos/cars24.PNG" },
+      { name: "CultFit", logo: "/src/assets/virtualInternshipLogos/management_logos/cultfit.PNG" },
+      { name: "Danube Home", logo: "/src/assets/virtualInternshipLogos/management_logos/danubeHome.PNG" },
+      { name: "Fast Services", logo: "/src/assets/virtualInternshipLogos/management_logos/fastServices.JPG" },
+      { name: "Finaxa", logo: "/src/assets/virtualInternshipLogos/management_logos/finaxa.JPG" },
+      { name: "Jupiter", logo: "/src/assets/virtualInternshipLogos/management_logos/jupiter.WEBP" },
+      { name: "Practo", logo: "/src/assets/virtualInternshipLogos/management_logos/practo.PNG" },
+      { name: "Raw", logo: "/src/assets/virtualInternshipLogos/management_logos/raw.PNG" },
+      { name: "Uber", logo: "/src/assets/virtualInternshipLogos/management_logos/uber.PNG" }
+    ];
   }
-];
-
-// Duplicate the companies to create a longer list for seamless looping
-const extendedCompanies = [...internshipCompanies, ...internshipCompanies];
+  // Default home/tech logos
+  return [
+    { name: "Jupiter", logo: "/src/assets/virtualInternshipLogos/Home_all/jupiter.png" },
+    { name: "NoBroker", logo: "/src/assets/virtualInternshipLogos/Home_all/nobroker.png" },
+    { name: "Practo", logo: "/src/assets/virtualInternshipLogos/Home_all/practo.png" },
+    { name: "Snapdeal", logo: "/src/assets/virtualInternshipLogos/Home_all/snapdeal.png" },
+    { name: "Uber", logo: "/src/assets/virtualInternshipLogos/Home_all/uber.png" },
+    { name: "ATAL", logo: "/src/assets/virtualInternshipLogos/Home_all/atalIncubationCenter.png" },
+    { name: "Accionlabs", logo: "/src/assets/virtualInternshipLogos/Home_all/accionLabs.png" },
+    { name: "Avetti", logo: "/src/assets/virtualInternshipLogos/Home_all/avetti.png" },
+    { name: "Cars24", logo: "/src/assets/virtualInternshipLogos/Home_all/cars24.png" },
+    { name: "CultFit", logo: "/src/assets/virtualInternshipLogos/Home_all/cultfit.png" }
+  ];
+};
 
 // Component for rendering a single company card
-const CompanyCard = ({ company, index }: { company: typeof internshipCompanies[0], index: number }) => (
+const CompanyCard = ({ company, index }: { company: { name: string; logo: string }, index: number }) => (
   <motion.div
     key={`${company.name}-${index}`}
     className="flex-shrink-0 mx-4"
@@ -68,90 +51,153 @@ const CompanyCard = ({ company, index }: { company: typeof internshipCompanies[0
 );
 
 // Component that renders all companies in a row
-const CompanyRow = () => (
-  <div className="flex items-center">
-    {extendedCompanies.map((company, index) => (
-      <CompanyCard key={index} company={company} index={index} />
-    ))}
-  </div>
-);
+const CompanyRow = ({ variant }: { variant: string }) => {
+  const companies = getCompanies(variant);
+  const extendedCompanies = [...companies, ...companies]; // Duplicate for infinite scroll
+  
+  return (
+    <div className="flex items-center">
+      {extendedCompanies.map((company, index) => (
+        <CompanyCard key={index} company={company} index={index} />
+      ))}
+    </div>
+  );
+};
 
 // Virtual Internship Projects
-const internshipProjects = [
-  {
-    company: "Avetti",
-    logo: "/company-logo.svg",
-    title: "Design the Complete UI/UX for a SaaS Based Company"
-  },
-  {
-    company: "Jupiter",
-    logo: "/company-logo.svg",
-    title: "Build a full-stack web application that allows the user to split their savings bank account"
-  },
-  {
-    company: "Accionlabs",
-    logo: "/company-logo.svg",
-    title: "Automate Database Backup and Restoration on AWS"
-  },
-  {
-    company: "Cars24",
-    logo: "/company-logo.svg",
-    title: "Build a Full Stack Web Application that Helps Users Browse and Create Road Trips Around the World using MERN"
-  },
-  {
-    company: "Snapdeal",
-    logo: "/company-logo.svg",
-    title: "Identify Customer Segments for Online Retail with K-Means Clustering"
-  },
-  {
-    company: "TechStartup",
-    logo: "/company-logo.svg",
-    title: "Identify the Best Recruitment Source for a Tech Startup"
-  },
-  {
-    company: "MusicTech",
-    logo: "/company-logo.svg",
-    title: "Categorize Music Genres Using Machine Learning"
-  },
-  {
-    company: "Uber",
-    logo: "/company-logo.svg",
-    title: "Predict Uber Fare Amounts with Regression"
-  },
-  {
-    company: "FinTech",
-    logo: "/company-logo.svg",
-    title: "Detect Credit Card Fraud Using Logistic Regression"
-  },
-  {
-    company: "CultFit",
-    logo: "/company-logo.svg",
-    title: "Dynamic Pricing for Fitness Classes"
-  },
-  {
-    company: "CRM",
-    logo: "/company-logo.svg",
-    title: "Develop the backend for a CRM Tool using Java Springboot"
-  },
-  {
-    company: "NoBroker",
-    logo: "/company-logo.svg",
-    title: "Build a platform to find properties based on interior preferences & budget specifications"
-  },
-  {
-    company: "Practo",
-    logo: "/company-logo.svg",
-    title: "Build An Application For Booking Appointments For Diagnostics Tests"
-  },
-  {
-    company: "Travel",
-    logo: "/company-logo.svg",
-    title: "Build a Full Stack Web Application that Helps Users Browse and Create Road Trips"
+const getInternshipProjects = (variant: string) => {
+  if (variant === "management") {
+    return [
+      {
+        company: "Uber",
+        logo: "/src/assets/virtualInternshipLogos/management_logos/uber.PNG",
+        title: "Create a Hiring Strategy for a Leading Product Firm to Scale Their Team"
+      },
+      {
+        company: "Fast Services",
+        logo: "/src/assets/virtualInternshipLogos/management_logos/fastServices.JPG",
+        title: "Conduct Complete Financial Due Diligence of a Company for Investment Analysis"
+      },
+      {
+        company: "Finaxa",
+        logo: "/src/assets/virtualInternshipLogos/management_logos/finaxa.JPG",
+        title: "Conduct a Trend Analysis to Predict the Future Business Trends for an FMCG Company"
+      },
+      {
+        company: "Jupiter",
+        logo: "/src/assets/virtualInternshipLogos/management_logos/jupiter.WEBP",
+        title: "Study customer churn analytics for the banking industry"
+      },
+      {
+        company: "Uber",
+        logo: "/src/assets/virtualInternshipLogos/management_logos/uber.PNG",
+        title: "Develop a predictive model to accurately forecast hourly traffic volumes at different road junctions based on historical traffic data"
+      },
+      {
+        company: "Cars24",
+        logo: "/src/assets/virtualInternshipLogos/management_logos/cars24.PNG",
+        title: "Analyse the market trends of the Used Car Market from multiple geographies using EDA and Data Visualization"
+      },
+      {
+        company: "Practo",
+        logo: "/src/assets/virtualInternshipLogos/management_logos/practo.PNG",
+        title: "Identify the best source of recruitment for a tech startup, based on previous data of candidate sources and recruitment strategies"
+      },
+      {
+        company: "Danube Home",
+        logo: "/src/assets/virtualInternshipLogos/management_logos/danubeHome.PNG",
+        title: "Analysis of Sales Data of Retail Stores Across America Using Exploratory Data Analysis and Data Visualisation"
+      },
+      {
+        company: "CultFit",
+        logo: "/src/assets/virtualInternshipLogos/management_logos/cultfit.PNG",
+        title: "Design a cause-based marketing plan for a city-wide marathon event"
+      },
+      {
+        company: "Raw",
+        logo: "/src/assets/virtualInternshipLogos/management_logos/raw.PNG",
+        title: "Observe Consumer Behaviour at a Local Point of Sale, and Develop a Marketing Strategy for a Niche Health Beverage"
+      }
+    ];
   }
-];
+  
+  // Home/Tech projects
+  return [
+    {
+      company: "Avetti",
+      logo: "/src/assets/virtualInternshipLogos/Home_all/avetti.png",
+      title: "Design the Complete UI/UX for a SaaS Based Company"
+    },
+    {
+      company: "Jupiter",
+      logo: "/src/assets/virtualInternshipLogos/Home_all/jupiter.png",
+      title: "Build a full-stack web application that allows the user to split their savings bank account"
+    },
+    {
+      company: "Accionlabs",
+      logo: "/src/assets/virtualInternshipLogos/Home_all/accionLabs.png",
+      title: "Automate Database Backup and Restoration on AWS"
+    },
+    {
+      company: "Cars24",
+      logo: "/src/assets/virtualInternshipLogos/Home_all/cars24.png",
+      title: "Build a Full Stack Web Application that Helps Users Browse and Create Road Trips"
+    },
+    {
+      company: "Snapdeal",
+      logo: "/src/assets/virtualInternshipLogos/Home_all/snapdeal.png",
+      title: "Identify Customer Segments for Online Retail with K-Means Clustering"
+    },
+    {
+      company: "Practo",
+      logo: "/src/assets/virtualInternshipLogos/Home_all/practo.png",
+      title: "Identify the Best Recruitment Source for a Tech Startup"
+    },
+    {
+      company: "ATAL",
+      logo: "/src/assets/virtualInternshipLogos/Home_all/atalIncubationCenter.png",
+      title: "Categorize Music Genres Using Machine Learning"
+    },
+    {
+      company: "Uber",
+      logo: "/src/assets/virtualInternshipLogos/Home_all/uber.png",
+      title: "Predict Uber Fare Amounts with Regression"
+    },
+    {
+      company: "Jupiter",
+      logo: "/src/assets/virtualInternshipLogos/Home_all/jupiter.png",
+      title: "Detect Credit Card Fraud Using Logistic Regression"
+    },
+    {
+      company: "CultFit",
+      logo: "/src/assets/virtualInternshipLogos/Home_all/cultfit.png",
+      title: "Dynamic Pricing for Fitness Classes"
+    },
+    {
+      company: "Accionlabs",
+      logo: "/src/assets/virtualInternshipLogos/Home_all/accionLabs.png",
+      title: "Develop the backend for a CRM Tool using Java Springboot"
+    },
+    {
+      company: "NoBroker",
+      logo: "/src/assets/virtualInternshipLogos/Home_all/nobroker.png",
+      title: "Build a platform to find properties based on interior preferences & budget"
+    },
+    {
+      company: "Practo",
+      logo: "/src/assets/virtualInternshipLogos/Home_all/practo.png",
+      title: "Build An Application For Booking Appointments For Diagnostics Tests"
+    },
+    {
+      company: "Avetti",
+      logo: "/src/assets/virtualInternshipLogos/Home_all/avetti.png",
+      title: "Build a Full Stack Web Application that Helps Users Browse and Create Road Trips"
+    }
+  ];
+};
 
 // Project Card Component
-const ProjectCard = ({ project }: { project: typeof internshipProjects[0] }) => {
+const ProjectCard = ({ project }: { project: { company: string; logo: string; title: string } }) => {
   return (
     <div className="rounded-lg overflow-hidden shadow-md h-full flex flex-col">
       {/* Primary color header with "CERTIFIED BY" text */}
@@ -181,7 +227,14 @@ const ProjectCard = ({ project }: { project: typeof internshipProjects[0] }) => 
   );
 };
 
-const VirtualInternshipSection = () => {
+import { InternshipConfig } from '@/lib/internship-config';
+
+interface VirtualInternshipSectionProps {
+  config: InternshipConfig;
+  variant: string;
+}
+
+const VirtualInternshipSection: React.FC<VirtualInternshipSectionProps> = ({ config, variant }) => {
   // Hook to ensure equal heights for all project cards
   useEffect(() => {
     // Function to set equal heights for all cards
@@ -234,7 +287,7 @@ const VirtualInternshipSection = () => {
             }}
             className="w-fit flex"
           >
-            <CompanyRow />
+            <CompanyRow variant={variant} />
           </motion.div>
         </div>
 
@@ -257,7 +310,7 @@ const VirtualInternshipSection = () => {
               <CarouselNext className="relative static bg-primary text-white hover:bg-primary/90 hover:text-white border-none" />
             </div>
             <CarouselContent className="-ml-2 md:-ml-4">
-              {internshipProjects.map((project, index) => (
+              {getInternshipProjects(variant).map((project, index) => (
                 <CarouselItem key={index} className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4 h-full">
                   <div className="p-1 h-full">
                     <ProjectCard project={project} />
@@ -300,6 +353,7 @@ const VirtualInternshipSection = () => {
           <div className="text-center mt-12">
             <Button
               className="bg-primary-light text-white font-semibold px-8 py-6 text-base hover:bg-primary transition-colors rounded-full"
+              onClick={() => window.location.href = '/contact-us'}
             >
               Get Started Today
             </Button>

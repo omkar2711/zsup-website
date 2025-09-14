@@ -45,14 +45,6 @@ const ProblemsSection = () => {
       details: "Comprehensive soft skills, communication, and industry readiness training"
     }
   ];
-  
-  const nextSlide = () => {
-    setActiveIndex((prevIndex) => (prevIndex + 1) % problems.length);
-  };
-  
-  const prevSlide = () => {
-    setActiveIndex((prevIndex) => (prevIndex - 1 + problems.length) % problems.length);
-  };
 
   return (
     <section className="py-16 bg-background relative overflow-hidden">
@@ -70,25 +62,47 @@ const ProblemsSection = () => {
           <div className="mt-4 h-1 bg-gradient-to-r from-transparent via-highlight to-transparent mx-auto w-40" />
         </div>
         
-        {/* Problem/Solution carousel */}
-        <div className="max-w-5xl mx-auto mb-10">
+        <div className="max-w-6xl mx-auto">
+          {/* Problems Tabs */}
+          <div className="flex flex-wrap justify-center gap-2 mb-8">
+            {problems.map((item, index) => (
+              <Button
+                key={index}
+                variant={activeIndex === index ? "default" : "outline"}
+                className={`px-4 py-2 rounded-full transition-all ${
+                  activeIndex === index 
+                    ? "bg-primary text-white" 
+                    : "bg-white border-gray-200 hover:border-primary/50"
+                }`}
+                onClick={() => setActiveIndex(index)}
+              >
+                <div className="flex items-center gap-2">
+                  {React.createElement(item.icon, { className: "w-4 h-4" })}
+                  <span>{item.title}</span>
+                </div>
+              </Button>
+            ))}
+          </div>
+          
+          {/* Problem and Solution Display */}
           <AnimatePresence mode="wait">
             <motion.div 
               key={activeIndex}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
+              exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-6"
+              className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6"
             >
               {/* Left side: Problem */}
               <div className="bg-white rounded-xl shadow-elegant border border-gray-100 p-6 h-full">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center shrink-0">
-                    {React.createElement(problems[activeIndex].icon, { className: "w-6 h-6" })}
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-14 h-14 bg-primary/10 text-primary rounded-full flex items-center justify-center shrink-0">
+                    {React.createElement(problems[activeIndex].icon, { className: "w-7 h-7" })}
                   </div>
                   <div>
                     <h3 className="font-bold text-foreground text-xl">{problems[activeIndex].title}</h3>
+                    <p className="text-muted-foreground text-sm">The Challenge</p>
                   </div>
                 </div>
                 
@@ -122,45 +136,31 @@ const ProblemsSection = () => {
             </motion.div>
           </AnimatePresence>
           
-          {/* Navigation Controls */}
+          {/* Simple Navigation Arrows */}
           <div className="flex justify-center items-center mt-8 gap-4">
             <Button 
               variant="outline" 
               size="icon" 
-              onClick={prevSlide}
-              className="rounded-full h-12 w-12 border-gray-200 hover:bg-primary hover:text-white"
+              onClick={() => setActiveIndex((prev) => (prev - 1 + problems.length) % problems.length)}
+              className="rounded-full h-10 w-10 border-gray-200 hover:bg-primary hover:text-white"
             >
-              <ChevronLeft className="h-6 w-6" />
+              <ChevronLeft className="h-5 w-5" />
             </Button>
             
-            {/* Pagination indicators */}
-            <div className="flex gap-2">
-              {problems.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setActiveIndex(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === activeIndex 
-                      ? "bg-primary scale-125" 
-                      : "bg-gray-300 hover:bg-gray-400"
-                  }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
+            <div className="text-sm text-muted-foreground">
+              {activeIndex + 1} of {problems.length}
             </div>
             
             <Button 
               variant="outline" 
               size="icon" 
-              onClick={nextSlide}
-              className="rounded-full h-12 w-12 border-gray-200 hover:bg-primary hover:text-white"
+              onClick={() => setActiveIndex((prev) => (prev + 1) % problems.length)}
+              className="rounded-full h-10 w-10 border-gray-200 hover:bg-primary hover:text-white"
             >
-              <ChevronRight className="h-6 w-6" />
+              <ChevronRight className="h-5 w-5" />
             </Button>
           </div>
         </div>
-
-
       </div>
     </section>
   );

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import VirtualInternshipSection from '@/components/sections/VirtualInternshipSection';
+import { internshipConfigs } from '@/lib/internship-config';
 import Navbar from '@/components/Navbar';
 import { SectionHeader } from '@/components/SectionHeader';
 import { Button } from '@/components/ui/button';
@@ -82,17 +84,242 @@ const ManagementReadinessProgram = () => {
                 </Button>
               </motion.div>
 
-              {/* Right: Dummy Image */}
-              <div className="flex justify-center items-center">
-                <img
-                  src="/placeholder.svg"
-                    alt="Management Readiness Program"
-                  className="w-full max-w-md rounded-xl shadow-lg border border-white/20"
-                />
-              </div>
+              {/* Right: Image */}
+              <motion.div 
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="hidden md:flex justify-center items-center"
+              >
+                <div className="relative">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl blur-sm opacity-70"></div>
+                  <img
+                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                  alt="Business professionals in a corporate meeting setting"
+                  className="w-full max-w-xl rounded-xl shadow-lg relative z-10 object-cover h-[400px]"
+                  />
+                </div>
+              </motion.div>
             </div>
           </div>
         </section>
+
+      {/* Program Curriculum */}
+      <section className="py-20 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 to-white opacity-50" />
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-6xl mx-auto">
+            <SectionHeader
+              title="Program Curriculum"
+              subtitle="A comprehensive 120-hour program spread across 4 semesters"
+              align="center"
+            />
+            
+            <div className="grid gap-8 mt-12">
+              {/* Semester 1 */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                <Card className="overflow-hidden border-indigo-100">
+                  <CardContent className="p-8">
+                    <div className="flex items-center gap-4 mb-6">
+                      <Badge variant="secondary" className="bg-indigo-100 text-indigo-800 text-sm px-3 py-1">
+                        30 Hours
+                      </Badge>
+                      <h3 className="text-2xl font-bold text-gray-900">Semester 1: Foundations of Corporate Readiness</h3>
+                    </div>
+                    <div className="grid md:grid-cols-3 gap-6">
+                      <div className="space-y-4">
+                        <div className="flex items-start gap-3">
+                          <BarChart className="w-5 h-5 text-indigo-600 mt-1" />
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">Aptitude & Analytical Skills</h4>
+                            <p className="text-gray-600 text-sm">Percentages, Ratios, Profit & Loss, Speed/Distance, Data Interpretation (graphs, charts, case-based)</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="space-y-4">
+                        <div className="flex items-start gap-3">
+                          <MessageSquare className="w-5 h-5 text-indigo-600 mt-1" />
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">Business Communication</h4>
+                            <p className="text-gray-600 text-sm">Email etiquette, presentation skills, professional writing, LinkedIn optimization & personal branding</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="space-y-4">
+                        <div className="flex items-start gap-3">
+                          <Building className="w-5 h-5 text-indigo-600 mt-1" />
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">Corporate Exposure</h4>
+                            <p className="text-gray-600 text-sm">Industry orientation, workplace culture, professional conduct</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              {/* Semester 2 */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                <Card className="overflow-hidden border-indigo-100">
+                  <CardContent className="p-8">
+                    <div className="flex items-center gap-4 mb-6">
+                      <Badge variant="secondary" className="bg-indigo-100 text-indigo-800 text-sm px-3 py-1">
+                        30 Hours
+                      </Badge>
+                      <h3 className="text-2xl font-bold text-gray-900">Semester 2: Soft Skills & Corporate Etiquette</h3>
+                    </div>
+                    <div className="grid md:grid-cols-3 gap-6">
+                      <div className="space-y-4">
+                        <div className="flex items-start gap-3">
+                          <Presentation className="w-5 h-5 text-indigo-600 mt-1" />
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">Advanced Communication</h4>
+                            <p className="text-gray-600 text-sm">Storytelling in business, impactful PPTs & reports</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="space-y-4">
+                        <div className="flex items-start gap-3">
+                          <Users className="w-5 h-5 text-indigo-600 mt-1" />
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">Team Readiness</h4>
+                            <p className="text-gray-600 text-sm">Group discussions with live evaluation, simulations, conflict resolution</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="space-y-4">
+                        <div className="flex items-start gap-3">
+                          <Target className="w-5 h-5 text-indigo-600 mt-1" />
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">Interview Readiness</h4>
+                            <p className="text-gray-600 text-sm">STAR method, role-play interviews (recorded & reviewed), body language, networking skills</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              {/* Semester 3 */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                <Card className="overflow-hidden border-indigo-100">
+                  <CardContent className="p-8">
+                    <div className="flex items-center gap-4 mb-6">
+                      <Badge variant="secondary" className="bg-indigo-100 text-indigo-800 text-sm px-3 py-1">
+                        30 Hours
+                      </Badge>
+                      <h3 className="text-2xl font-bold text-gray-900">Semester 3: Domain & Functional Readiness</h3>
+                    </div>
+                    <div className="grid md:grid-cols-4 gap-6">
+                      <div className="space-y-4">
+                        <div className="flex items-start gap-3">
+                          <TrendingUp className="w-5 h-5 text-indigo-600 mt-1" />
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">Marketing & Sales</h4>
+                            <p className="text-gray-600 text-sm">Digital marketing, brand pitches, market research</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="space-y-4">
+                        <div className="flex items-start gap-3">
+                          <LineChart className="w-5 h-5 text-indigo-600 mt-1" />
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">Finance & Analytics</h4>
+                            <p className="text-gray-600 text-sm">Financial statements, ROI/NPV, Excel-based analytics</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="space-y-4">
+                        <div className="flex items-start gap-3">
+                          <Network className="w-5 h-5 text-indigo-600 mt-1" />
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">Operations & Supply Chain</h4>
+                            <p className="text-gray-600 text-sm">Lean principles, process optimization, case studies</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="space-y-4">
+                        <div className="flex items-start gap-3">
+                          <Brain className="w-5 h-5 text-indigo-600 mt-1" />
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">Strategy & Consulting</h4>
+                            <p className="text-gray-600 text-sm">SWOT, BCG, Porter's frameworks + mini consulting project</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              {/* Semester 4 */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                <Card className="overflow-hidden border-indigo-100">
+                  <CardContent className="p-8">
+                    <div className="flex items-center gap-4 mb-6">
+                      <Badge variant="secondary" className="bg-indigo-100 text-indigo-800 text-sm px-3 py-1">
+                        30 Hours
+                      </Badge>
+                      <h3 className="text-2xl font-bold text-gray-900">Semester 4: Career Launch & Future Skills</h3>
+                    </div>
+                    <div className="grid md:grid-cols-3 gap-6">
+                      <div className="space-y-4">
+                        <div className="flex items-start gap-3">
+                          <GraduationCap className="w-5 h-5 text-indigo-600 mt-1" />
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">Placement Readiness</h4>
+                            <p className="text-gray-600 text-sm">Unlimited expert mock interviews, AI-powered ATS-compliant resumes</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="space-y-4">
+                        <div className="flex items-start gap-3">
+                          <Sparkles className="w-5 h-5 text-indigo-600 mt-1" />
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">Emerging Tech Skills</h4>
+                            <p className="text-gray-600 text-sm">AI in business, generative AI applications, basics of full-stack development & data science (bridge modules)</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="space-y-4">
+                        <div className="flex items-start gap-3">
+                          <Building className="w-5 h-5 text-indigo-600 mt-1" />
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">Industry Integration</h4>
+                            <p className="text-gray-600 text-sm">Masterclasses from leaders at Microsoft, Google, LinkedIn, Amazon; real consulting case discussions</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
       
       {/* Who is the program for */}
       <section className="py-20 bg-white">
@@ -423,7 +650,7 @@ const ManagementReadinessProgram = () => {
       </section>
       
       {/* What's Inside This Program */}
-      <section className="py-20 bg-gray-50">
+      {/* <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <SectionHeader 
@@ -543,7 +770,7 @@ const ManagementReadinessProgram = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       
       {/* Impact Section */}
       <section className="py-16 bg-gradient-to-br from-indigo-900 to-blue-800 text-white">
@@ -803,6 +1030,9 @@ const ManagementReadinessProgram = () => {
           </div>
         </div>
       </section>
+      
+      {/* Virtual Internships */}
+      <VirtualInternshipSection config={internshipConfigs.management} variant="management" />
       
       {/* FAQs */}
       <section className="py-20 bg-gray-50">

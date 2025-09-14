@@ -293,8 +293,7 @@ const ContactUs = () => {
                 size="lg"
                 className="bg-white text-primary hover:bg-gray-100 px-8 py-6 text-lg font-medium group"
               >
-                Schedule a Consultation
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                Schedule a Consultation!
               </Button>
             </motion.div>
           </div>

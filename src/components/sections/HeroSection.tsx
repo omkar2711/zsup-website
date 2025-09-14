@@ -100,6 +100,7 @@ const HeroSection = () => {
               <Button
                 size="lg"
                 className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-8 py-6 text-base hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+                onClick={() => window.location.href = '/contact-us'}
               >
                 Partner With Us
                 <ArrowRight className="ml-2 h-4 w-4" />

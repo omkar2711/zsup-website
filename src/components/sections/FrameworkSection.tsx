@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Brain, Target, Trophy, HeartHandshake, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, type Variants, AnimatePresence } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import "./framework-section.css";
 import { useNavigate } from "react-router-dom";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const slideInFromTop: Variants = {
   hidden: { y: -100, opacity: 0 },
@@ -45,6 +46,7 @@ type FrameworkPillar = {
 const FrameworkSection = () => {
   const [activeSegment, setActiveSegment] = useState<number>(0); // Set first framework (index 0) as default
   const navigate = useNavigate();
+  const isMobile = useIsMobile();
 
   const frameworks: FrameworkPillar[] = [
     {
@@ -131,12 +133,21 @@ const FrameworkSection = () => {
         </motion.div>
         
         <div className="max-w-6xl mx-auto relative">
-          <div className="flex flex-col md:flex-row items-center md:items-start justify-center">
+          <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-4 md:gap-0">
             {/* Interactive Circle */}
             <div className="md:w-1/2 relative flex justify-center">
-              <div className="relative p-8 max-w-full" style={{ width: '520px', height: '520px' }}>
+              <div className="relative p-4 md:p-8 max-w-full" 
+                  style={{ 
+                    width: isMobile ? '100%' : '520px', 
+                    height: isMobile ? 'auto' : '520px', 
+                    maxWidth: isMobile ? '520px' : 'none'
+                  }}>
                 <svg viewBox="0 0 400 400" className="w-full h-auto drop-shadow-xl filter-drop-shadow(0px 8px 24px rgba(0, 0, 0, 0.15))"
-                     style={{ overflow: 'visible' }}>
+                     style={{ 
+                      overflow: 'visible', 
+                      maxWidth: isMobile ? '320px' : 'none', 
+                      margin: '0 auto' 
+                     }}>
                   {/* Center circle */}
                   <circle cx="200" cy="200" r="75" fill="white" className="drop-shadow-md" />
                   <text x="200" y="190" textAnchor="middle" className="fill-slate-900 font-bold" fontSize="20">
@@ -229,6 +240,7 @@ const FrameworkSection = () => {
                           width="180"
                           height="40"
                           className="pointer-events-none"
+                          style={{ display: isMobile ? 'none' : 'block' }}
                         >
                           <div className="w-full h-full flex items-center justify-center">
                           <span className={`text-sm font-semibold ${isActive ? 'text-slate-900' : 'text-slate-600'} bg-white/80 rounded-full px-4 py-1 shadow-sm whitespace-nowrap`} style={{

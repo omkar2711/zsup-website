@@ -45,9 +45,9 @@ const ContactSection = () => {
             <ul className="space-y-3 text-gray-300">
               <li><a href="/" className="hover:text-white transition-colors">Home</a></li>
               <li><a href="/about-us" className="hover:text-white transition-colors">About Us</a></li>
-              <li><a href="/offerings" className="hover:text-white transition-colors">Offerings</a></li>
-              <li><a href="/contact-us" className="hover:text-white transition-colors">Contact Us</a></li>
-              <li><a href="#success" className="hover:text-white transition-colors">Success Stories</a></li>
+              <li><a href="/corporate-readiness-program" className="hover:text-white transition-colors">Management Readiness Program</a></li>
+              <li><a href="/tech-readiness-program" className="hover:text-white transition-colors">Technology Readiness Program</a></li>
+              <li><a href="/smart-generalists-program" className="hover:text-white transition-colors">Smart Generalists Program</a></li>
             </ul>
           </div>
 
