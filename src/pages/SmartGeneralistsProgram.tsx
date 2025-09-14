@@ -84,7 +84,7 @@ const SmartGeneralistsProgram = () => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.7 }}
-                className="relative"
+                className="relative max-h-[400px] overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-indigo-500 rounded-3xl blur-xl opacity-20 transform scale-105"></div>
                 <img 
@@ -238,16 +238,17 @@ const SmartGeneralistsProgram = () => {
                   title: "Guaranteed Virtual Internships",
                   color: "bg-indigo-100 text-indigo-600"
                 },
+                 {
+                  icon: <Users className="h-6 w-6" />,
+                  title: "450+ Hiring Partners",
+                  color: "bg-green-100 text-green-600"
+                },
                 {
                   icon: <MessageSquare className="h-6 w-6" />,
                   title: "Unlimited AI Mock Interviews",
                   color: "bg-purple-100 text-purple-600"
                 },
-                {
-                  icon: <Users className="h-6 w-6" />,
-                  title: "450+ Hiring Partners",
-                  color: "bg-green-100 text-green-600"
-                },
+               
                 {
                   icon: <Calendar className="h-6 w-6" />,
                   title: "Live Expert Mentorship",

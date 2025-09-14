@@ -73,7 +73,7 @@ const HeroSection = () => {
             </motion.div>
 
             <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-foreground"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight text-foreground"
               variants={item}
             >
               Future-Ready Graduates.
@@ -81,6 +81,13 @@ const HeroSection = () => {
                 Future-Strong Institutions
               </span>
             </motion.h1>
+
+            <motion.blockquote
+              className="border-l-4 border-primary pl-4 mb-6 italic text-lg text-muted-foreground/90 max-w-2xl"
+              variants={item}
+            >
+              "Customized employability solutions designed for your campus and your students."
+            </motion.blockquote>
 
             <motion.p
               className="text-lg md:text-xl mb-8 leading-relaxed text-muted-foreground max-w-2xl"

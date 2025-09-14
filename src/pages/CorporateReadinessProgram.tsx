@@ -32,56 +32,67 @@ import {
   LineChart
 } from 'lucide-react';
 
-const CorporateReadinessProgram = () => {
+const ManagementReadinessProgram = () => {
   const [selectedTrack, setSelectedTrack] = useState("business");
   
   return (
-    <div className="min-h-screen">
-      <Navbar />
-      
-      {/* Hero Banner */}
-      <section className="py-24 md:py-32 relative overflow-hidden bg-gradient-to-br from-blue-900 via-indigo-800 to-purple-800">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(79,70,229,0.2),transparent_70%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(124,58,237,0.2),transparent_70%)]" />
-        <div className="absolute right-0 top-0 w-96 h-96 bg-indigo-400 opacity-20 rounded-full blur-3xl -mr-20 -mt-20" />
-        
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <Badge className="mb-6 px-4 py-1 bg-white/20 text-white border-none text-sm font-medium">BUSINESS EXCELLENCE</Badge>
-              
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white leading-tight">
-                Corporate Readiness Program
-              </h1>
-              
-              <p className="text-xl md:text-2xl text-indigo-100 mb-8 max-w-3xl mx-auto">
-                Preparing business leaders of tomorrow
-              </p>
-              
-              <p className="text-lg text-indigo-100 mb-10 max-w-3xl mx-auto">
-                Our Corporate Readiness Program equips students with industry-relevant aptitude, communication, and soft skills, backed by guaranteed virtual internships and strong placement outcomes.
-              </p>
-              
-              <Button 
-                size="lg" 
-                className="bg-white text-indigo-900 hover:bg-indigo-50 rounded-full px-8"
-                onClick={() => {
-                  const contactSection = document.getElementById('contact');
-                  if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
+      <div className="min-h-screen">
+        <Navbar />
+
+        {/* Hero Banner */}
+        <section className="py-24 md:py-32 relative overflow-hidden bg-gradient-to-br from-blue-900 via-indigo-800 to-purple-800">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(79,70,229,0.2),transparent_70%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(124,58,237,0.2),transparent_70%)]" />
+          <div className="absolute right-0 top-0 w-96 h-96 bg-indigo-400 opacity-20 rounded-full blur-3xl -mr-20 -mt-20" />
+
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              {/* Left: Text Block */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-left"
               >
-                Partner With Us <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </motion.div>
+                <Badge className="mb-6 px-4 py-1 bg-white/20 text-white border-none text-sm font-medium">BUSINESS EXCELLENCE</Badge>
+
+                <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white leading-tight">
+                    Management Readiness Program
+                </h1>
+
+                <p className="text-xl md:text-2xl text-indigo-100 mb-8 max-w-2xl">
+                  Preparing business leaders of tomorrow
+                </p>
+
+                <p className="text-lg text-indigo-100 mb-10 max-w-2xl">
+                    Our Management Readiness Program equips students with industry-relevant aptitude, communication, and soft skills, backed by guaranteed virtual internships and strong placement outcomes.
+                </p>
+
+                <Button 
+                  size="lg" 
+                  className="bg-white text-indigo-900 hover:bg-indigo-50 rounded-full px-8"
+                  onClick={() => {
+                    const contactSection = document.getElementById('contact');
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                >
+                  Partner With Us <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </motion.div>
+
+              {/* Right: Dummy Image */}
+              <div className="flex justify-center items-center">
+                <img
+                  src="/placeholder.svg"
+                    alt="Management Readiness Program"
+                  className="w-full max-w-md rounded-xl shadow-lg border border-white/20"
+                />
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
       
       {/* Who is the program for */}
       <section className="py-20 bg-white">
@@ -216,15 +227,15 @@ const CorporateReadinessProgram = () => {
                   title: "Guaranteed Virtual Internships",
                   color: "bg-indigo-100 text-indigo-600"
                 },
+                 {
+                  icon: <Users className="h-6 w-6" />,
+                  title: "450+ Hiring Partners",
+                  color: "bg-green-100 text-green-600"
+                },
                 {
                   icon: <MessageSquare className="h-6 w-6" />,
                   title: "Unlimited AI Mock Interviews",
                   color: "bg-blue-100 text-blue-600"
-                },
-                {
-                  icon: <Users className="h-6 w-6" />,
-                  title: "450+ Hiring Partners",
-                  color: "bg-green-100 text-green-600"
                 },
                 {
                   icon: <Calendar className="h-6 w-6" />,
@@ -799,7 +810,7 @@ const CorporateReadinessProgram = () => {
           <div className="max-w-4xl mx-auto">
             <SectionHeader 
               title="Frequently Asked Questions" 
-              subtitle="Get answers to common questions about the Corporate Readiness Program"
+                subtitle="Get answers to common questions about the Management Readiness Program"
               align="center"
             />
             
@@ -913,4 +924,4 @@ const CorporateReadinessProgram = () => {
   );
 };
 
-export default CorporateReadinessProgram;
+export default ManagementReadinessProgram;

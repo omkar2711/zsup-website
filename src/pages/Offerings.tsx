@@ -164,7 +164,7 @@ const Offerings = () => {
             />
             
             <div className="grid md:grid-cols-3 gap-8 mt-12">
-              {/* Corporate Readiness Program */}
+              {/* Management Readiness Program */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -176,7 +176,7 @@ const Offerings = () => {
                     <div className="bg-blue-100 dark:bg-blue-800/40 p-3 rounded-xl inline-block mb-4 w-fit">
                       <Building className="h-6 w-6 text-blue-600 dark:text-blue-400" />
                     </div>
-                    <h3 className="text-xl font-bold mb-3">Corporate Readiness Program</h3>
+                    <h3 className="text-xl font-bold mb-3">Management Readiness Program</h3>
                     <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
                       Prepare for success in the corporate world with our comprehensive readiness program.
                     </p>
@@ -202,7 +202,7 @@ const Offerings = () => {
                 </Card>
               </motion.div>
               
-              {/* Tech Readiness Program */}
+              {/* Technology Readiness Program */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -214,7 +214,7 @@ const Offerings = () => {
                     <div className="bg-purple-100 dark:bg-purple-800/40 p-3 rounded-xl inline-block mb-4 w-fit">
                       <Zap className="h-6 w-6 text-purple-600 dark:text-purple-400" />
                     </div>
-                    <h3 className="text-xl font-bold mb-3">Tech Readiness Program</h3>
+                    <h3 className="text-xl font-bold mb-3">Technology Readiness Program</h3>
                     <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
                       Build the technical skills needed to excel in today's technology-driven industries.
                     </p>

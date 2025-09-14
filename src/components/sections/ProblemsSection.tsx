@@ -1,8 +1,13 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, BookOpen, Users, FileText, Network, GraduationCap, CheckCircle, PlayCircle, ChevronRight } from "lucide-react";
+import { ArrowRight, BookOpen, Users, FileText, Network, GraduationCap, CheckCircle, PlayCircle, ChevronRight, ChevronLeft } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import React from "react";
 
 const ProblemsSection = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
   const problems = [
     {
       icon: BookOpen,
@@ -40,6 +45,14 @@ const ProblemsSection = () => {
       details: "Comprehensive soft skills, communication, and industry readiness training"
     }
   ];
+  
+  const nextSlide = () => {
+    setActiveIndex((prevIndex) => (prevIndex + 1) % problems.length);
+  };
+  
+  const prevSlide = () => {
+    setActiveIndex((prevIndex) => (prevIndex - 1 + problems.length) % problems.length);
+  };
 
   return (
     <section className="py-16 bg-background relative overflow-hidden">
@@ -48,70 +61,106 @@ const ProblemsSection = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+            <h2 className="text-3xl md:text-4xl font-bold mb-3 inline-block px-3 py-1 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
             The Missing Link in Higher Education
-          </h2>
+            </h2>
           <p className="text-base text-muted-foreground max-w-3xl mx-auto">
              Identifying the barriers that limit employability, and the solutions that unlock success.
           </p>
           <div className="mt-4 h-1 bg-gradient-to-r from-transparent via-highlight to-transparent mx-auto w-40" />
         </div>
         
-        {/* Problem/Solution pairs */}
-        <div className="space-y-6">
-          {problems.map((item, index) => (
-            <div key={index} className="grid grid-cols-1 lg:grid-cols-2 gap-6 hover:transform hover:-translate-y-1 transition-all duration-300">
+        {/* Problem/Solution carousel */}
+        <div className="max-w-5xl mx-auto mb-10">
+          <AnimatePresence mode="wait">
+            <motion.div 
+              key={activeIndex}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-6"
+            >
               {/* Left side: Problem */}
-              <div className="bg-white rounded-xl shadow-elegant border border-gray-100 p-4 h-full">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-primary/10 text-primary rounded-full flex items-center justify-center shrink-0">
-                    <item.icon className="w-5 h-5" />
+              <div className="bg-white rounded-xl shadow-elegant border border-gray-100 p-6 h-full">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center shrink-0">
+                    {React.createElement(problems[activeIndex].icon, { className: "w-6 h-6" })}
                   </div>
                   <div>
-                    <h3 className="font-bold text-foreground text-lg">{item.title}</h3>
+                    <h3 className="font-bold text-foreground text-xl">{problems[activeIndex].title}</h3>
                   </div>
                 </div>
                 
-                <p className="text-muted-foreground leading-relaxed">{item.problem}</p>
+                <p className="text-muted-foreground leading-relaxed text-lg">{problems[activeIndex].problem}</p>
               </div>
               
               {/* Right side: Solution */}
               <div className="bg-white rounded-xl shadow-elegant border border-gray-100 overflow-hidden h-full">
                 {/* Solution Header */}
-                <div className="bg-primary p-3">
+                <div className="bg-primary p-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-                      <CheckCircle className="w-4 h-4 text-white" />
+                    <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                      <CheckCircle className="w-5 h-5 text-white" />
                     </div>
                     <div className="text-white">
-                      <div className="font-bold text-md">Our Solution</div>
+                      <div className="font-bold text-lg">Our Solution</div>
                     </div>
                   </div>
                 </div>
 
                 {/* Solution Content */}
-                <div className="p-4">
-                  <p className="text-foreground font-medium mb-2">
-                    {item.solution}
+                <div className="p-6">
+                  <p className="text-foreground font-medium text-lg mb-4">
+                    {problems[activeIndex].solution}
                   </p>
-                  <p className="text-muted-foreground text-sm mt-2 border-t border-gray-100 pt-2">
-                    {item.details}
+                  <p className="text-muted-foreground mt-3 border-t border-gray-100 pt-3">
+                    {problems[activeIndex].details}
                   </p>
                 </div>
               </div>
+            </motion.div>
+          </AnimatePresence>
+          
+          {/* Navigation Controls */}
+          <div className="flex justify-center items-center mt-8 gap-4">
+            <Button 
+              variant="outline" 
+              size="icon" 
+              onClick={prevSlide}
+              className="rounded-full h-12 w-12 border-gray-200 hover:bg-primary hover:text-white"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </Button>
+            
+            {/* Pagination indicators */}
+            <div className="flex gap-2">
+              {problems.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveIndex(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === activeIndex 
+                      ? "bg-primary scale-125" 
+                      : "bg-gray-300 hover:bg-gray-400"
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
             </div>
-          ))}
+            
+            <Button 
+              variant="outline" 
+              size="icon" 
+              onClick={nextSlide}
+              className="rounded-full h-12 w-12 border-gray-200 hover:bg-primary hover:text-white"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </Button>
+          </div>
         </div>
 
-        {/* CTA */}
-        <div className="mt-16 text-center">
-          <Button
-            className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-8 py-6 text-base hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 rounded-full"
-          >
-            Partner With Us
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
-        </div>
+
       </div>
     </section>
   );

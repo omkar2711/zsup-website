@@ -30,7 +30,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 
-const TechReadinessProgram = () => {
+const TechnologyReadinessProgram = () => {
   const [selectedTrack, setSelectedTrack] = useState("fsd");
   
   return (
@@ -44,16 +44,17 @@ const TechReadinessProgram = () => {
         <div className="absolute right-0 top-0 w-96 h-96 bg-purple-400 opacity-20 rounded-full blur-3xl -mr-20 -mt-20" />
         
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="text-left"
               transition={{ duration: 0.6 }}
             >
               <Badge className="mb-6 px-4 py-1 bg-white/20 text-white border-none text-sm font-medium">TECHNICAL EXCELLENCE</Badge>
               
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white leading-tight">
-                Tech Readiness Program
+                Technology Readiness Program
               </h1>
               
               <p className="text-xl md:text-2xl text-purple-100 mb-8 max-w-3xl mx-auto">
@@ -224,16 +225,17 @@ const TechReadinessProgram = () => {
                   title: "Guaranteed Virtual Internships",
                   color: "bg-purple-100 text-purple-600"
                 },
+                 {
+                  icon: <Users className="h-6 w-6" />,
+                  title: "450+ Hiring Partners",
+                  color: "bg-green-100 text-green-600"
+                },
                 {
                   icon: <MessageSquare className="h-6 w-6" />,
                   title: "Unlimited AI Mock Interviews",
                   color: "bg-blue-100 text-blue-600"
                 },
-                {
-                  icon: <Users className="h-6 w-6" />,
-                  title: "450+ Hiring Partners",
-                  color: "bg-green-100 text-green-600"
-                },
+               
                 {
                   icon: <Calendar className="h-6 w-6" />,
                   title: "Live Expert Mentorship",
@@ -872,7 +874,7 @@ const TechReadinessProgram = () => {
         <div className="max-w-4xl mx-auto">
         <SectionHeader 
           title="Frequently Asked Questions" 
-          subtitle="Get answers to common questions about the Tech Readiness Program"
+          subtitle="Get answers to common questions about the Technology Readiness Program"
           align="center"
         />
         
@@ -993,4 +995,4 @@ const TechReadinessProgram = () => {
   );
 };
 
-export default TechReadinessProgram;
+export default TechnologyReadinessProgram;

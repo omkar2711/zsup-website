@@ -49,8 +49,8 @@ const Navbar = () => {
   }
 
   const offeringsDropdownItems = [
-    { name: "Corporate Readiness Program", to: "/corporate-readiness-program" },
-    { name: "Tech Readiness Program", to: "/tech-readiness-program" },
+  { name: "Management Readiness Program", to: "/corporate-readiness-program" },
+  { name: "Technology Readiness Program", to: "/tech-readiness-program" },
     { name: "Smart Generalists Program", to: "/smart-generalists-program" }
   ];
 

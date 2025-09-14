@@ -64,6 +64,18 @@ This project is built with:
 
 Simply open [Lovable](https://lovable.dev/projects/6021cb92-6f6f-428b-adcd-7e827a5b2350) and click on Share -> Publish.
 
+### SPA (Single Page App) Routing / 404 on Refresh
+
+If you deploy this app (React Router + Vite) to static hosting and refresh a non-root route (e.g. `/about-us`), you may see a 404 because the server tries to fetch `/about-us/index.html` which does not exist. Fixes:
+
+- Netlify: add a `public/_redirects` file with: `/* /index.html 200` (already included).
+- Vercel: use `vercel.json` with a catch‑all rewrite to `/index.html` (already included).
+- GitHub Pages: add a `404.html` that loads the SPA. The build script copies `index.html` to `404.html` automatically.
+
+Build script enhancement: `npm run build` now also creates `dist/404.html` for hosts (like GitHub Pages) that serve the 404 page for unknown paths.
+
+If you use another platform, ensure there is a fallback rewrite so every unknown path serves `index.html`.
+
 ## Can I connect a custom domain to my Lovable project?
 
 Yes, you can!

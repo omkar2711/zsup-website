@@ -7,72 +7,73 @@ const WhyChooseSection = () => {
     {
       icon: Target,
       title: "Outcome-driven employability model",
-      description: "Results-focused approach with measurable placement success"
+      description: "Results-focused approach with measurable placement success",
+      highlight: "250+ Successful Placements"
     },
     {
       icon: Award,
       title: "White-labeled events for your campus",
-      description: "Customized placement drives that enhance your institution's brand"
+      description: "Customized placement drives that enhance your institution's brand",
+      highlight: "Tailored for Your Institution"
     },
     {
       icon: Network,
       title: "Strong corporate network & CXO access",
-      description: "Direct connections with 450+ hiring partners and industry leaders"
+      description: "Direct connections with 450+ hiring partners and industry leaders",
+      highlight: "450+ Hiring Partners"
     },
     {
       icon: HeartHandshake,
       title: "Extended support beyond graduation",
-      description: "Continued career assistance and mentorship for alumni success"
+      description: "Continued career assistance and mentorship for alumni success",
+      highlight: "Lifetime Career Support"
     },
     {
       icon: TrendingUp,
       title: "Proven placement outcomes",
-      description: "Track record of 250+ placements with highest CTC of ₹19 LPA"
+      description: "Track record of 250+ placements with highest CTC of ₹19 LPA",
+      highlight: "Up to ₹19 LPA"
     }
   ];
 
   return (
-    <section className="py-12 bg-gradient-secondary flex justify-center">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary">
-            Why Institutions Choose ZSkillup
+    <section className="py-16 md:py-24 bg-gradient-secondary relative overflow-hidden">
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 inline-block">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary-light">
+              Why choose ZSkillUp?
+            </span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Partner with us for comprehensive employability solutions that deliver results
-          </p>
+          <div className="mt-4 h-1 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto w-40" />
         </div>
 
-        <div className="flex flex-wrap justify-center gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-16">
           {reasons.map((reason, index) => (
             <Card 
               key={index}
-              className="shadow-card transition-smooth hover:shadow-elegant hover:-translate-y-2 text-center w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.33rem)] max-w-md"
-            >
-              <CardHeader className="pb-4">
-                <div className="mx-auto mb-4 w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center">
-                  <reason.icon className="w-8 h-8 text-white" />
+              className="shadow-card transition-all duration-300 hover:shadow-elegant overflow-hidden border border-gray-100 h-full"
+            >              
+              <CardHeader className="pb-2 relative">
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 bg-gradient-to-br from-primary to-primary-light rounded-xl flex items-center justify-center shadow-sm">
+                    <reason.icon className="w-7 h-7 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <CardTitle className="text-xl font-bold text-primary">
+                      {reason.title}
+                    </CardTitle>
+                  </div>
                 </div>
-                <CardTitle className="text-lg font-bold text-primary">
-                  {reason.title}
-                </CardTitle>
               </CardHeader>
-              <CardContent className="pt-0">
+              
+              <CardContent className="pt-3">
                 <p className="text-muted-foreground leading-relaxed">
                   {reason.description}
                 </p>
               </CardContent>
             </Card>
           ))}
-        </div>
-
-        <div className="text-center">
-          <Button 
-            size="lg"
-            className="bg-primary hover:bg-primary-light text-primary-foreground px-8 py-4 text-lg font-semibold shadow-glow transition-bounce"
-          >
-            Connect With Us
-          </Button>
         </div>
       </div>
     </section>

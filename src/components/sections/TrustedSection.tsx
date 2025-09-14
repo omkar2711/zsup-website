@@ -3,22 +3,19 @@ import { duplicatedCollegeLogos } from "@/lib/college-logos";
 import "../sections/framework-section.css";
 
 const MarqueeContent = () => (
-  <div className="flex gap-8">
+  <div className="flex gap-10">
     {duplicatedCollegeLogos.map((item, index) => (
       <div
         key={index}
-        className="flex-shrink-0 w-[200px] h-[140px] bg-white dark:bg-gray-800 rounded-xl p-4 flex flex-col items-center justify-between border border-gray-100 dark:border-gray-700 group hover:shadow-md transition-all duration-300"
+        className="flex-shrink-0 w-[250px] h-[160px]  p-6 flex items-center justify-center  dark:border-gray-700 group transition-all duration-300"
       >
-        <div className="relative w-full h-[80px] flex items-center justify-center">
+        <div className="relative w-full h-full flex items-center justify-center">
           <img
             src={item.logo}
             alt={item.name}
-            className="w-full h-full object-contain dark:filter dark:brightness-0 dark:invert opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+            className="w-full h-full object-contain dark:filter dark:brightness-0 dark:invert transition-opacity duration-300"
           />
         </div>
-        <p className="text-gray-600 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white text-sm font-medium transition-colors mt-2">
-          {item.name}
-        </p>
       </div>
     ))}
   </div>
@@ -50,7 +47,7 @@ const TrustedSection = () => {
             transition={{ 
               repeat: Infinity,
               repeatType: "loop",
-              duration: 20,
+              duration: 40,
               ease: "linear"
             }}
             className="w-fit flex"
@@ -71,7 +68,7 @@ const TrustedSection = () => {
             transition={{ 
               repeat: Infinity,
               repeatType: "loop",
-              duration: 20,
+              duration: 40,
               ease: "linear"
             }}
             className="w-fit flex"

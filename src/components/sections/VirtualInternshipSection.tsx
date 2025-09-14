@@ -154,8 +154,8 @@ const internshipProjects = [
 const ProjectCard = ({ project }: { project: typeof internshipProjects[0] }) => {
   return (
     <div className="rounded-lg overflow-hidden shadow-md h-full flex flex-col">
-      {/* Yellow header with "CERTIFIED BY" text */}
-      <div className="bg-[#FFCC00] text-black text-center py-2 px-4 font-bold">
+      {/* Primary color header with "CERTIFIED BY" text */}
+      <div className="bg-primary text-white text-center py-2 px-4 font-bold">
         CERTIFIED BY
       </div>
       
@@ -221,13 +221,6 @@ const VirtualInternshipSection = () => {
           </p>
         </div>
 
-        {/* CTA Button */}
-        <div className="text-center mb-16">
-          <button className="px-8 py-4 bg-[#FFCC00] text-black font-bold rounded-full hover:bg-[#e6b800] transition-colors text-lg">
-            Explore Internships
-          </button>
-        </div>
-
         {/* Company Logos */}
         <div className="overflow-hidden relative mb-16">
           <motion.div
@@ -260,8 +253,8 @@ const VirtualInternshipSection = () => {
               <div className="text-lg font-medium text-gray-700 mr-auto">
                 Explore our industry-leading virtual internship projects
               </div>
-              <CarouselPrevious className="relative static mr-2 bg-[#FFCC00] text-black hover:bg-[#e6b800] hover:text-black border-none" />
-              <CarouselNext className="relative static bg-[#FFCC00] text-black hover:bg-[#e6b800] hover:text-black border-none" />
+              <CarouselPrevious className="relative static mr-2 bg-primary text-white hover:bg-primary/90 hover:text-white border-none" />
+              <CarouselNext className="relative static bg-primary text-white hover:bg-primary/90 hover:text-white border-none" />
             </div>
             <CarouselContent className="-ml-2 md:-ml-4">
               {internshipProjects.map((project, index) => (
@@ -276,12 +269,41 @@ const VirtualInternshipSection = () => {
         </div>
 
         {/* Certificate Image */}
-        <div className="mt-16">
-          <img 
-            src="/certificate-sample.svg" 
-            alt="Certificate of Recognition" 
-            className="max-w-4xl mx-auto w-full"
-          />
+        <div className="mt-16 relative">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl md:text-3xl font-bold mb-3">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary-light">
+                Earn Industry-Recognized Certificates
+              </span>
+            </h3>
+            <p className="text-lg text-gray-700 max-w-2xl mx-auto">
+              Add verified credentials to your portfolio that showcase your practical skills to employers
+            </p>
+          </div>
+          
+          <div className="relative max-w-4xl mx-auto">
+            {/* Decorative elements */}
+            <div className="absolute -top-6 -left-6 w-20 h-20 bg-primary-light/10 rounded-full blur-xl"></div>
+            <div className="absolute -bottom-6 -right-6 w-20 h-20 bg-primary-light/10 rounded-full blur-xl"></div>
+            
+            {/* Certificate image with shadow and border */}
+            <div className="relative shadow-lg rounded-xl overflow-hidden border border-primary-light/20">
+              <img 
+                src="/certificate-sample-new.svg" 
+                alt="Certificate of Recognition" 
+                className="w-full"
+              />
+            </div>
+          </div>
+          
+          {/* CTA Button */}
+          <div className="text-center mt-12">
+            <Button
+              className="bg-primary-light text-white font-semibold px-8 py-6 text-base hover:bg-primary transition-colors rounded-full"
+            >
+              Get Started Today
+            </Button>
+          </div>
         </div>
       </div>
     </section>

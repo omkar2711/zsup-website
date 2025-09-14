@@ -1,76 +1,79 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle, Star, Crown, ChevronRight } from "lucide-react";
+import { CheckCircle, Star, Crown, ChevronRight, BookOpen, Code, Users } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
 const CohortsSection = () => {
-  const [activeTab, setActiveTab] = useState("non-tech");
+  const [activeTab, setActiveTab] = useState("management");
 
   const cohorts = [
     {
-      id: "non-tech",
-      title: "Placement Readiness – Non-Tech",
-      description: "Master aptitude, communication, and employability skills with AI-driven practice and real placement support.",
-      icon: CheckCircle,
-      badge: "Popular",
+      id: "management",
+      title: "Management Readiness Program",
+      description: "Preparing BBA/MBA students with aptitude, communication, and domain expertise for roles in consulting, sales, marketing, operations, and more.",
+      icon: BookOpen,
+      badge: "Management",
       color: "hsl(215, 70%, 50%)", // Blue
       highlights: [
-        "Aptitude + Communication Training",
-        "AI-Powered Mock Interviews", 
-        "ATS-Optimized Resumes",
-        "360° Platform Access",
-        "Guaranteed Job Opportunities"
+        "Aptitude & communication training",
+        "Management modules in Sales, Marketing, Finance & Operations",
+        "Case study analysis & problem-solving practice",
+        "AI-powered mock interviews + detailed reports",
+        "ATS-optimized resumes tailored for recruiters",
+        "Mentorship + placement readiness workshops"
       ],
       features: [
-        { name: "Duration", value: "3 Months" },
-        { name: "Placement Support", value: "Yes, Guaranteed" },
-        { name: "Resources", value: "150+ hours of content" },
-        { name: "Certification", value: "Industry Recognized" }
+        { name: "Duration", value: "Flexible semester-based (5th or 7th)" },
+        { name: "Resources", value: "ZSkillHub access" },
+        { name: "Certification", value: "ZSkillHub + Virtual Internship" },
+        { name: "Placement Support", value: "Mock interviews + mentorship" }
       ]
     },
     {
-      id: "tech-non-tech",
-      title: "Placement Readiness – Tech + Non-Tech",
-      description: "Blended program combining coding, aptitude, and communication for diverse career pathways.",
-      icon: Star,
-      badge: "Comprehensive",
+      id: "technology",
+      title: "Technology Readiness Program",
+      description: "Equipping engineering and BCA students with modern tech stacks, coding practice, and corporate skills for developer and data-driven careers.",
+      icon: Code,
+      badge: "Technology",
       color: "hsl(330, 70%, 40%)", // Purple
       highlights: [
-        "All Non-Tech Features Included",
-        "Coding & Domain Skills",
-        "Competitive Programming + Projects",
-        "Company-Specific Prep",
-        "Guaranteed Job Opportunities"
+        "Full Stack Development & Data Science modules",
+        "Coding, system design & problem-solving practice",
+        "Hands-on project portfolio aligned to industry needs",
+        "Unlimited AI-powered coding interviews",
+        "ATS-optimized tech resumes",
+        "Exposure to real-world tools & hiring workflows"
       ],
       features: [
-        { name: "Duration", value: "4 Months" },
-        { name: "Placement Support", value: "Yes, Guaranteed" },
-        { name: "Resources", value: "200+ hours of content" },
-        { name: "Certification", value: "Industry Recognized" }
+        { name: "Duration", value: "Flexible semester-based (5th or 7th)" },
+        { name: "Resources", value: "ZSkillHub access" },
+        { name: "Certification", value: "ZSkillHub + Virtual Internship" },
+        { name: "Placement Support", value: "Portfolio-building + mentorship" }
       ]
     },
     {
-      id: "elite",
-      title: "Elite Batch– Poster Boys/Girls",
-      description: "Exclusive track for high-potential students aiming for premium recruiter access and top CTCs.",
-      icon: Crown,
-      badge: "Elite",
+      id: "generalist",
+      title: "Smart Generalist Program",
+      description: "Helping B.A., B.Com, and B.Sc graduates build aptitude, communication, and career readiness for versatile cross-functional roles across industries.",
+      icon: Users,
+      badge: "Generalist",
       color: "hsl(45, 90%, 50%)", // Gold
       highlights: [
-        "Handpicked, High-Potential Students",
-        "Personalized Mentorship from Experts",
-        "Leadership & CXO Access",
-        "Exclusive Fast-Track Drives", 
-        "High-Package Outcomes"
+        "Aptitude & communication foundation",
+        "Exposure to multiple career pathways",
+        "Transferable skill-building for cross-functional roles",
+        "Adaptive AI-powered mock interviews",
+        "ATS-friendly resume builder",
+        "Mentorship + structured placement support"
       ],
       features: [
-        { name: "Duration", value: "5 Months" },
-        { name: "Placement Support", value: "Premium Access" },
-        { name: "Resources", value: "250+ hours of content" },
-        { name: "Certification", value: "Elite Recognition" }
+        { name: "Duration", value: "Flexible semester-based (5th or 7th)" },
+        { name: "Resources", value: "ZSkillHub access" },
+        { name: "Certification", value: "ZSkillHub + Virtual Internship" },
+        { name: "Placement Support", value: "Resume workshops + job drives" }
       ]
     }
   ];
@@ -85,7 +88,7 @@ const CohortsSection = () => {
   };
 
   return (
-    <section className="py-24 relative overflow-hidden bg-gradient-to-br from-background to-secondary/50">
+    <section className="py-24 bg-primary relative overflow-hidden bg-gradient-to-br from-background to-secondary/50">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(125,10,50,0.03),transparent_50%),radial-gradient(circle_at_70%_70%,rgba(30,98,176,0.03),transparent_30%)]" />
@@ -93,10 +96,10 @@ const CohortsSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-            Choose the Right Program for Your Students
+            Choose The Right Program For Your Institution
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Every student learns differently. Our programs ensure every career story finds its path.
+            Customized employability solutions designed for your campus and the unique needs of your students.
           </p>
         </div>
         
@@ -129,11 +132,6 @@ const CohortsSection = () => {
                   </TabsTrigger>
                 ))}
               </TabsList>
-              <div className="flex gap-2 items-center text-muted-foreground">
-                <span className="w-2 h-2 bg-accent rounded-full"></span>
-                <span className="text-sm">Swipe or click to explore programs</span>
-                <span className="w-2 h-2 bg-accent rounded-full"></span>
-              </div>
             </div>
 
             {cohorts.map((cohort) => (
@@ -226,7 +224,7 @@ const CohortsSection = () => {
               className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg rounded-full group"
               onClick={() => window.location.href = '/offerings'}
             >
-              View All Program Offerings
+              Explore All Program Details
               <ChevronRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </motion.div>

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { motion, type Variants, AnimatePresence } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import "./framework-section.css";
+import { useNavigate } from "react-router-dom";
 
 const slideInFromTop: Variants = {
   hidden: { y: -100, opacity: 0 },
@@ -43,6 +44,7 @@ type FrameworkPillar = {
 
 const FrameworkSection = () => {
   const [activeSegment, setActiveSegment] = useState<number>(0); // Set first framework (index 0) as default
+  const navigate = useNavigate();
 
   const frameworks: FrameworkPillar[] = [
     {
@@ -50,7 +52,7 @@ const FrameworkSection = () => {
       icon: Brain,
       title: "Skill Foundation",
       description: "Partner institutions benefit from an industry-aligned curriculum in aptitude, coding, and communication, ensuring students build a strong foundation from day one.",
-      stats: "95% industry-relevant",
+      stats: "Foundation Building",
       color: "hsl(330, 80%, 25%)", // primary (Deep Burgundy)
       details: [
         "Industry-aligned curriculum", 
@@ -89,7 +91,7 @@ const FrameworkSection = () => {
       icon: HeartHandshake,
       title: "Extended Support",
       description: "We go beyond graduation with last-mile assistance and ongoing career guidance, helping institutions sustain alumni success and strengthen their employer networks.",
-      stats: "Lifetime access",
+      stats: "1 year support post-graudation ",
       color: "hsl(330, 70%, 35%)", // primary-light (Medium Burgundy)
       details: [
         "Last-mile assistance",
@@ -136,7 +138,7 @@ const FrameworkSection = () => {
                 <svg viewBox="0 0 400 400" className="w-full h-auto drop-shadow-xl filter-drop-shadow(0px 8px 24px rgba(0, 0, 0, 0.15))"
                      style={{ overflow: 'visible' }}>
                   {/* Center circle */}
-                  <circle cx="200" cy="200" r="70" fill="white" className="drop-shadow-md" />
+                  <circle cx="200" cy="200" r="75" fill="white" className="drop-shadow-md" />
                   <text x="200" y="190" textAnchor="middle" className="fill-slate-900 font-bold" fontSize="20">
                     Employability
                   </text>
@@ -249,7 +251,7 @@ const FrameworkSection = () => {
             </div>
             
             {/* Details panel */}
-            <div className="md:w-1/2 mt-8 md:mt-0">
+            <div className="md:w-1/2 mt-10 md:mt-20">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={frameworks[activeSegment].id}
@@ -316,8 +318,13 @@ const FrameworkSection = () => {
           >
             <div className="inline-flex flex-col md:flex-row items-center gap-4 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl px-8 py-6 border border-primary/10 shadow-lg">
               <span className="text-lg text-gray-700 dark:text-gray-300 font-medium">Ready to future-proof your institution?</span>
-              <Button variant="default" size="lg" className="rounded-full px-8 shadow-md hover:shadow-lg transition-shadow bg-primary text-primary-foreground hover:bg-primary/90">
-                Let’s get started<ChevronRight size={16} className="ml-1" />
+              <Button 
+                variant="default" 
+                size="lg" 
+                className="rounded-full px-8 shadow-md hover:shadow-lg transition-shadow bg-primary text-primary-foreground hover:bg-primary/90"
+                onClick={() => navigate('/contact-us')}
+              >
+                Let's get started<ChevronRight size={16} className="ml-1" />
               </Button>
             </div>
           </motion.div>

@@ -73,41 +73,35 @@ const extendedPartners = [...hiringPartners, ...hiringPartners];
 const MarqueeContent = () => (
   <div className="flex gap-8">
     {extendedPartners.map((partner, index) => (
-      <motion.div
+      <div
         key={index}
-        whileHover={{ y: -8, scale: 1.05 }}
-        className="flex-shrink-0 h-[140px] w-[180px] rounded-xl bg-white/10 backdrop-blur-md p-6 flex flex-col items-center justify-center border border-white/20 group hover:bg-white/15 transition-all duration-300"
+        className="flex-shrink-0 h-[120px] w-[220px] rounded-xl bg-white p-5 flex items-center justify-center border border-gray-100 transition-all duration-300"
       >
-        <div className="w-16 h-16 mb-3 flex items-center justify-center">
+        <div className="w-full h-full flex items-center justify-center">
           <img
             src={partner.logo}
             alt={partner.name}
-            className="max-w-full max-h-full object-contain bg-white/90 rounded-md p-1"
+            className="max-w-full max-h-full object-contain"
           />
         </div>
-        <p className="text-white/80 group-hover:text-white text-sm font-medium transition-colors text-center">
-          {partner.name}
-        </p>
-      </motion.div>
+      </div>
     ))}
   </div>
 );
 
 const HiringPartnersSection = () => {
   return (
-    <section className="py-20 relative overflow-hidden">
-      {/* Dark Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-light to-primary/80" />
-      
-      {/* Mesh Gradient Overlay */}
-      <div className="absolute inset-0 mix-blend-soft-light bg-[radial-gradient(at_70%_20%,rgba(255,255,255,0.2),transparent),radial-gradient(at_30%_80%,rgba(255,255,255,0.2),transparent)]" />
+    <section className="py-20 relative overflow-hidden bg-white">
+      {/* Light background with subtle pattern */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-[0.03]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.05),transparent),radial-gradient(at_30%_80%,rgba(125,10,50,0.05),transparent)]" />
       
       <div className="relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Our Hiring Partners
           </h2>
-          <p className="text-xl text-white/80">
+          <p className="text-xl text-gray-600">
             Join our network of 450+ industry-leading companies
           </p>
         </div>
@@ -120,7 +114,7 @@ const HiringPartnersSection = () => {
             transition={{ 
               repeat: Infinity,
               repeatType: "loop",
-              duration: 15,
+              duration: 40,
               ease: "linear"
             }}
             className="w-fit flex"
@@ -129,8 +123,8 @@ const HiringPartnersSection = () => {
           </motion.div>
 
           {/* Gradient Overlays */}
-          <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-primary to-transparent z-10" />
-          <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-primary to-transparent z-10" />
+          <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-white to-transparent z-10" />
+          <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-white to-transparent z-10" />
         </div>
 
         {/* Marquee Container - Second Row (reverse direction) */}
@@ -141,7 +135,7 @@ const HiringPartnersSection = () => {
             transition={{ 
               repeat: Infinity,
               repeatType: "loop",
-              duration: 20,
+              duration: 40,
               ease: "linear"
             }}
             className="w-fit flex"
@@ -150,8 +144,8 @@ const HiringPartnersSection = () => {
           </motion.div>
 
           {/* Gradient Overlays */}
-          <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-primary to-transparent z-10" />
-          <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-primary to-transparent z-10" />
+          <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-white to-transparent z-10" />
+          <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-white to-transparent z-10" />
         </div>
       </div>
     </section>
