@@ -62,27 +62,13 @@ const AboutUs = () => {
         </div>
       </section>
 
-      {/* Leadership and Expert Trainers */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="relative"
-      >
-        {/* Decorative elements */}
-        <div className="absolute top-0 left-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 z-0" />
-        <div className="absolute bottom-0 right-0 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 z-0" />
-        
-        <TrainersSection />
-      </motion.div>
-      
-      {/* Our Story Section */}
+
+           {/* Our Story Section */}
       <section className="py-16 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <SectionHeader
-              title="Our Story"
+              title="Who are WE?"
               subtitle="How we're transforming education across India"
               align="center"
             />
@@ -96,22 +82,13 @@ const AboutUs = () => {
                 transition={{ duration: 0.6 }}
                 className="space-y-6"
               >
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">From Classroom to Career</h3>
-                <p className="text-gray-700 dark:text-gray-300 text-lg">
-                  Founded in 2019, ZSkillUp was born from a simple observation: traditional education alone isn't enough to prepare students for today's job market.
+                <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+                  ZSkillUp Education Pvt. Ltd. is a new-age employability enablement partner working with leading universities and colleges across India. We provide an integrated ecosystem of training, technology, and placements, designed to make students not just job-ready, but future-ready.
                 </p>
-                <p className="text-gray-700 dark:text-gray-300">
-                  Our founders, experienced educators and industry professionals, witnessed firsthand the gap between what universities teach and what employers need. Students were graduating with degrees but lacking the practical skills, confidence, and network to launch successful careers.
-                </p>
-                <p className="text-gray-700 dark:text-gray-300">
-                  Starting with just 3 partner institutions and 200 students, we've grown to serve over 15,000 students across 30+ universities nationwide. Our AI-powered platform, industry partnerships, and hands-on approach have helped thousands of graduates not just find jobs, but build meaningful careers.
+                <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+                  Our proprietary AI-powered platform, ZSkillHub, delivers daily practice, adaptive mock interviews, ATS-friendly resumes, and access to curated job opportunities — ensuring students are prepared from campus to corporate.
                 </p>
                 <div className="pt-4">
-                  <Button 
-                    className="bg-primary text-white hover:bg-primary/90"
-                  >
-                    Our Success Stories <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
                 </div>
               </motion.div>
               
@@ -133,6 +110,106 @@ const AboutUs = () => {
           </div>
         </div>
       </section>
+
+      {/* The Outcomes Behind Our Promise Section */}
+      <section className="py-16 bg-gray-900 text-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <SectionHeader
+              title="The Outcomes Behind Our Promise"
+              subtitle="Every claim we make is backed by outcomes students and institutions can see."
+              align="center"
+              className="text-white"
+            />
+            
+            {/* Achievements Strip */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mt-12">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="bg-white rounded-xl p-6 text-center shadow-lg"
+              >
+                <h3 className="text-4xl font-bold text-primary mb-2">25+</h3>
+                <p className="text-gray-700 text-sm font-medium">Universities & Colleges Onboarded</p>
+              </motion.div>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="bg-white rounded-xl p-6 text-center shadow-lg"
+              >
+                <h3 className="text-4xl font-bold text-primary mb-2">450+</h3>
+                <p className="text-gray-700 text-sm font-medium">Hiring Partners Engaged</p>
+              </motion.div>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="bg-white rounded-xl p-6 text-center shadow-lg"
+              >
+                <h3 className="text-4xl font-bold text-primary mb-2">250+</h3>
+                <p className="text-gray-700 text-sm font-medium">Student Placements</p>
+              </motion.div>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="bg-white rounded-xl p-6 text-center shadow-lg"
+              >
+                <h3 className="text-4xl font-bold text-primary mb-2">₹19 LPA</h3>
+                <p className="text-gray-700 text-sm font-medium">Highest CTC</p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="bg-white rounded-xl p-6 text-center shadow-lg"
+              >
+                <h3 className="text-4xl font-bold text-primary mb-2">₹5.6 LPA</h3>
+                <p className="text-gray-700 text-sm font-medium">Average CTC</p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                className="bg-white rounded-xl p-6 text-center shadow-lg"
+              >
+                <h3 className="text-4xl font-bold text-primary mb-2">150+</h3>
+                <p className="text-gray-700 text-sm font-medium">Faculty Members</p>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership and Expert Trainers */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="relative"
+      >
+        {/* Decorative elements */}
+        <div className="absolute top-0 left-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 z-0" />
+        <div className="absolute bottom-0 right-0 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 z-0" />
+        
+        <TrainersSection />
+      </motion.div>
+      
+ 
       
       {/* Vision */}
       <section className="py-16 bg-white dark:bg-gray-900">

@@ -18,6 +18,29 @@ export interface TrainerInfo {
 
 export const trainersData: TrainerInfo[] = [
   {
+    name: "Mithun S",
+    role: "Technical Trainer",
+    image: mithunImage,
+    bio: "Mithun S is a Software Developer at Cisco, with an experience of building and maintaining 8+ applications that are actively used by millions of users worldwide. Beyond his professional contributions, Mithun is deeply engaged in the developer ecosystem through teaching, mentoring, and community initiatives. Has delivered tech talks, hands-on workshops at leading universities, and has trained over 20,000 students in India and overseas through major edtechs. His mentorship extends to major global hackathons, where he has also served as a judge and panelist.",
+    currentCompany: "Cisco",
+    linkedin: "https://www.linkedin.com/in/yesmithun/",
+    specializations: ["Full Stack Development", "Cloud Technologies", "System Design", "Microservices"]
+  },
+  {
+    name: "Naveen Jain",
+    role: "Aptitude Trainer",
+    image: naveenImage,
+    bio: "Naveen Jain is an experienced and result-oriented Aptitude Trainer with expertise in Quantitative Aptitude, Logical Reasoning, and Verbal Ability. Skilled in simplifying complex concepts and delivering engaging sessions for students preparing for campus placements, competitive exams, and corporate training. Adept at designing practice modules, mock tests, and personalized learning strategies to enhance problem-solving speed and accuracy. Known for creating an interactive classroom environment that motivates learners to achieve their goals.",
+    specializations: ["Placement Preparation", "Mock Tests", "Analytical Reasoning", "Data Interpretation"]
+  },
+  {
+    name: "Harsh Jain",
+    role: "Technical Trainer",
+    image: harshImage,
+    bio: "An experienced trainer who has mentored thousands of students through both online and offline programs. With a strong foundation in Data Structures & Algorithms (DSA) and Competitive Programming, specializing in building problem-solving skills that are crucial for coding interviews, academic excellence, and real-world challenges. Expertise spans across C++, Java, and Python, along with in-depth knowledge of Object-Oriented Programming (OOPs), Operating Systems (OS), Computer Networks (CN), Database Management Systems (DBMS), and SQL. Passionate about simplifying complex concepts and delivering structured, hands-on learning that creates lasting impact.",
+    specializations: ["DSA", "Competitive Programming", "C++", "Java", "Python", "OOP"]
+  },
+  {
     name: "Ankit Sharma",
     role: "Aptitude Trainer",
     image: ankitImage,
@@ -29,29 +52,6 @@ export const trainersData: TrainerInfo[] = [
       "T.I.M.E Coaching Center, Greater Noida"
     ],
     specializations: ["Quantitative Aptitude", "Logical Reasoning", "Verbal Ability", "Interview Preparation"]
-  },
-//   {
-//     name: "Naveen Jain",
-//     role: "Aptitude Trainer",
-//     image: naveenImage,
-//     bio: "Naveen Jain is an experienced and result-oriented Aptitude Trainer with expertise in Quantitative Aptitude, Logical Reasoning, and Verbal Ability. Skilled in simplifying complex concepts and delivering engaging sessions for students preparing for campus placements, competitive exams, and corporate training. Adept at designing practice modules, mock tests, and personalized learning strategies to enhance problem-solving speed and accuracy. Known for creating an interactive classroom environment that motivates learners to achieve their goals.",
-//     specializations: ["Placement Preparation", "Mock Tests", "Analytical Reasoning", "Data Interpretation"]
-//   },
-  {
-    name: "Harsh Jain",
-    role: "Technical Trainer",
-    image: harshImage,
-    bio: "An experienced trainer who has mentored thousands of students through both online and offline programs. With a strong foundation in Data Structures & Algorithms (DSA) and Competitive Programming, specializing in building problem-solving skills that are crucial for coding interviews, academic excellence, and real-world challenges. Expertise spans across C++, Java, and Python, along with in-depth knowledge of Object-Oriented Programming (OOPs), Operating Systems (OS), Computer Networks (CN), Database Management Systems (DBMS), and SQL. Passionate about simplifying complex concepts and delivering structured, hands-on learning that creates lasting impact.",
-    specializations: ["DSA", "Competitive Programming", "C++", "Java", "Python", "OOP"]
-  },
-  {
-    name: "Mithun S",
-    role: "Technical Trainer",
-    image: mithunImage,
-    bio: "Mithun S is a Software Developer at Cisco, with an experience of building and maintaining 8+ applications that are actively used by millions of users worldwide. Beyond his professional contributions, Mithun is deeply engaged in the developer ecosystem through teaching, mentoring, and community initiatives. Has delivered tech talks, hands-on workshops at leading universities, and has trained over 20,000 students in India and overseas through major edtechs. His mentorship extends to major global hackathons, where he has also served as a judge and panelist.",
-    currentCompany: "Cisco",
-    linkedin: "https://www.linkedin.com/in/yesmithun/",
-    specializations: ["Full Stack Development", "Cloud Technologies", "System Design", "Microservices"]
   },
   {
     name: "Lokesh Mathur",
