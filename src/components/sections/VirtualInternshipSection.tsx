@@ -6,33 +6,36 @@ import { Button } from "@/components/ui/button";
 // Custom CSS for equal height cards
 import "./framework-section.css"; // Reusing the existing CSS file
 
+// Import all logo images to ensure they're included in the build
+import { getLogoPath } from "@/lib/logo-utils";
+
 // Company logos for virtual internships based on variant
 const getCompanies = (variant: string) => {
   if (variant === "management") {
     return [
-      { name: "Cars24", logo: "/src/assets/virtualInternshipLogos/management_logos/cars24.PNG" },
-      { name: "CultFit", logo: "/src/assets/virtualInternshipLogos/management_logos/cultfit.PNG" },
-      { name: "Danube Home", logo: "/src/assets/virtualInternshipLogos/management_logos/danubeHome.PNG" },
-      { name: "Fast Services", logo: "/src/assets/virtualInternshipLogos/management_logos/fastServices.JPG" },
-      { name: "Finaxa", logo: "/src/assets/virtualInternshipLogos/management_logos/finaxa.JPG" },
-      { name: "Jupiter", logo: "/src/assets/virtualInternshipLogos/management_logos/jupiter.WEBP" },
-      { name: "Practo", logo: "/src/assets/virtualInternshipLogos/management_logos/practo.PNG" },
-      { name: "Raw", logo: "/src/assets/virtualInternshipLogos/management_logos/raw.PNG" },
-      { name: "Uber", logo: "/src/assets/virtualInternshipLogos/management_logos/uber.PNG" }
+      { name: "Cars24", logo: getLogoPath("/assets/virtualInternshipLogos/management_logos/cars24.PNG") },
+      { name: "CultFit", logo: getLogoPath("/assets/virtualInternshipLogos/management_logos/cultfit.PNG") },
+      { name: "Danube Home", logo: getLogoPath("/assets/virtualInternshipLogos/management_logos/danubeHome.PNG") },
+      { name: "Fast Services", logo: getLogoPath("/assets/virtualInternshipLogos/management_logos/fastServices.JPG") },
+      { name: "Finaxa", logo: getLogoPath("/assets/virtualInternshipLogos/management_logos/finaxa.JPG") },
+      { name: "Jupiter", logo: getLogoPath("/assets/virtualInternshipLogos/management_logos/jupiter.WEBP") },
+      { name: "Practo", logo: getLogoPath("/assets/virtualInternshipLogos/management_logos/practo.PNG") },
+      { name: "Raw", logo: getLogoPath("/assets/virtualInternshipLogos/management_logos/raw.PNG") },
+      { name: "Uber", logo: getLogoPath("/assets/virtualInternshipLogos/management_logos/uber.PNG") }
     ];
   }
   // Default home/tech logos
   return [
-    { name: "Jupiter", logo: "/src/assets/virtualInternshipLogos/Home_all/jupiter.png" },
-    { name: "NoBroker", logo: "/src/assets/virtualInternshipLogos/Home_all/nobroker.png" },
-    { name: "Practo", logo: "/src/assets/virtualInternshipLogos/Home_all/practo.png" },
-    { name: "Snapdeal", logo: "/src/assets/virtualInternshipLogos/Home_all/snapdeal.png" },
-    { name: "Uber", logo: "/src/assets/virtualInternshipLogos/Home_all/uber.png" },
-    { name: "ATAL", logo: "/src/assets/virtualInternshipLogos/Home_all/atalIncubationCenter.png" },
-    { name: "Accionlabs", logo: "/src/assets/virtualInternshipLogos/Home_all/accionLabs.png" },
-    { name: "Avetti", logo: "/src/assets/virtualInternshipLogos/Home_all/avetti.png" },
-    { name: "Cars24", logo: "/src/assets/virtualInternshipLogos/Home_all/cars24.png" },
-    { name: "CultFit", logo: "/src/assets/virtualInternshipLogos/Home_all/cultfit.png" }
+    { name: "Jupiter", logo: getLogoPath("/assets/virtualInternshipLogos/Home_all/jupiter.png") },
+    { name: "NoBroker", logo: getLogoPath("/assets/virtualInternshipLogos/Home_all/nobroker.png") },
+    { name: "Practo", logo: getLogoPath("/assets/virtualInternshipLogos/Home_all/practo.png") },
+    { name: "Snapdeal", logo: getLogoPath("/assets/virtualInternshipLogos/Home_all/snapdeal.png") },
+    { name: "Uber", logo: getLogoPath("/assets/virtualInternshipLogos/Home_all/uber.png") },
+    { name: "ATAL", logo: getLogoPath("/assets/virtualInternshipLogos/Home_all/atalIncubationCenter.png") },
+    { name: "Accionlabs", logo: getLogoPath("/assets/virtualInternshipLogos/Home_all/accionLabs.png") },
+    { name: "Avetti", logo: getLogoPath("/assets/virtualInternshipLogos/Home_all/avetti.png") },
+    { name: "Cars24", logo: getLogoPath("/assets/virtualInternshipLogos/Home_all/cars24.png") },
+    { name: "CultFit", logo: getLogoPath("/assets/virtualInternshipLogos/Home_all/cultfit.png") }
   ];
 };
 
@@ -70,52 +73,52 @@ const getInternshipProjects = (variant: string) => {
     return [
       {
         company: "Uber",
-        logo: "/src/assets/virtualInternshipLogos/management_logos/uber.PNG",
+        logo: getLogoPath("/assets/virtualInternshipLogos/management_logos/uber.PNG"),
         title: "Create a Hiring Strategy for a Leading Product Firm to Scale Their Team"
       },
       {
         company: "Fast Services",
-        logo: "/src/assets/virtualInternshipLogos/management_logos/fastServices.JPG",
+        logo: getLogoPath("/assets/virtualInternshipLogos/management_logos/fastServices.JPG"),
         title: "Conduct Complete Financial Due Diligence of a Company for Investment Analysis"
       },
       {
         company: "Finaxa",
-        logo: "/src/assets/virtualInternshipLogos/management_logos/finaxa.JPG",
+        logo: getLogoPath("/assets/virtualInternshipLogos/management_logos/finaxa.JPG"),
         title: "Conduct a Trend Analysis to Predict the Future Business Trends for an FMCG Company"
       },
       {
         company: "Jupiter",
-        logo: "/src/assets/virtualInternshipLogos/management_logos/jupiter.WEBP",
+        logo: getLogoPath("/assets/virtualInternshipLogos/management_logos/jupiter.WEBP"),
         title: "Study customer churn analytics for the banking industry"
       },
       {
         company: "Uber",
-        logo: "/src/assets/virtualInternshipLogos/management_logos/uber.PNG",
+        logo: getLogoPath("/assets/virtualInternshipLogos/management_logos/uber.PNG"),
         title: "Develop a predictive model to accurately forecast hourly traffic volumes at different road junctions based on historical traffic data"
       },
       {
         company: "Cars24",
-        logo: "/src/assets/virtualInternshipLogos/management_logos/cars24.PNG",
+        logo: getLogoPath("/assets/virtualInternshipLogos/management_logos/cars24.PNG"),
         title: "Analyse the market trends of the Used Car Market from multiple geographies using EDA and Data Visualization"
       },
       {
         company: "Practo",
-        logo: "/src/assets/virtualInternshipLogos/management_logos/practo.PNG",
+        logo: getLogoPath("/assets/virtualInternshipLogos/management_logos/practo.PNG"),
         title: "Identify the best source of recruitment for a tech startup, based on previous data of candidate sources and recruitment strategies"
       },
       {
         company: "Danube Home",
-        logo: "/src/assets/virtualInternshipLogos/management_logos/danubeHome.PNG",
+        logo: getLogoPath("/assets/virtualInternshipLogos/management_logos/danubeHome.PNG"),
         title: "Analysis of Sales Data of Retail Stores Across America Using Exploratory Data Analysis and Data Visualisation"
       },
       {
         company: "CultFit",
-        logo: "/src/assets/virtualInternshipLogos/management_logos/cultfit.PNG",
+        logo: getLogoPath("/assets/virtualInternshipLogos/management_logos/cultfit.PNG"),
         title: "Design a cause-based marketing plan for a city-wide marathon event"
       },
       {
         company: "Raw",
-        logo: "/src/assets/virtualInternshipLogos/management_logos/raw.PNG",
+        logo: getLogoPath("/assets/virtualInternshipLogos/management_logos/raw.PNG"),
         title: "Observe Consumer Behaviour at a Local Point of Sale, and Develop a Marketing Strategy for a Niche Health Beverage"
       }
     ];
@@ -125,72 +128,72 @@ const getInternshipProjects = (variant: string) => {
   return [
     {
       company: "Avetti",
-      logo: "/src/assets/virtualInternshipLogos/Home_all/avetti.png",
+      logo: getLogoPath("/assets/virtualInternshipLogos/Home_all/avetti.png"),
       title: "Design the Complete UI/UX for a SaaS Based Company"
     },
     {
       company: "Jupiter",
-      logo: "/src/assets/virtualInternshipLogos/Home_all/jupiter.png",
+      logo: getLogoPath("/assets/virtualInternshipLogos/Home_all/jupiter.png"),
       title: "Build a full-stack web application that allows the user to split their savings bank account"
     },
     {
       company: "Accionlabs",
-      logo: "/src/assets/virtualInternshipLogos/Home_all/accionLabs.png",
+      logo: getLogoPath("/assets/virtualInternshipLogos/Home_all/accionLabs.png"),
       title: "Automate Database Backup and Restoration on AWS"
     },
     {
       company: "Cars24",
-      logo: "/src/assets/virtualInternshipLogos/Home_all/cars24.png",
+      logo: getLogoPath("/assets/virtualInternshipLogos/Home_all/cars24.png"),
       title: "Build a Full Stack Web Application that Helps Users Browse and Create Road Trips"
     },
     {
       company: "Snapdeal",
-      logo: "/src/assets/virtualInternshipLogos/Home_all/snapdeal.png",
+      logo: getLogoPath("/assets/virtualInternshipLogos/Home_all/snapdeal.png"),
       title: "Identify Customer Segments for Online Retail with K-Means Clustering"
     },
     {
       company: "Practo",
-      logo: "/src/assets/virtualInternshipLogos/Home_all/practo.png",
+      logo: getLogoPath("/assets/virtualInternshipLogos/Home_all/practo.png"),
       title: "Identify the Best Recruitment Source for a Tech Startup"
     },
     {
       company: "ATAL",
-      logo: "/src/assets/virtualInternshipLogos/Home_all/atalIncubationCenter.png",
+      logo: getLogoPath("/assets/virtualInternshipLogos/Home_all/atalIncubationCenter.png"),
       title: "Categorize Music Genres Using Machine Learning"
     },
     {
       company: "Uber",
-      logo: "/src/assets/virtualInternshipLogos/Home_all/uber.png",
+      logo: getLogoPath("/assets/virtualInternshipLogos/Home_all/uber.png"),
       title: "Predict Uber Fare Amounts with Regression"
     },
     {
       company: "Jupiter",
-      logo: "/src/assets/virtualInternshipLogos/Home_all/jupiter.png",
+      logo: getLogoPath("/assets/virtualInternshipLogos/Home_all/jupiter.png"),
       title: "Detect Credit Card Fraud Using Logistic Regression"
     },
     {
       company: "CultFit",
-      logo: "/src/assets/virtualInternshipLogos/Home_all/cultfit.png",
+      logo: getLogoPath("/assets/virtualInternshipLogos/Home_all/cultfit.png"),
       title: "Dynamic Pricing for Fitness Classes"
     },
     {
       company: "Accionlabs",
-      logo: "/src/assets/virtualInternshipLogos/Home_all/accionLabs.png",
+      logo: getLogoPath("/assets/virtualInternshipLogos/Home_all/accionLabs.png"),
       title: "Develop the backend for a CRM Tool using Java Springboot"
     },
     {
       company: "NoBroker",
-      logo: "/src/assets/virtualInternshipLogos/Home_all/nobroker.png",
+      logo: getLogoPath("/assets/virtualInternshipLogos/Home_all/nobroker.png"),
       title: "Build a platform to find properties based on interior preferences & budget"
     },
     {
       company: "Practo",
-      logo: "/src/assets/virtualInternshipLogos/Home_all/practo.png",
+      logo: getLogoPath("/assets/virtualInternshipLogos/Home_all/practo.png"),
       title: "Build An Application For Booking Appointments For Diagnostics Tests"
     },
     {
       company: "Avetti",
-      logo: "/src/assets/virtualInternshipLogos/Home_all/avetti.png",
+      logo: getLogoPath("/assets/virtualInternshipLogos/Home_all/avetti.png"),
       title: "Build a Full Stack Web Application that Helps Users Browse and Create Road Trips"
     }
   ];
@@ -353,7 +356,9 @@ const VirtualInternshipSection: React.FC<VirtualInternshipSectionProps> = ({ con
           <div className="text-center mt-12">
             <Button
               className="bg-primary-light text-white font-semibold px-8 py-6 text-base hover:bg-primary transition-colors rounded-full"
-              onClick={() => window.location.href = '/contact-us'}
+              onClick={() => {
+                window.location.href = '/contact-us';
+              }}
             >
               Get Started Today
             </Button>

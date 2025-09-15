@@ -294,6 +294,8 @@ const AboutUs = () => {
           </div>
         </div>
       </section>
+      
+
     </div>
   );
 };
