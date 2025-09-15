@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { motion, Variants, Transition } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
-import heroImage from "@/assets/hero-image.jpg";
+import { getLogoPath } from "../../lib/logo-utils";
 
 const HeroSection = () => {
   // Framer Motion variants
@@ -118,7 +118,7 @@ const HeroSection = () => {
             transition={{ delay: 0.4, type: "spring", stiffness: 120 }}
           >
             <div className="relative overflow-hidden rounded-2xl shadow-elegant border border-primary/10">
-              <img src={heroImage} alt="Students learning" className="w-full h-auto object-cover" />
+              <img src={getLogoPath("/assets/hero-image.jpg")} alt="Students learning" className="w-full h-auto object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent" />
             </div>
           </motion.div>

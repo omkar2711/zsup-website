@@ -2,14 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-
-// Import college logos
-import dyPatilLogo from "../../assets/college_logos/DY Patil University.jpg";
-import lnmiitLogo from "../../assets/college_logos/LNMIIT.jpg";
-import kleBelgaumLogo from "../../assets/college_logos/KLE, Belgaum.jpeg";
-import ajeenkyaLogo from "../../assets/college_logos/Ajeenkya dy patil.jpeg";
-import apShahLogo from "../../assets/college_logos/AP-Shah.webp";
-import atharvaLogo from "../../assets/college_logos/Atharva College of Engineering.png";
+import { getLogoPath } from "../../lib/logo-utils";
 
 interface UniversityCertProps {
   name: string;
@@ -22,42 +15,42 @@ interface UniversityCertProps {
 const universities: UniversityCertProps[] = [
   {
     name: "DY Patil University",
-    logo: dyPatilLogo,
+    logo: getLogoPath("/assets/college_logos/DY Patil University.jpg"),
     programs: ["B.Tech in Computer Science", "MBA in Technology Management"],
     description: "Partner with one of India's premier technical education institutions for comprehensive training programs.",
     link: "#dy-patil-certificates"
   },
   {
     name: "LNMIIT",
-    logo: lnmiitLogo,
+    logo: getLogoPath("/assets/college_logos/LNMIIT.jpg"),
     programs: ["B.Tech in Computer Engineering", "M.Tech in AI & Data Science"],
     description: "Access cutting-edge technology education from The LNM Institute of Information Technology.",
     link: "#lnmiit-certificates"
   },
   {
     name: "KLE Belgaum",
-    logo: kleBelgaumLogo,
+    logo: getLogoPath("/assets/college_logos/KLE, Belgaum.jpeg"),
     programs: ["B.Tech in Information Technology", "M.Tech in Computer Science"],
     description: "Develop job-ready skills with professional certificates from a leading technical institution.",
     link: "#kle-certificates"
   },
   {
     name: "Ajeenkya DY Patil",
-    logo: ajeenkyaLogo,
+    logo: getLogoPath("/assets/college_logos/Ajeenkya dy patil.jpeg"),
     programs: ["B.Tech in AI & Machine Learning", "MBA in Digital Business"],
     description: "Master in-demand skills with certificates designed by industry experts.",
     link: "#ajeenkya-certificates"
   },
   {
     name: "AP Shah Institute",
-    logo: apShahLogo,
+    logo: getLogoPath("/assets/college_logos/AP-Shah.webp"),
     programs: ["B.E. in Computer Engineering", "Diploma in Software Development"],
     description: "Enhance your expertise with world-class education from AP Shah Institute of Technology.",
     link: "#apshah-certificates"
   },
   {
     name: "Atharva College of Engineering",
-    logo: atharvaLogo,
+    logo: getLogoPath("/assets/college_logos/Atharva College of Engineering.png"),
     programs: ["B.Tech in Information Technology", "M.Tech in Computer Networks"],
     description: "Build your skills and validate your expertise with industry-recognized certifications.",
     link: "#atharva-certificates"

@@ -5,9 +5,9 @@ import {
   ChevronDown 
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
-import logoUrl from "../assets/Zskillup Black.png";
 import { motion } from "framer-motion";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { getLogoPath } from "../lib/logo-utils";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -72,7 +72,7 @@ const Navbar = () => {
           {/* Logo */}
           <button onClick={() => handleNavigation("/")} className="flex items-center space-x-2">
             <img
-              src={logoUrl}
+              src={getLogoPath("/assets/Zskillup Black.png")}
               alt="ZSkillup Logo"
               className="h-10 w-auto"
               loading="eager"

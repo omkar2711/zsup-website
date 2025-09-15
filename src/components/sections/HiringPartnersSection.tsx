@@ -1,69 +1,56 @@
 import { motion } from "framer-motion";
 import "../sections/framework-section.css";
-
-// Import company logos
-import amazonLogo from "../../assets/Companies_logos/Amazon.jpeg";
-import flipkartLogo from "../../assets/Companies_logos/Flipkart-Logo.png";
-import razorpayLogo from "../../assets/Companies_logos/razorpay9274.jpg";
-import meeshoLogo from "../../assets/Companies_logos/MEESHO.png";
-import growLogo from "../../assets/Companies_logos/Grow logo.png";
-import haptikLogo from "../../assets/Companies_logos/haptik_logo.png";
-import magicpinLogo from "../../assets/Companies_logos/MAGICPIN.png";
-import pepperFryLogo from "../../assets/Companies_logos/pepperfry-logo.png";
-import sutherlandLogo from "../../assets/Companies_logos/3886_Sutherland-Global-Logo-1.png";
-import appScripLogo from "../../assets/Companies_logos/AppScrip-logo-1598953593530.avif";
-import convegeniusLogo from "../../assets/Companies_logos/Convegenius.png";
-import merkleLogo from "../../assets/Companies_logos/Merkle-Sokrati.jpg";
+import { getLogoPath } from "../../lib/logo-utils";
 
 // Hiring partner logos from the assets/Companies_logos directory
 const hiringPartners = [
   {
     name: "Amazon",
-    logo: amazonLogo
+    logo: getLogoPath("/assets/Companies_logos/Amazon.jpeg")
   },
   {
     name: "Flipkart",
-    logo: flipkartLogo
+    logo: getLogoPath("/assets/Companies_logos/Flipkart-Logo.png")
   },
   {
     name: "Razorpay",
-    logo: razorpayLogo
+    logo: getLogoPath("/assets/Companies_logos/razorpay9274.jpg")
   },
   {
     name: "Meesho",
-    logo: meeshoLogo
+    logo: getLogoPath("/assets/Companies_logos/MEESHO.png")
   },
   {
     name: "Grow",
-    logo: growLogo
+    logo: getLogoPath("/assets/Companies_logos/Grow logo.png")
   },
   {
     name: "Haptik",
-    logo: haptikLogo
+    logo: getLogoPath("/assets/Companies_logos/haptik_logo.png")
   },
   {
     name: "Magicpin",
-    logo: magicpinLogo
+    logo: getLogoPath("/assets/Companies_logos/MAGICPIN.png")
   },
   {
     name: "Pepperfry",
-    logo: pepperFryLogo
+    logo: getLogoPath("/assets/Companies_logos/pepperfry-logo.png")
   },
   {
     name: "Sutherland",
-    logo: sutherlandLogo
+    logo: getLogoPath("/assets/Companies_logos/3886_Sutherland-Global-Logo-1.png")
   },
   {
     name: "AppScrip",
-    logo: appScripLogo
+    logo: getLogoPath("/assets/Companies_logos/AppScrip-logo-1598953593530.avif")
   },
   {
     name: "Convegenius",
-    logo: convegeniusLogo
+    logo: getLogoPath("/assets/Companies_logos/Convegenius.png")
   },
   {
     name: "Merkle Sokrati",
-    logo: merkleLogo
+    logo: getLogoPath("/assets/Companies_logos/Merkle-Sokrati.jpg")
   }
 ];
 

@@ -34,6 +34,7 @@ import {
   Beaker as Flask
 } from 'lucide-react';
 import { Footer } from 'react-day-picker';
+import { getLogoPath } from '../lib/logo-utils';
 
 const SmartGeneralistsProgram = () => {
   return (
@@ -885,11 +886,11 @@ const SmartGeneralistsProgram = () => {
               transition={{ duration: 0.5 }}
               className="flex flex-wrap justify-center gap-8 mb-12"
             >
-              {['./src/assets/college_logos/AGM LOGO.jpeg', 
-                './src/assets/college_logos/DY Patil University.jpg', 
-                './src/assets/college_logos/LNMIIT.jpg',
-                './src/assets/college_logos/KLE, Belgaum.jpeg',
-                './src/assets/college_logos/Ajeenkya dy patil.jpeg'
+              {['/assets/college_logos/AGM LOGO.jpeg', 
+                '/assets/college_logos/DY Patil University.jpg', 
+                '/assets/college_logos/LNMIIT.jpg',
+                '/assets/college_logos/KLE, Belgaum.jpeg',
+                '/assets/college_logos/Ajeenkya dy patil.jpeg'
               ].map((logo, index) => (
                 <div 
                   key={index} 
@@ -907,11 +908,11 @@ const SmartGeneralistsProgram = () => {
               transition={{ duration: 0.5 }}
               className="flex flex-wrap justify-center gap-8"
             >
-              {['./src/assets/Companies_logos/Amazon.jpeg', 
-                './src/assets/Companies_logos/Flipkart-Logo.png', 
-                './src/assets/Companies_logos/razorpay9274.jpg',
-                './src/assets/Companies_logos/MEESHO.png',
-                './src/assets/Companies_logos/Grow logo.png'
+              {['/assets/Companies_logos/Amazon.jpeg', 
+                '/assets/Companies_logos/Flipkart-Logo.png', 
+                '/assets/Companies_logos/razorpay9274.jpg',
+                '/assets/Companies_logos/MEESHO.png',
+                '/assets/Companies_logos/Grow logo.png'
               ].map((logo, index) => (
                 <div 
                   key={index} 
