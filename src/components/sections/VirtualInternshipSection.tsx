@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import "./framework-section.css"; // Reusing the existing CSS file
 
 // Import all logo images to ensure they're included in the build
-import { getLogoPath } from "@/lib/logo-utils";
+import { getLogoPath } from "../../lib/logo-utils";
 
 // Company logos for virtual internships based on variant
 const getCompanies = (variant: string) => {
