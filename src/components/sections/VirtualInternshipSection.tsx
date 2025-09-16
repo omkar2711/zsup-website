@@ -345,8 +345,8 @@ const VirtualInternshipSection: React.FC<VirtualInternshipSectionProps> = ({ con
             {/* Certificate image with shadow and border */}
             <div className="relative shadow-lg rounded-xl overflow-hidden border border-primary-light/20">
               <img 
-                src="/certificate-sample-new.svg" 
-                alt="Certificate of Recognition" 
+                src="/Menternship Certificate.jpg" 
+                alt="Menternship Certificate" 
                 className="w-full"
               />
             </div>
