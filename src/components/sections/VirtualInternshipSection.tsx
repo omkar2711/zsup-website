@@ -40,7 +40,7 @@ const getCompanies = (variant: string) => {
 };
 
 // Component for rendering a single company card
-const CompanyCard = ({ company, index }: { company: { name: string; logo: string }, index: number }) => (
+const CompanyCard = ({ company, index, variant }: { company: { name: string; logo: string }, index: number, variant: string }) => (
   <motion.div
     key={`${company.name}-${index}`}
     className="flex-shrink-0 mx-4"
@@ -48,7 +48,7 @@ const CompanyCard = ({ company, index }: { company: { name: string; logo: string
     <img
       src={company.logo}
       alt={company.name}
-      className="h-10 object-contain"
+      className={`object-contain ${variant === "management" ? "h-14" : "h-20"}`}
     />
   </motion.div>
 );
@@ -61,7 +61,7 @@ const CompanyRow = ({ variant }: { variant: string }) => {
   return (
     <div className="flex items-center">
       {extendedCompanies.map((company, index) => (
-        <CompanyCard key={index} company={company} index={index} />
+        <CompanyCard key={index} company={company} index={index} variant={variant} />
       ))}
     </div>
   );
@@ -215,7 +215,7 @@ const ProjectCard = ({ project }: { project: { company: string; logo: string; ti
           <img 
             src={project.logo} 
             alt={project.company} 
-            className="h-20 object-contain" 
+            className={`object-contain ${project.logo.includes('management_logos') ? 'h-14' : 'h-20'}`} 
           />
         </div>
         
@@ -285,7 +285,7 @@ const VirtualInternshipSection: React.FC<VirtualInternshipSectionProps> = ({ con
             transition={{ 
               repeat: Infinity,
               repeatType: "loop",
-              duration: 30,
+              duration: 10,
               ease: "linear"
             }}
             className="w-fit flex"
@@ -345,7 +345,7 @@ const VirtualInternshipSection: React.FC<VirtualInternshipSectionProps> = ({ con
             {/* Certificate image with shadow and border */}
             <div className="relative shadow-lg rounded-xl overflow-hidden border border-primary-light/20">
               <img 
-                src="/Menternship Certificate.jpg" 
+                src="/Menternship Certificate.jpeg" 
                 alt="Menternship Certificate" 
                 className="w-full"
               />

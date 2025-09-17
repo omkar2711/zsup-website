@@ -57,14 +57,14 @@ export const trainersData: TrainerInfo[] = [
     name: "Lokesh Mathur",
     role: "Founder",
     image: lokeshImage,
-    bio: "A dynamic leader with 17+ years of experience across IT, education, and edtech. An IIM Calcutta Executive MBA and certified PMP®, CSM®, and SCJP 5.0, he has driven impactful career outcomes and strategic growth. From leading his entrepreneurial venture to senior roles at upGrad, Lokesh has consistently shaped 5000+ futures and transformed lives. He's pioneering tech-driven education strategies, passionate about mentoring and innovation. Lokesh combines a strategic mindset with a genuine commitment to empowering others, making him a true force for change in the world of learning and career.",
+    bio: "A dynamic leader with 18+ years of experience across IT, education, and edtech. An IIM Calcutta Executive MBA and certified PMP®, CSM®, and SCJP 5.0, he has driven impactful career outcomes and strategic growth. From leading his entrepreneurial venture to senior roles at upGrad, Lokesh has consistently shaped 50000+ futures and transformed lives. He's pioneering tech-driven education strategies, passionate about mentoring and innovation. Lokesh combines a strategic mindset with a genuine commitment to empowering others, making him a true force for change in the world of learning and career.",
     isFounder: true,
     experience: [
-      "17+ years in IT, Education & EdTech",
+      "18+ years in IT, Education & EdTech",
       "IIM Calcutta Executive MBA",
       "PMP®, CSM®, SCJP 5.0 Certified",
       "Former Senior Leader at upGrad",
-      "Mentored 5000+ students"
+      "Mentored 50000+ students"
     ],
     specializations: ["Educational Leadership", "Strategic Planning", "Technology Integration", "Career Development", "Mentoring"]
   }

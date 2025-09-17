@@ -6,19 +6,22 @@ import { SectionHeader } from '@/components/SectionHeader';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Badge } from '@/components/ui/badge';
+import CurriculumSection from '@/components/sections/CurriculumSection';
+import ManagementCertificate from '@/assets/ManagementCertificate.jpg';
 import { motion } from 'framer-motion';
-import { 
-  CheckCircle, 
-  Users, 
-  Target, 
-  BookOpen, 
-  Calendar, 
-  MessageSquare, 
-  FileText, 
-  Briefcase, 
-  ChevronRight, 
-  Brain, 
+import {
+  CheckCircle,
+  Users,
+  Target,
+  BookOpen,
+  Calendar,
+  MessageSquare,
+  FileText,
+  Briefcase,
+  ChevronRight,
+  Brain,
   Award,
   Sparkles,
   BarChart,
@@ -34,304 +37,107 @@ import {
   LineChart
 } from 'lucide-react';
 import FooterSection from '@/components/sections/Footer';
+import TrustedSection from '@/components/sections/TrustedSection';
+import HiringPartnersSection from '@/components/sections/HiringPartnersSection';
 
 const ManagementReadinessProgram = () => {
   const [selectedTrack, setSelectedTrack] = useState("business");
-  
+  const faqs = [
+    {
+      q: "How long is the Management Track program?",
+      a: "4-6 months intensive training with flexible weekend and evening batches to accommodate academic schedules."
+    },
+    {
+      q: "Are internships guaranteed for all students?",
+      a: "Yes, every enrolled student receives a confirmed virtual internship placement with our partner companies."
+    },
+    {
+      q: "How does ZSkillHub adapt to different learning paces?",
+      a: "The AI engine personalizes content delivery, assessment frequency, and feedback based on individual performance metrics."
+    },
+    {
+      q: "What support do institutions receive during implementation?",
+      a: "Dedicated account management, monthly progress reports, faculty training sessions, and outcome tracking dashboards."
+    },
+    {
+      q: "How do you measure and report student outcomes?",
+      a: "Real-time analytics on skill development, placement tracking, salary benchmarking, and employer feedback collection."
+    }
+  ]
+
   return (
-      <div className="min-h-screen">
-        <Navbar />
+    <div className="min-h-screen">
+      <Navbar />
 
-        {/* Hero Banner */}
-        <section className="py-24 md:py-32 relative overflow-hidden bg-gradient-to-br from-blue-900 via-indigo-800 to-purple-800">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(79,70,229,0.2),transparent_70%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(124,58,237,0.2),transparent_70%)]" />
-          <div className="absolute right-0 top-0 w-96 h-96 bg-indigo-400 opacity-20 rounded-full blur-3xl -mr-20 -mt-20" />
+      {/* Hero Banner */}
+      <section className="py-24 md:py-32 relative overflow-hidden bg-gradient-to-br from-blue-900 via-indigo-800 to-purple-800">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(79,70,229,0.2),transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(124,58,237,0.2),transparent_70%)]" />
+        <div className="absolute right-0 top-0 w-96 h-96 bg-indigo-400 opacity-20 rounded-full blur-3xl -mr-20 -mt-20" />
 
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              {/* Left: Text Block */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-left"
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            {/* Left: Text Block */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-left"
+            >
+              <Badge className="mb-6 px-4 py-1 bg-white/20 text-white border-none text-sm font-medium">BUSINESS EXCELLENCE</Badge>
+
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white leading-tight">
+                Corporate Readiness Program - Management
+              </h1>
+
+              <p className="text-xl md:text-2xl text-indigo-100 mb-8 max-w-2xl">
+                Preparing business leaders of tomorrow
+              </p>
+
+              <p className="text-lg text-indigo-100 mb-10 max-w-2xl">
+                Our Management Readiness Program equips students with industry-relevant aptitude, communication, and soft skills, backed by guaranteed virtual internships and strong placement outcomes.
+              </p>
+
+              <Button
+                size="lg"
+                className="bg-white text-indigo-900 hover:bg-indigo-50 rounded-full px-8"
+                onClick={() => window.location.href = '/contact-us'}
               >
-                <Badge className="mb-6 px-4 py-1 bg-white/20 text-white border-none text-sm font-medium">BUSINESS EXCELLENCE</Badge>
+                Partner With Us <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </motion.div>
 
-                <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white leading-tight">
-                    Management Readiness Program
-                </h1>
-
-                <p className="text-xl md:text-2xl text-indigo-100 mb-8 max-w-2xl">
-                  Preparing business leaders of tomorrow
-                </p>
-
-                <p className="text-lg text-indigo-100 mb-10 max-w-2xl">
-                    Our Management Readiness Program equips students with industry-relevant aptitude, communication, and soft skills, backed by guaranteed virtual internships and strong placement outcomes.
-                </p>
-
-                <Button 
-                  size="lg" 
-                  className="bg-white text-indigo-900 hover:bg-indigo-50 rounded-full px-8"
-                  onClick={() => {
-                    const contactSection = document.getElementById('contact');
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
-                >
-                  Partner With Us <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </motion.div>
-
-              {/* Right: Image */}
-              <motion.div 
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="hidden md:flex justify-center items-center"
-              >
-                <div className="relative">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl blur-sm opacity-70"></div>
-                  <img
+            {/* Right: Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="hidden md:flex justify-center items-center"
+            >
+              <div className="relative">
+                <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl blur-sm opacity-70"></div>
+                <img
                   src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
                   alt="Business professionals in a corporate meeting setting"
                   className="w-full max-w-xl rounded-xl shadow-lg relative z-10 object-cover h-[400px]"
-                  />
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-      {/* Program Curriculum */}
-      <section className="py-20 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 to-white opacity-50" />
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-6xl mx-auto">
-            <SectionHeader
-              title="Program Curriculum"
-              subtitle="A comprehensive 120-hour program spread across 4 semesters"
-              align="center"
-            />
-            
-            <div className="grid gap-8 mt-12">
-              {/* Semester 1 */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-              >
-                <Card className="overflow-hidden border-indigo-100">
-                  <CardContent className="p-8">
-                    <div className="flex items-center gap-4 mb-6">
-                      <Badge variant="secondary" className="bg-indigo-100 text-indigo-800 text-sm px-3 py-1">
-                        30 Hours
-                      </Badge>
-                      <h3 className="text-2xl font-bold text-gray-900">Semester 1: Foundations of Corporate Readiness</h3>
-                    </div>
-                    <div className="grid md:grid-cols-3 gap-6">
-                      <div className="space-y-4">
-                        <div className="flex items-start gap-3">
-                          <BarChart className="w-5 h-5 text-indigo-600 mt-1" />
-                          <div>
-                            <h4 className="font-semibold text-gray-900 mb-2">Aptitude & Analytical Skills</h4>
-                            <p className="text-gray-600 text-sm">Percentages, Ratios, Profit & Loss, Speed/Distance, Data Interpretation (graphs, charts, case-based)</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="space-y-4">
-                        <div className="flex items-start gap-3">
-                          <MessageSquare className="w-5 h-5 text-indigo-600 mt-1" />
-                          <div>
-                            <h4 className="font-semibold text-gray-900 mb-2">Business Communication</h4>
-                            <p className="text-gray-600 text-sm">Email etiquette, presentation skills, professional writing, LinkedIn optimization & personal branding</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="space-y-4">
-                        <div className="flex items-start gap-3">
-                          <Building className="w-5 h-5 text-indigo-600 mt-1" />
-                          <div>
-                            <h4 className="font-semibold text-gray-900 mb-2">Corporate Exposure</h4>
-                            <p className="text-gray-600 text-sm">Industry orientation, workplace culture, professional conduct</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-
-              {/* Semester 2 */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-              >
-                <Card className="overflow-hidden border-indigo-100">
-                  <CardContent className="p-8">
-                    <div className="flex items-center gap-4 mb-6">
-                      <Badge variant="secondary" className="bg-indigo-100 text-indigo-800 text-sm px-3 py-1">
-                        30 Hours
-                      </Badge>
-                      <h3 className="text-2xl font-bold text-gray-900">Semester 2: Soft Skills & Corporate Etiquette</h3>
-                    </div>
-                    <div className="grid md:grid-cols-3 gap-6">
-                      <div className="space-y-4">
-                        <div className="flex items-start gap-3">
-                          <Presentation className="w-5 h-5 text-indigo-600 mt-1" />
-                          <div>
-                            <h4 className="font-semibold text-gray-900 mb-2">Advanced Communication</h4>
-                            <p className="text-gray-600 text-sm">Storytelling in business, impactful PPTs & reports</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="space-y-4">
-                        <div className="flex items-start gap-3">
-                          <Users className="w-5 h-5 text-indigo-600 mt-1" />
-                          <div>
-                            <h4 className="font-semibold text-gray-900 mb-2">Team Readiness</h4>
-                            <p className="text-gray-600 text-sm">Group discussions with live evaluation, simulations, conflict resolution</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="space-y-4">
-                        <div className="flex items-start gap-3">
-                          <Target className="w-5 h-5 text-indigo-600 mt-1" />
-                          <div>
-                            <h4 className="font-semibold text-gray-900 mb-2">Interview Readiness</h4>
-                            <p className="text-gray-600 text-sm">STAR method, role-play interviews (recorded & reviewed), body language, networking skills</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-
-              {/* Semester 3 */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-              >
-                <Card className="overflow-hidden border-indigo-100">
-                  <CardContent className="p-8">
-                    <div className="flex items-center gap-4 mb-6">
-                      <Badge variant="secondary" className="bg-indigo-100 text-indigo-800 text-sm px-3 py-1">
-                        30 Hours
-                      </Badge>
-                      <h3 className="text-2xl font-bold text-gray-900">Semester 3: Domain & Functional Readiness</h3>
-                    </div>
-                    <div className="grid md:grid-cols-4 gap-6">
-                      <div className="space-y-4">
-                        <div className="flex items-start gap-3">
-                          <TrendingUp className="w-5 h-5 text-indigo-600 mt-1" />
-                          <div>
-                            <h4 className="font-semibold text-gray-900 mb-2">Marketing & Sales</h4>
-                            <p className="text-gray-600 text-sm">Digital marketing, brand pitches, market research</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="space-y-4">
-                        <div className="flex items-start gap-3">
-                          <LineChart className="w-5 h-5 text-indigo-600 mt-1" />
-                          <div>
-                            <h4 className="font-semibold text-gray-900 mb-2">Finance & Analytics</h4>
-                            <p className="text-gray-600 text-sm">Financial statements, ROI/NPV, Excel-based analytics</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="space-y-4">
-                        <div className="flex items-start gap-3">
-                          <Network className="w-5 h-5 text-indigo-600 mt-1" />
-                          <div>
-                            <h4 className="font-semibold text-gray-900 mb-2">Operations & Supply Chain</h4>
-                            <p className="text-gray-600 text-sm">Lean principles, process optimization, case studies</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="space-y-4">
-                        <div className="flex items-start gap-3">
-                          <Brain className="w-5 h-5 text-indigo-600 mt-1" />
-                          <div>
-                            <h4 className="font-semibold text-gray-900 mb-2">Strategy & Consulting</h4>
-                            <p className="text-gray-600 text-sm">SWOT, BCG, Porter's frameworks + mini consulting project</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-
-              {/* Semester 4 */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-              >
-                <Card className="overflow-hidden border-indigo-100">
-                  <CardContent className="p-8">
-                    <div className="flex items-center gap-4 mb-6">
-                      <Badge variant="secondary" className="bg-indigo-100 text-indigo-800 text-sm px-3 py-1">
-                        30 Hours
-                      </Badge>
-                      <h3 className="text-2xl font-bold text-gray-900">Semester 4: Career Launch & Future Skills</h3>
-                    </div>
-                    <div className="grid md:grid-cols-3 gap-6">
-                      <div className="space-y-4">
-                        <div className="flex items-start gap-3">
-                          <GraduationCap className="w-5 h-5 text-indigo-600 mt-1" />
-                          <div>
-                            <h4 className="font-semibold text-gray-900 mb-2">Placement Readiness</h4>
-                            <p className="text-gray-600 text-sm">Unlimited expert mock interviews, AI-powered ATS-compliant resumes</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="space-y-4">
-                        <div className="flex items-start gap-3">
-                          <Sparkles className="w-5 h-5 text-indigo-600 mt-1" />
-                          <div>
-                            <h4 className="font-semibold text-gray-900 mb-2">Emerging Tech Skills</h4>
-                            <p className="text-gray-600 text-sm">AI in business, generative AI applications, basics of full-stack development & data science (bridge modules)</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="space-y-4">
-                        <div className="flex items-start gap-3">
-                          <Building className="w-5 h-5 text-indigo-600 mt-1" />
-                          <div>
-                            <h4 className="font-semibold text-gray-900 mb-2">Industry Integration</h4>
-                            <p className="text-gray-600 text-sm">Masterclasses from leaders at Microsoft, Google, LinkedIn, Amazon; real consulting case discussions</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </div>
+                />
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
-      
+
+
       {/* Who is the program for */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <SectionHeader 
-              title="Built For Your Students" 
+            <SectionHeader
+              title="Built For Your Students"
               subtitle="The bridge between academic theory and corporate readiness"
               align="center"
             />
-            
+
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
               {[
                 {
@@ -377,17 +183,17 @@ const ManagementReadinessProgram = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Why This Matters */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <SectionHeader 
-              title="The Hard Truth About Management Placements" 
+            <SectionHeader
+              title="The Hard Truth About Management Placements"
               subtitle="Despite strong academic foundations, management graduates commonly struggle with:"
               align="center"
             />
-            
+
             <div className="grid md:grid-cols-2 gap-8 mt-12">
               {[
                 {
@@ -427,9 +233,9 @@ const ManagementReadinessProgram = () => {
                 </motion.div>
               ))}
             </div>
-            
+
             <div className="mt-12 p-8 bg-gradient-to-br from-indigo-50 to-blue-50 rounded-2xl border border-indigo-100 text-center">
-              <h3 className="text-2xl font-bold text-indigo-900 mb-4">Our Solution?</h3>
+              <h3 className="text-2xl font-bold text-indigo-900 mb-4">ZSkillUp Approach</h3>
               <p className="text-lg text-gray-700">
                 Industry-aligned curriculum + AI-powered practice + guaranteed corporate exposure
               </p>
@@ -437,17 +243,17 @@ const ManagementReadinessProgram = () => {
           </div>
         </div>
       </section>
-      
+
       {/* ZSkillHub - AI platform */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <SectionHeader 
-              title="ZSkillHub AI Platform" 
+            <SectionHeader
+              title="ZSkillHub AI Platform"
               subtitle="India's most advanced employability platform that adapts, learns, and grows with every student interaction"
               align="center"
             />
-            
+
             <div className="flex flex-wrap justify-center gap-6 mt-12 mb-16">
               {[
                 {
@@ -455,7 +261,7 @@ const ManagementReadinessProgram = () => {
                   title: "Guaranteed Virtual Internships",
                   color: "bg-indigo-100 text-indigo-600"
                 },
-                 {
+                {
                   icon: <Users className="h-6 w-6" />,
                   title: "450+ Hiring Partners",
                   color: "bg-green-100 text-green-600"
@@ -484,9 +290,9 @@ const ManagementReadinessProgram = () => {
                 </motion.div>
               ))}
             </div>
-            
+
             <h3 className="text-2xl font-bold text-center mb-10">Four Pillars of AI-Powered Success</h3>
-            
+
             <div className="grid md:grid-cols-2 gap-10 mb-10">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
@@ -500,27 +306,22 @@ const ManagementReadinessProgram = () => {
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-indigo-900">Adaptive Daily Assessments</h3>
                 <p className="text-lg text-indigo-800 mb-4">Smart Learning That Grows With You</p>
-                <p className="text-gray-700 mb-6">
+                <p className="text-gray-700 mb-6 text-justify">
                   Every day, students get 20-25 personalized questions that adapt based on their progress. Think of it as a personal trainer for your brain - it knows exactly where you need to improve and adjusts the difficulty accordingly.
                 </p>
                 <div className="flex items-center gap-2 text-indigo-700 font-medium mb-6">
                   <CheckCircle className="h-5 w-5" />
                   <span>Quota-based learning with real-time doubt support</span>
                 </div>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="border-indigo-200 text-indigo-700 hover:bg-indigo-50"
-                  onClick={() => {
-                    const contactSection = document.getElementById('contact');
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={() => window.location.href = '/contact-us'}
                 >
                   Schedule A Call With Us <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
               </motion.div>
-              
+
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -533,27 +334,22 @@ const ManagementReadinessProgram = () => {
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-blue-900">AI Mock Interviews</h3>
                 <p className="text-lg text-blue-800 mb-4">Practice Like It's The Real Thing</p>
-                <p className="text-gray-700 mb-6">
+                <p className="text-gray-700 mb-6 text-justify">
                   Students can interview unlimited times with our AI that asks different questions based on their answers. It's like having access to thousands of HR managers who give detailed feedback on everything from technical skills to how fast you speak.
                 </p>
                 <div className="flex items-center gap-2 text-blue-700 font-medium mb-6">
                   <CheckCircle className="h-5 w-5" />
                   <span>Industry's first unlimited adaptive interview system</span>
                 </div>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="border-blue-200 text-blue-700 hover:bg-blue-50"
-                  onClick={() => {
-                    const contactSection = document.getElementById('contact');
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={() => window.location.href = '/contact-us'}
                 >
                   Schedule A Call With Us <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
               </motion.div>
-              
+
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -566,27 +362,22 @@ const ManagementReadinessProgram = () => {
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-emerald-900">Intelligent Resume Builder</h3>
                 <p className="text-lg text-emerald-800 mb-4">Your Resume, Optimized For Success</p>
-                <p className="text-gray-700 mb-6">
+                <p className="text-gray-700 mb-6 text-justify">
                   Create 40+ different resume versions that actually get past those automated screening systems. Our AI scores each version and suggests improvements, so your resume doesn't just look good – it gets results.
                 </p>
                 <div className="flex items-center gap-2 text-emerald-700 font-medium mb-6">
                   <CheckCircle className="h-5 w-5" />
                   <span>ATS-optimized with real-time AI scoring</span>
                 </div>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="border-emerald-200 text-emerald-700 hover:bg-emerald-50"
-                  onClick={() => {
-                    const contactSection = document.getElementById('contact');
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={() => window.location.href = '/contact-us'}
                 >
                   Schedule A Call With Us <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
               </motion.div>
-              
+
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -599,28 +390,23 @@ const ManagementReadinessProgram = () => {
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-amber-900">Curated Job Portal</h3>
                 <p className="text-lg text-amber-800 mb-4">Opportunities That Actually Matter</p>
-                <p className="text-gray-700 mb-6">
+                <p className="text-gray-700 mb-6 text-justify">
                   Not just any job listings - these are opportunities our team personally sources from partner companies. Students see jobs that are actually hiring, not just posting for show.
                 </p>
                 <div className="flex items-center gap-2 text-amber-700 font-medium mb-6">
                   <CheckCircle className="h-5 w-5" />
                   <span>Direct corporate partnerships, not scraped listings</span>
                 </div>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="border-amber-200 text-amber-700 hover:bg-amber-50"
-                  onClick={() => {
-                    const contactSection = document.getElementById('contact');
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={() => window.location.href = '/contact-us'}
                 >
                   Schedule A Call With Us <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
               </motion.div>
             </div>
-            
+
             {/* CTA Section */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -633,15 +419,10 @@ const ManagementReadinessProgram = () => {
               <p className="text-xl text-indigo-100 mb-8 max-w-3xl mx-auto">
                 Join institutions already using ZSkillHub's AI-powered platform to guarantee internships and achieve higher placement rates for their graduates.
               </p>
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="bg-white text-indigo-700 hover:bg-indigo-50 rounded-full px-8"
-                onClick={() => {
-                  const contactSection = document.getElementById('contact');
-                  if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
+                onClick={() => window.location.href = '/contact-us'}
               >
                 Schedule a Partnership Discussion <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
@@ -649,7 +430,7 @@ const ManagementReadinessProgram = () => {
           </div>
         </div>
       </section>
-      
+
       {/* What's Inside This Program */}
       {/* <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -772,14 +553,17 @@ const ManagementReadinessProgram = () => {
           </div>
         </div>
       </section> */}
-      
+
+      {/* {colleges} */}
+      <TrustedSection />
+
       {/* Impact Section */}
       <section className="py-16 bg-gradient-to-br from-indigo-900 to-blue-800 text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">Impact That Speaks for Itself</h2>
             <p className="text-lg text-center text-indigo-100 mb-12">Our numbers show the difference we make for institutions and students alike.</p>
-            
+
             <div className="grid md:grid-cols-4 gap-6">
               {[
                 { value: "92%", label: "Placement Rate" },
@@ -803,124 +587,30 @@ const ManagementReadinessProgram = () => {
           </div>
         </div>
       </section>
-      
-      {/* Program Flexibility */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+
+      {/* Hiring Partners Section */}
+      <HiringPartnersSection />
+
+         {/* Program Curriculum */}
+      <section className="py-20 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 to-white opacity-50" />
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Our Partnership Approach</h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                We work as your strategic partner, not a rigid vendor. Every program is tailored to your institution's specific needs, student profile, and placement goals.
-              </p>
-              <p className="text-lg font-medium text-gray-700 mt-4 italic">
-                "Because every institution is unique, every solution should be too."
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="text-2xl font-bold mb-3">Flexible Training Delivery</h3>
-              <p className="text-lg text-gray-600 mb-8">Choose the delivery method that works best for your institution</p>
-              
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {[
-                  {
-                    icon: <Users className="h-7 w-7 text-white" />,
-                    iconBg: "bg-pink-500",
-                    title: "Offline Intensive Sessions",
-                    subtitle: "5-day immersive programs on campus",
-                    description: "Face-to-face workshops, hands-on exercises, peer collaboration",
-                    features: [
-                      "Campus-based delivery",
-                      "Interactive workshops",
-                      "Peer learning",
-                      "Immediate feedback"
-                    ],
-                    cta: "Perfect for institutions seeking offline intensive sessions"
-                  },
-                  {
-                    icon: <Presentation className="h-7 w-7 text-white" />,
-                    iconBg: "bg-blue-500",
-                    title: "Live Online Masterclasses",
-                    subtitle: "Industry experts and doubt sessions",
-                    description: "Expert-led sessions, real-time Q&A, recorded for review",
-                    features: [
-                      "Expert instructors",
-                      "Live interaction",
-                      "Recorded sessions",
-                      "Flexible timing"
-                    ],
-                    cta: "Perfect for institutions seeking live online masterclasses"
-                  },
-                  {
-                    icon: <Activity className="h-7 w-7 text-white" />,
-                    iconBg: "bg-indigo-500",
-                    title: "Hybrid Learning Models",
-                    subtitle: "Combined approach for maximum impact",
-                    description: "Best of both worlds - online flexibility with offline engagement",
-                    features: [
-                      "Flexible scheduling",
-                      "Multi-modal learning",
-                      "Optimized outcomes",
-                      "Personalized approach"
-                    ],
-                    cta: "Perfect for institutions seeking hybrid learning models"
-                  },
-                  {
-                    icon: <Calendar className="h-7 w-7 text-white" />,
-                    iconBg: "bg-green-500",
-                    title: "Extended Support",
-                    subtitle: "12-month platform access, including alumni phase",
-                    description: "Continued learning and career support beyond graduation",
-                    features: [
-                      "Alumni access",
-                      "Ongoing support",
-                      "Career guidance",
-                      "Lifetime learning"
-                    ],
-                    cta: "Perfect for institutions seeking extended support"
-                  }
-                ].map((option, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="border border-gray-200 rounded-xl overflow-hidden bg-white shadow-sm"
-                  >
-                    <div className={`${option.iconBg} p-4 flex items-center gap-3`}>
-                      <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
-                        {option.icon}
-                      </div>
-                      <div className="text-white">
-                        <h4 className="font-bold">{option.title}</h4>
-                        <p className="text-sm opacity-90">{option.subtitle}</p>
-                      </div>
-                    </div>
-                    <div className="p-6">
-                      <p className="text-gray-600 mb-4">{option.description}</p>
-                      <h5 className="font-semibold mb-3">Key Features:</h5>
-                      <ul className="space-y-2 mb-6">
-                        {option.features.map((feature, i) => (
-                          <li key={i} className="flex items-center gap-2">
-                            <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
-                            <span className="text-gray-700 text-sm">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      <div className="text-center mt-auto pt-4 border-t border-gray-100">
-                        <p className="text-sm font-medium text-gray-700">{option.cta}</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
+            <SectionHeader
+              title="Program Curriculum"
+              subtitle="A comprehensive 120-hour program spread across 4 semesters"
+              align="center"
+            />
+
+            <CurriculumSection />
           </div>
         </div>
       </section>
-      
+
+     
+            {/* Virtual Internships */}
+      <VirtualInternshipSection config={internshipConfigs.management} variant="management" />
+
       {/* Certificate Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -945,40 +635,35 @@ const ManagementReadinessProgram = () => {
                     </li>
                   ))}
                 </ul>
-                <Button 
+                <Button
                   className="bg-indigo-600 hover:bg-indigo-700"
-                  onClick={() => {
-                    const contactSection = document.getElementById('contact');
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={() => window.location.href = '/contact-us'}
                 >
                   Partner With Us To Get Started <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
               <div className="flex justify-center">
-                <img 
-                  src="/certificate-sample.svg" 
-                  alt="ZSkillUp Certificate" 
-                  className="max-w-full rounded-lg shadow-lg border border-gray-200" 
+                <img
+                  src={ManagementCertificate}
+                  alt="Management Readiness Program Certificate"
+                  className="max-w-full rounded-lg shadow-lg border border-gray-200"
                 />
               </div>
             </div>
           </div>
         </div>
       </section>
-      
+
       {/* Why Choose ZSkillUp */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <SectionHeader 
-              title="Why Choose ZSkillUp?" 
+            <SectionHeader
+              title="Why Choose ZSkillUp?"
               subtitle="Our comprehensive approach drives measurable outcomes for students and institutions"
               align="center"
             />
-            
+
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
               {[
                 {
@@ -1031,62 +716,42 @@ const ManagementReadinessProgram = () => {
           </div>
         </div>
       </section>
-      
-      {/* Virtual Internships */}
-      <VirtualInternshipSection config={internshipConfigs.management} variant="management" />
-      
+
+
       {/* FAQs */}
-      <section className="py-20 bg-gray-50">
+
+      <section className="py-16 bg-muted/40">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <SectionHeader 
-              title="Frequently Asked Questions" 
-                subtitle="Get answers to common questions about the Management Readiness Program"
-              align="center"
-            />
-            
-            <div className="mt-12 space-y-6">
-              {[
-                {
-                  q: "How long is the Management Track program?",
-                  a: "4-6 months intensive training with flexible weekend and evening batches to accommodate academic schedules."
-                },
-                {
-                  q: "Are internships guaranteed for all students?",
-                  a: "Yes, every enrolled student receives a confirmed virtual internship placement with our partner companies."
-                },
-                {
-                  q: "How does ZSkillHub adapt to different learning paces?",
-                  a: "The AI engine personalizes content delivery, assessment frequency, and feedback based on individual performance metrics."
-                },
-                {
-                  q: "What support do institutions receive during implementation?",
-                  a: "Dedicated account management, monthly progress reports, faculty training sessions, and outcome tracking dashboards."
-                },
-                {
-                  q: "How do you measure and report student outcomes?",
-                  a: "Real-time analytics on skill development, placement tracking, salary benchmarking, and employer feedback collection."
-                }
-              ].map((faq, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-white rounded-lg shadow-sm p-6 border border-gray-100"
-                >
-                  <h3 className="text-lg font-semibold mb-3">{faq.q}</h3>
-                  <p className="text-gray-600">{faq.a}</p>
-                </motion.div>
+          <SectionHeader
+            // eyebrow="FAQ"
+            title="Frequently Asked Questions"
+            subtitle="Everything you need to know about partnering with ZSkillup"
+          />
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.4 }}
+            className="mx-auto max-w-3xl"
+          >
+            <Accordion type="single" collapsible className="w-full">
+              {faqs.map((f, i) => (
+                <AccordionItem value={`item-${i + 1}`} key={i}>
+                  <AccordionTrigger className="text-left text-base md:text-lg">{f.q}</AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
+                    {f.a}
+                  </AccordionContent>
+                </AccordionItem>
               ))}
-            </div>
-          </div>
+            </Accordion>
+          </motion.div>
         </div>
       </section>
-      
+
+
       {/* Contact Form */}
-     <FooterSection />
+      <FooterSection />
     </div>
   );
 };

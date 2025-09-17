@@ -6,6 +6,8 @@ import { Card, CardContent } from '@/components/ui/card';
 import { PhoneCall, ArrowRight } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import { TrainersSection } from '@/components/sections/TrainersSection';
+import { Footer } from 'react-day-picker';
+import FooterSection from '@/components/sections/Footer';
 
 const AboutUs = () => {
   return (
@@ -33,13 +35,14 @@ const AboutUs = () => {
                 At ZSkillUp, we believe every student has potential. But without the right skills, exposure, and guidance, that potential often goes untapped.
               </p>
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 mb-8">
-                <p className="text-xl md:text-2xl font-semibold text-primary italic">
+                <p className="text-xl md:text-2xl text-primary italic">
                   "Our mission is simple: to bridge the gap between education and employability by partnering with universities to prepare students for real-world careers."
                 </p>
               </div>
               <Button 
                 size="lg"
                 className="bg-primary text-white hover:bg-primary/90"
+                onClick={() => window.location.href = '/contact-us'}
               >
                 Learn About Our Approach <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
@@ -82,10 +85,10 @@ const AboutUs = () => {
                 transition={{ duration: 0.6 }}
                 className="space-y-6"
               >
-                <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+                <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed text-justify">
                   ZSkillUp Education Pvt. Ltd. is a new-age employability enablement partner working with leading universities and colleges across India. We provide an integrated ecosystem of training, technology, and placements, designed to make students not just job-ready, but future-ready.
                 </p>
-                <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+                <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed text-justify">
                   Our proprietary AI-powered platform, ZSkillHub, delivers daily practice, adaptive mock interviews, ATS-friendly resumes, and access to curated job opportunities — ensuring students are prepared from campus to corporate.
                 </p>
                 <div className="pt-4">
@@ -264,37 +267,7 @@ const AboutUs = () => {
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="py-16 bg-primary text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Ready to Transform Your Institution?
-              </h2>
-              <p className="text-xl mb-8 text-white/90">
-                Join us in building the future of education. Let's discuss how we can help your students succeed.
-              </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <Button 
-                  size="lg"
-                  variant="secondary"
-                  className="bg-white text-primary hover:bg-gray-100"
-                >
-                  Schedule a Call <PhoneCall className="ml-2 h-5 w-5" />
-                </Button>
-
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-      
+      <FooterSection />
 
     </div>
   );

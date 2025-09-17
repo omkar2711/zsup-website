@@ -12,37 +12,37 @@ const ProblemsSection = () => {
     {
       icon: BookOpen,
       title: "Outdated Curriculum",
-      problem: "Curriculum often lags behind industry shifts",
-      solution: "Industry-updated modules with guaranteed virtual internships with 450+ recruiters including Practo, Uber, and more",
-      details: "Our curriculum is updated every quarter based on industry trends and recruiter feedback"
+      problem: "Curriculum often lags behind industry shifts.",
+      solution: "Industry-updated modules with guaranteed virtual internships with 450+ recruiters including Practo, Uber, and more..",
+      details: "Our curriculum is updated every quarter based on industry trends and recruiter feedback."
     },
     {
       icon: Users,
-      title: "Interview Preparation",
-      problem: "Students aren't prepared for real-world interviews",
-      solution: "Unlimited AI-powered mock interviews that adapt to answers and simulate real interview scenarios",
-      details: "AI adapts difficulty and questions based on student performance and target companies"
+      title: "Interview Preparation.",
+      problem: "Students aren't prepared for real-world interviews.",
+      solution: "Unlimited AI-powered mock interviews that adapt to answers and simulate real interview scenarios.",
+      details: "AI adapts difficulty and questions based on student performance and target companies."
     },
     {
       icon: FileText,
       title: "Resume Quality",
-      problem: "Resumes fail to meet recruiter expectations",
+      problem: "Resumes fail to meet recruiter expectations.",
       solution: "Placement readiness through ATS-optimized resumes designed to clear hiring filters",
       details: "Our resumes pass through 90% of ATS systems and get 3x more recruiter callbacks"
     },
     {
       icon: Network,
       title: "Limited Networks",
-      problem: "Limited access to recruiters and corporate networks",
-      solution: "450+ hiring partners, 400+ CXO connects, conclaves, and white-labeled placement drives",
-      details: "Direct access to hiring managers and fast-track placement processes"
+      problem: "Limited access to recruiters and corporate networks.",
+      solution: "450+ hiring partners, 400+ CXO connects, conclaves, and white-labeled placement drives.",
+      details: "Direct access to hiring managers and fast-track placement processes."
     },
     {
       icon: GraduationCap,
       title: "Skill Gaps",
-      problem: "Students need more than academics to be placement-ready",
-      solution: "Guided by educators from IIT, NMIMS, and industry experts from Uber, Microsoft, and more",
-      details: "Comprehensive soft skills, communication, and industry readiness training"
+      problem: "Students need more than academics to be placement-ready.",
+      solution: "Guided by educators from IITs, IIMs, and industry experts from Uber, Microsoft, and more..",
+      details: "Comprehensive soft skills, communication, and industry readiness training."
     }
   ];
 
@@ -118,7 +118,7 @@ const ProblemsSection = () => {
                       <CheckCircle className="w-5 h-5 text-white" />
                     </div>
                     <div className="text-white">
-                      <div className="font-bold text-lg">Our Solution</div>
+                      <div className="font-bold text-lg">ZSkillUp Approach </div>
                     </div>
                   </div>
                 </div>

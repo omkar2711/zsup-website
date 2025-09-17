@@ -6,6 +6,8 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import FooterSection from "@/components/sections/Footer";
 import { motion } from 'framer-motion';
+import ManagementCertificate from '@/assets/ManagementCertificate.jpg';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { 
   CheckCircle, 
   Users, 
@@ -35,8 +37,34 @@ import {
 } from 'lucide-react';
 import { Footer } from 'react-day-picker';
 import { getLogoPath } from '../lib/logo-utils';
+import TrustedSection from '@/components/sections/TrustedSection';
+import HiringPartnersSection from '@/components/sections/HiringPartnersSection';
+import PartnershipApproach from '@/components/sections/PartnershipApproach';
 
 const SmartGeneralistsProgram = () => {
+
+  const faqs = [
+                {
+                  q: "How long is the Smart Generalist program?",
+                  a: "5-6 months comprehensive training with flexibility for academic schedules and exploration phases."
+                },
+                {
+                  q: "How do you help students choose their career direction?",
+                  a: "AI-powered career mapping, industry exposure sessions, mentor consultations, and hands-on project experiences."
+                },
+                {
+                  q: "What makes this different from general skill development courses?",
+                  a: "Strategic skill combination, employer education about generalist value, and positioning for cross-functional roles."
+                },
+                {
+                  q: "Are students from any academic background eligible?",
+                  a: "Yes, we work with students from all disciplines and create personalized paths based on interests and aptitudes."
+                },
+                {
+                  q: "How do you address employer concerns about hiring generalists?",
+                  a: "We demonstrate versatility through project portfolios, provide employer education, and showcase successful case studies."
+                }
+              ];
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -59,9 +87,9 @@ const SmartGeneralistsProgram = () => {
               >
                 <Badge className="mb-6 bg-purple-100 text-purple-800 hover:bg-purple-200 py-2 px-4 text-sm">For Institutions</Badge>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-br from-purple-800 via-indigo-700 to-pink-700 bg-clip-text text-transparent">
-                  Smart Generalist Readiness Program
+                  Corporate Readiness Program - Smart Generalist
                 </h1>
-                <p className="text-xl md:text-2xl text-gray-700 mb-8">
+                <p className="text-xl md:text-2xl text-gray-700 mb-8 italic">
                   Preparing versatile professionals for the modern workplace
                 </p>
                 <p className="text-lg text-gray-600 mb-10">
@@ -70,12 +98,7 @@ const SmartGeneralistsProgram = () => {
                 <Button 
                   size="lg" 
                   className="rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-8 py-6 text-lg"
-                  onClick={() => {
-                    const contactSection = document.getElementById('contact');
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={() => window.location.href = '/contact-us'}
                 >
                   Partner With Us <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
@@ -215,7 +238,7 @@ const SmartGeneralistsProgram = () => {
             </div>
             
             <div className="mt-12 p-8 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl border border-indigo-100 text-center">
-              <h3 className="text-2xl font-bold text-indigo-900 mb-4">Our Solution?</h3>
+              <h3 className="text-2xl font-bold text-indigo-900 mb-4">ZSkillUp Approach</h3>
               <p className="text-lg text-gray-700">
                 Strategic skill combination + targeted industry exposure + clear career positioning = versatile professionals ready for the future of work
               </p>
@@ -287,7 +310,7 @@ const SmartGeneralistsProgram = () => {
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-indigo-900">Adaptive Daily Assessments</h3>
                 <p className="text-lg text-indigo-800 mb-4">Smart Learning That Grows With You</p>
-                <p className="text-gray-700 mb-6">
+                <p className="text-gray-700 mb-6 text-justify">
                   Every day, students get 20-25 personalized questions that adapt based on their progress. Think of it as a personal trainer for your brain - it knows exactly where you need to improve and adjusts the difficulty accordingly.
                 </p>
                 <div className="flex items-center gap-2 text-indigo-700 font-medium mb-6">
@@ -297,12 +320,7 @@ const SmartGeneralistsProgram = () => {
                 <Button 
                   variant="outline" 
                   className="border-indigo-200 text-indigo-700 hover:bg-indigo-50"
-                  onClick={() => {
-                    const contactSection = document.getElementById('contact');
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={() => window.location.href = '/contact-us'}
                 >
                   Schedule A Call With Us <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
@@ -320,7 +338,7 @@ const SmartGeneralistsProgram = () => {
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-purple-900">AI Mock Interviews</h3>
                 <p className="text-lg text-purple-800 mb-4">Practice Like It's The Real Thing</p>
-                <p className="text-gray-700 mb-6">
+                <p className="text-gray-700 mb-6 text-justify">
                   Students can interview unlimited times with our AI that asks different questions based on their answers. It's like having access to thousands of HR managers who give detailed feedback on everything from technical skills to how fast you speak.
                 </p>
                 <div className="flex items-center gap-2 text-purple-700 font-medium mb-6">
@@ -330,12 +348,7 @@ const SmartGeneralistsProgram = () => {
                 <Button 
                   variant="outline" 
                   className="border-purple-200 text-purple-700 hover:bg-purple-50"
-                  onClick={() => {
-                    const contactSection = document.getElementById('contact');
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={() => window.location.href = '/contact-us'}
                 >
                   Schedule A Call With Us <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
@@ -353,7 +366,7 @@ const SmartGeneralistsProgram = () => {
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-pink-900">Intelligent Resume Builder</h3>
                 <p className="text-lg text-pink-800 mb-4">Your Resume, Optimized For Success</p>
-                <p className="text-gray-700 mb-6">
+                <p className="text-gray-700 mb-6 text-justify">
                   Create 40+ different resume versions that actually get past those automated screening systems. Our AI scores each version and suggests improvements, so your resume doesn't just look good – it gets results.
                 </p>
                 <div className="flex items-center gap-2 text-pink-700 font-medium mb-6">
@@ -363,12 +376,7 @@ const SmartGeneralistsProgram = () => {
                 <Button 
                   variant="outline" 
                   className="border-pink-200 text-pink-700 hover:bg-pink-50"
-                  onClick={() => {
-                    const contactSection = document.getElementById('contact');
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={() => window.location.href = '/contact-us'}
                 >
                   Schedule A Call With Us <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
@@ -386,7 +394,7 @@ const SmartGeneralistsProgram = () => {
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-amber-900">Curated Job Portal</h3>
                 <p className="text-lg text-amber-800 mb-4">Opportunities That Actually Matter</p>
-                <p className="text-gray-700 mb-6">
+                <p className="text-gray-700 mb-6 text-justify">
                   Not just any job listings - these are opportunities our team personally sources from partner companies. Students see jobs that are actually hiring, not just posting for show.
                 </p>
                 <div className="flex items-center gap-2 text-amber-700 font-medium mb-6">
@@ -396,12 +404,7 @@ const SmartGeneralistsProgram = () => {
                 <Button 
                   variant="outline" 
                   className="border-amber-200 text-amber-700 hover:bg-amber-50"
-                  onClick={() => {
-                    const contactSection = document.getElementById('contact');
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={() => window.location.href = '/contact-us'}
                 >
                   Schedule A Call With Us <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
@@ -423,12 +426,7 @@ const SmartGeneralistsProgram = () => {
               <Button 
                 size="lg" 
                 className="bg-white text-indigo-700 hover:bg-indigo-50 rounded-full px-8"
-                onClick={() => {
-                  const contactSection = document.getElementById('contact');
-                  if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
+                onClick={() => window.location.href = '/contact-us'}
               >
                 Schedule a Partnership Discussion <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
@@ -559,7 +557,9 @@ const SmartGeneralistsProgram = () => {
           </div>
         </div>
       </section>
-      
+
+      <TrustedSection />
+
       {/* Impact Section */}
       <section className="py-16 bg-gradient-to-br from-indigo-900 to-purple-800 text-white">
         <div className="container mx-auto px-4">
@@ -590,123 +590,12 @@ const SmartGeneralistsProgram = () => {
           </div>
         </div>
       </section>
-      
-      {/* Program Flexibility */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Our Partnership Approach</h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                We work as your strategic partner, not a rigid vendor. Every program is tailored to your institution's specific needs, student profile, and placement goals.
-              </p>
-              <p className="text-lg font-medium text-gray-700 mt-4 italic">
-                "Because every institution is unique, every solution should be too."
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="text-2xl font-bold mb-3">Flexible Training Delivery</h3>
-              <p className="text-lg text-gray-600 mb-8">Choose the delivery method that works best for your institution</p>
-              
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {[
-                  {
-                    icon: <Users className="h-7 w-7 text-white" />,
-                    iconBg: "bg-pink-500",
-                    title: "Offline Intensive Sessions",
-                    subtitle: "5-day immersive programs on campus",
-                    description: "Face-to-face workshops, hands-on exercises, peer collaboration",
-                    features: [
-                      "Campus-based delivery",
-                      "Interactive workshops",
-                      "Peer learning",
-                      "Immediate feedback"
-                    ],
-                    cta: "Perfect for institutions seeking offline intensive sessions"
-                  },
-                  {
-                    icon: <Presentation className="h-7 w-7 text-white" />,
-                    iconBg: "bg-purple-500",
-                    title: "Live Online Masterclasses",
-                    subtitle: "Industry experts and doubt sessions",
-                    description: "Expert-led sessions, real-time Q&A, recorded for review",
-                    features: [
-                      "Expert instructors",
-                      "Live interaction",
-                      "Recorded sessions",
-                      "Flexible timing"
-                    ],
-                    cta: "Perfect for institutions seeking live online masterclasses"
-                  },
-                  {
-                    icon: <Activity className="h-7 w-7 text-white" />,
-                    iconBg: "bg-indigo-500",
-                    title: "Hybrid Learning Models",
-                    subtitle: "Combined approach for maximum impact",
-                    description: "Best of both worlds - online flexibility with offline engagement",
-                    features: [
-                      "Flexible scheduling",
-                      "Multi-modal learning",
-                      "Optimized outcomes",
-                      "Personalized approach"
-                    ],
-                    cta: "Perfect for institutions seeking hybrid learning models"
-                  },
-                  {
-                    icon: <Calendar className="h-7 w-7 text-white" />,
-                    iconBg: "bg-blue-500",
-                    title: "Extended Support",
-                    subtitle: "12-month platform access, including alumni phase",
-                    description: "Continued learning and career support beyond graduation",
-                    features: [
-                      "Alumni access",
-                      "Ongoing support",
-                      "Career guidance",
-                      "Lifetime learning"
-                    ],
-                    cta: "Perfect for institutions seeking extended support"
-                  }
-                ].map((option, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="border border-gray-200 rounded-xl overflow-hidden bg-white shadow-sm"
-                  >
-                    <div className={`${option.iconBg} p-4 flex items-center gap-3`}>
-                      <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
-                        {option.icon}
-                      </div>
-                      <div className="text-white">
-                        <h4 className="font-bold">{option.title}</h4>
-                        <p className="text-sm opacity-90">{option.subtitle}</p>
-                      </div>
-                    </div>
-                    <div className="p-6">
-                      <p className="text-gray-600 mb-4">{option.description}</p>
-                      <h5 className="font-semibold mb-3">Key Features:</h5>
-                      <ul className="space-y-2 mb-6">
-                        {option.features.map((feature, i) => (
-                          <li key={i} className="flex items-center gap-2">
-                            <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
-                            <span className="text-gray-700 text-sm">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      <div className="text-center mt-auto pt-4 border-t border-gray-100">
-                        <p className="text-sm font-medium text-gray-700">{option.cta}</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+
+      <HiringPartnersSection />
+
+      <PartnershipApproach />
+
+     
       
       {/* Certificate Section */}
       <section className="py-20 bg-gray-50">
@@ -734,20 +623,15 @@ const SmartGeneralistsProgram = () => {
                 </ul>
                 <Button 
                   className="bg-indigo-600 hover:bg-indigo-700"
-                  onClick={() => {
-                    const contactSection = document.getElementById('contact');
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={() => window.location.href = '/contact-us'}
                 >
                   Partner With Us To Get Started <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
               <div className="flex justify-center">
                 <img 
-                  src="/certificate-sample.svg" 
-                  alt="ZSkillUp Certificate" 
+                  src={ManagementCertificate} 
+                  alt="Management Readiness Program Certificate" 
                   className="max-w-full rounded-lg shadow-lg border border-gray-200" 
                 />
               </div>
@@ -819,113 +703,38 @@ const SmartGeneralistsProgram = () => {
         </div>
       </section>
       
-      {/* FAQs */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <SectionHeader 
-              title="Frequently Asked Questions" 
-              subtitle="Get answers to common questions about the Smart Generalist Program"
-              align="center"
-            />
-            
-            <div className="mt-12 space-y-6">
-              {[
-                {
-                  q: "How long is the Smart Generalist program?",
-                  a: "5-6 months comprehensive training with flexibility for academic schedules and exploration phases."
-                },
-                {
-                  q: "How do you help students choose their career direction?",
-                  a: "AI-powered career mapping, industry exposure sessions, mentor consultations, and hands-on project experiences."
-                },
-                {
-                  q: "What makes this different from general skill development courses?",
-                  a: "Strategic skill combination, employer education about generalist value, and positioning for cross-functional roles."
-                },
-                {
-                  q: "Are students from any academic background eligible?",
-                  a: "Yes, we work with students from all disciplines and create personalized paths based on interests and aptitudes."
-                },
-                {
-                  q: "How do you address employer concerns about hiring generalists?",
-                  a: "We demonstrate versatility through project portfolios, provide employer education, and showcase successful case studies."
-                }
-              ].map((faq, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-white rounded-lg shadow-sm p-6 border border-gray-100"
-                >
-                  <h3 className="text-lg font-semibold mb-3">{faq.q}</h3>
-                  <p className="text-gray-600">{faq.a}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Partners Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <SectionHeader
-            title="Our Academic & Corporate Partners"
-            subtitle="Joining a network of prestigious institutions and companies that trust ZSkillup"
-            align="center"
-          />
+     
+
+      {/* Frequently Asked Questions */}
+       <section className="py-16 bg-muted/40">
+                <div className="container mx-auto px-4">
+                  <SectionHeader
+                    // eyebrow="FAQ"
+                    title="Frequently Asked Questions"
+                    subtitle="Everything you need to know about partnering with ZSkillup"
+                  />
           
-          <div className="mt-12">
-            <h3 className="text-xl font-semibold mb-6 text-center text-gray-700">Academic Partners</h3>
-            <motion.div 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="flex flex-wrap justify-center gap-8 mb-12"
-            >
-              {['/assets/college_logos/AGM LOGO.jpeg', 
-                '/assets/college_logos/DY Patil University.jpg', 
-                '/assets/college_logos/LNMIIT.jpg',
-                '/assets/college_logos/KLE, Belgaum.jpeg',
-                '/assets/college_logos/Ajeenkya dy patil.jpeg'
-              ].map((logo, index) => (
-                <div 
-                  key={index} 
-                  className="w-32 h-32 bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center justify-center  hover:grayscale-0 transition-all duration-300"
-                >
-                  <img src={logo} alt="Academic Partner" className="max-w-full max-h-full object-contain" />
+                  <motion.div
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.4 }}
+                    className="mx-auto max-w-3xl"
+                  >
+                    <Accordion type="single" collapsible className="w-full">
+                      {faqs.map((f, i) => (
+                        <AccordionItem value={`item-${i + 1}`} key={i}>
+                          <AccordionTrigger className="text-left text-base md:text-lg">{f.q}</AccordionTrigger>
+                          <AccordionContent className="text-muted-foreground">
+                            {f.a}
+                          </AccordionContent>
+                        </AccordionItem>
+                      ))}
+                    </Accordion>
+                  </motion.div>
                 </div>
-              ))}
-            </motion.div>
-            
-            <h3 className="text-xl font-semibold mb-6 text-center text-gray-700">Corporate Partners</h3>
-            <motion.div 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="flex flex-wrap justify-center gap-8"
-            >
-              {['/assets/Companies_logos/Amazon.jpeg', 
-                '/assets/Companies_logos/Flipkart-Logo.png', 
-                '/assets/Companies_logos/razorpay9274.jpg',
-                '/assets/Companies_logos/MEESHO.png',
-                '/assets/Companies_logos/Grow logo.png'
-              ].map((logo, index) => (
-                <div 
-                  key={index} 
-                  className="w-32 h-32 bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center justify-center  hover:grayscale-0 transition-all duration-300"
-                >
-                  <img src={logo} alt="Corporate Partner" className="max-w-full max-h-full object-contain" />
-                </div>
-              ))}
-            </motion.div>
-          </div>
-        </div>
-      </section>
-      
+              </section>
+
       {/* Contact Form */}
      < FooterSection />
     </div>

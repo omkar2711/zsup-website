@@ -26,6 +26,9 @@ const TestimonialsSection = () => {
 
   const [api, setApi] = useState<EmblaCarouselType | null>(null);
   const timerRef = useRef<number | null>(null);
+  
+  // Reference for testimonial content elements
+  const testimonialContentsRef = useRef<HTMLDivElement[]>([]);
 
   const start = useCallback(() => {
     if (!api) return;
@@ -49,6 +52,54 @@ const TestimonialsSection = () => {
     start();
     return stop;
   }, [api, start, stop]);
+  
+  // Effect for equalizing card heights
+  useEffect(() => {
+    // Function to equalize the height of all testimonial cards
+    const equalizeCardHeights = () => {
+      // Get all testimonial content elements
+      const contentElements = document.querySelectorAll('.testimonial-content');
+      if (contentElements.length <= 1) return; // No need to equalize if there's only one card
+      
+      // Reset heights to auto to get natural heights
+      contentElements.forEach(el => {
+        (el as HTMLElement).style.height = 'auto';
+      });
+      
+      // Find the tallest card
+      let maxHeight = 0;
+      contentElements.forEach(el => {
+        maxHeight = Math.max(maxHeight, (el as HTMLElement).offsetHeight);
+      });
+      
+      // Set all cards to the height of the tallest card
+      contentElements.forEach(el => {
+        (el as HTMLElement).style.height = `${maxHeight}px`;
+      });
+    };
+    
+    // Run on initial render and window resize
+    equalizeCardHeights();
+    window.addEventListener('resize', equalizeCardHeights);
+    
+    // Also run when the carousel slides change
+    const handleCarouselChange = () => {
+      // Small delay to ensure content has rendered properly
+      setTimeout(equalizeCardHeights, 100);
+    };
+    
+    if (api) {
+      api.on('select', handleCarouselChange);
+    }
+    
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', equalizeCardHeights);
+      if (api) {
+        api.off('select', handleCarouselChange);
+      }
+    };
+  }, [api]);
 
   return (
     <section className="relative overflow-hidden py-16 bg-gradient-to-b from-muted/40 via-background to-muted/40">
@@ -67,43 +118,35 @@ const TestimonialsSection = () => {
             {testimonials.map((testimonial, index) => (
               <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/2 pt-4">
                 <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-                  <Card className="shadow-card transition-smooth hover:shadow-elegant hover:-translate-y-2 relative h-full min-h-[280px] flex flex-col">
+                  <Card className="shadow-card transition-smooth hover:shadow-elegant hover:-translate-y-2 relative h-full flex flex-col">
                     <div className="absolute -top-4 left-6">
                       <div className="w-8 h-8 bg-gradient-primary rounded-full flex items-center justify-center">
-                        <Quote className="w-4 h-4 text-primary" />
+                        <Quote className="w-4 h-4 text-white" />
                       </div>
                     </div>
-                    <CardContent className="pt-8 pb-6">
+                    <CardContent className="pt-8 pb-6 flex-1 flex flex-col">
                       <div className="flex mb-4">
                         {[...Array(testimonial.rating)].map((_, i) => (
                           <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
                         ))}
                       </div>
-                      <p className="text-muted-foreground leading-relaxed mb-6 italic">
-                        "{testimonial.content}"
-                      </p>
-                      {/* <div className="border-t pt-4">
-                        <div className="flex justify-between items-start">
-                          <div>
-                            <h4 className="font-semibold text-primary text-lg">
-                              {testimonial.author}
-                            </h4>
-                            <p className="text-sm text-muted-foreground">
-                              {testimonial.position}
-                            </p>
-                          </div>
-                          {testimonial.linkedInUrl && (
+                      <div className="testimonial-content flex-1 flex flex-col">
+                        <p className="text-muted-foreground leading-relaxed mb-6 italic flex-grow">
+                          "{testimonial.content}"
+                        </p>
+                        {testimonial.linkedInUrl && (
+                          <div className="mt-auto text-right">
                             <a 
                               href={testimonial.linkedInUrl} 
                               target="_blank" 
                               rel="noopener noreferrer"
-                              className="text-blue-600 hover:text-blue-800 transition-colors"
+                              className="text-blue-600 hover:text-blue-800 transition-colors inline-flex items-center gap-1 text-sm"
                             >
-                              <ExternalLink className="w-5 h-5" />
+                              View on LinkedIn <ExternalLink className="w-3.5 h-3.5" />
                             </a>
-                          )}
-                        </div>
-                      </div> */}
+                          </div>
+                        )}
+                      </div>
                     </CardContent>
                   </Card>
                 </motion.div>

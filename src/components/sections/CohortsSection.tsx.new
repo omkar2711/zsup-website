@@ -14,7 +14,7 @@ const CohortsSection = () => {
   const cohorts = [
     {
       id: "technology",
-      title: "Corporate Readiness Program  Technology",
+      title: "Technology Readiness Program",
       description: "Equipping engineering and BCA students with modern tech stacks, coding practice, and corporate skills for developer and data-driven careers.",
       icon: Code,
       badge: "Technology",
@@ -36,7 +36,7 @@ const CohortsSection = () => {
     },
     {
       id: "management",
-      title: "Corporate Readiness Program  Management",
+      title: "Management Readiness Program",
       description: "Preparing BBA/MBA students with aptitude, communication, and domain expertise for roles in consulting, sales, marketing, operations, and more.",
       icon: BookOpen,
       badge: "Management",
@@ -58,7 +58,7 @@ const CohortsSection = () => {
     },
     {
       id: "generalist",
-      title: "Corporate Readiness Program  Smart Generalist",
+      title: "Smart Generalist Program",
       description: "Helping B.A., B.Com, and B.Sc graduates build aptitude, communication, and career readiness for versatile cross-functional roles across industries.",
       icon: Users,
       badge: "Generalist",
@@ -103,13 +103,9 @@ const CohortsSection = () => {
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Customized employability solutions designed for your campus and the unique needs of your students.
           </p>
-          <h2 className="text-2xl md:text-4xl font-bold text-foreground mt-10">
-            Corporate Readiness Program 
-          </h2>
         </div>
         
         <div className="max-w-6xl mx-auto">
-          
           <Tabs 
             defaultValue="management" 
             value={activeTab}
@@ -131,40 +127,34 @@ const CohortsSection = () => {
                       ${isMobile ? 'w-full justify-start pl-4 py-3.5 rounded-lg' : 'px-8 py-3.5 rounded-full'} 
                       text-base transition-all duration-300 font-medium relative overflow-hidden
                       ${activeTab === cohort.id 
-                        ? "shadow-lg border-2 scale-105 z-10" 
-                        : "text-muted-foreground hover:text-foreground hover:bg-background/50 hover:scale-[1.02] border border-transparent"}
+                        ? "bg-white text-foreground shadow-md" 
+                        : "text-muted-foreground hover:text-foreground hover:bg-background/50"}
                     `}
                     style={{
                       ...(activeTab === cohort.id ? { 
-                        color: cohort.color,
-                        backgroundColor: `${cohort.color}10`,
-                        borderColor: `${cohort.color}30`,
-                        transform: `translateY(${isMobile ? '0' : '-2px'})`
+                        color: cohort.color 
                       } : {})
                     }}
                   >
                     <div className="flex items-center gap-2.5 relative z-10">
                       <div className={`
                         ${isMobile ? 'w-7 h-7' : 'w-8 h-8'} rounded-full flex items-center justify-center
-                        ${activeTab === cohort.id ? 'bg-opacity-30 shadow-inner' : 'bg-opacity-10'}
-                      `} style={{ 
-                        backgroundColor: `${cohort.color}${activeTab === cohort.id ? '30' : '10'}`,
-                        boxShadow: activeTab === cohort.id ? `0 0 0 2px ${cohort.color}20` : 'none'
-                      }}>
+                        ${activeTab === cohort.id ? 'bg-opacity-20' : 'bg-opacity-10'}
+                      `} style={{ backgroundColor: `${cohort.color}20` }}>
                         <cohort.icon className={`${isMobile ? 'w-4 h-4' : 'w-5 h-5'}`} 
                           style={{ color: activeTab === cohort.id ? cohort.color : 'currentColor' }} 
                         />
                       </div>
-                      <span className={activeTab === cohort.id ? 'font-bold' : ''}>{cohort.badge}</span>
+                      <span>{cohort.badge}</span>
                     </div>
                     
                     {/* Active indicator line */}
                     {activeTab === cohort.id && (
                       <>
                         {isMobile ? (
-                          <div className="absolute left-0 top-0 bottom-0 w-1.5 rounded-r-full" style={{ backgroundColor: cohort.color }}></div>
+                          <div className="absolute left-0 top-0 bottom-0 w-1" style={{ backgroundColor: cohort.color }}></div>
                         ) : (
-                          <div className="absolute left-[10%] right-[10%] bottom-0 h-1.5 rounded-t-full" style={{ backgroundColor: cohort.color }}></div>
+                          <div className="absolute left-0 right-0 bottom-0 h-1" style={{ backgroundColor: cohort.color }}></div>
                         )}
                       </>
                     )}

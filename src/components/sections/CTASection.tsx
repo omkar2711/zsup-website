@@ -18,10 +18,19 @@ export default function CTASection() {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.4 }}
         >
-          <Button size="lg" className="bg-highlight text-highlight-foreground hover:bg-highlight/90 px-8 py-6 text-base">
+          <Button 
+            size="lg" 
+            className="bg-highlight text-highlight-foreground hover:bg-highlight/90 px-8 py-6 text-base"
+            onClick={() => window.location.href = '/contact-us'}
+          >
             Partner With Us
           </Button>
-          <Button variant="outline" size="lg" className="px-8 py-6 text-base border-accent text-accent hover:bg-accent/5">
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="px-8 py-6 text-base border-accent text-accent hover:bg-accent/5"
+            onClick={() => window.location.href = '/contact-us'}
+          >
             Book a Call
           </Button>
         </motion.div>

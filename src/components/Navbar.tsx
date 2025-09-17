@@ -45,13 +45,25 @@ const Navbar = () => {
     name: string;
     to?: string;
     hasDropdown?: boolean;
-    dropdownItems?: { name: string; to: string }[];
+    dropdownItems?: {
+      name: string;
+      to: string;
+      isHeader?: boolean;
+      subItems?: { name: string; to: string }[];
+    }[];
   }
 
   const offeringsDropdownItems = [
-  { name: "Management Readiness Program", to: "/corporate-readiness-program" },
-  { name: "Technology Readiness Program", to: "/tech-readiness-program" },
-    { name: "Smart Generalists Program", to: "/smart-generalists-program" }
+    { 
+      name: "Corporate Readiness Program", 
+      to: "", 
+      isHeader: true,
+      subItems: [
+        { name: "Technology Program", to: "/tech-readiness-program" },
+        { name: "Management Program", to: "/corporate-readiness-program" },
+        { name: "Smart Generalist Program", to: "/smart-generalists-program" }
+      ]
+    }
   ];
 
   const navItems: NavItem[] = [
@@ -91,6 +103,7 @@ const Navbar = () => {
                       <ChevronDown className="ml-1 h-4 w-4 transition-transform group-data-[state=open]:rotate-180 text-gray-500 group-hover:text-primary" />
                       {(location.pathname.includes("/corporate-readiness-program") || 
                         location.pathname.includes("/tech-readiness-program") || 
+                        location.pathname.includes("/management-program") || 
                         location.pathname.includes("/smart-generalists-program")) && (
                         <motion.span
                           layoutId="nav-underline"
@@ -101,16 +114,37 @@ const Navbar = () => {
                   </DropdownMenuTrigger>
                   <DropdownMenuContent 
                     align="center" 
-                    className="bg-white shadow-lg rounded-md p-3 min-w-[280px] border border-gray-100"
+                    className="bg-white shadow-xl rounded-xl p-0 min-w-[320px] border-none overflow-hidden mt-2"
+                    sideOffset={8}
                   >
                     {item.dropdownItems?.map((subItem) => (
-                      <DropdownMenuItem 
-                        key={subItem.name} 
-                        className="cursor-pointer py-2.5 px-3 text-gray-700 hover:text-primary hover:bg-secondary/50 rounded-md my-1 transition-colors duration-200 font-medium"
-                        onClick={() => handleNavigation(subItem.to)}
-                      >
-                        {subItem.name}
-                      </DropdownMenuItem>
+                      <div key={subItem.name} className="overflow-hidden">
+                        {subItem.isHeader ? (
+                          <>
+                            <div className="font-semibold text-primary py-4 px-6 border-b border-gray-100 bg-white text-lg">
+                              {subItem.name}
+                            </div>
+                            <div className="p-2">
+                              {subItem.subItems?.map((nestedItem) => (
+                                <DropdownMenuItem 
+                                  key={nestedItem.name} 
+                                  className="cursor-pointer py-3 px-6 text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-200 font-medium text-base mb-1"
+                                  onClick={() => handleNavigation(nestedItem.to)}
+                                >
+                                  {nestedItem.name}
+                                </DropdownMenuItem>
+                              ))}
+                            </div>
+                          </>
+                        ) : (
+                          <DropdownMenuItem 
+                            className="cursor-pointer py-2.5 px-3 text-gray-700 hover:text-primary hover:bg-secondary/50 rounded-md my-1 transition-colors duration-200 font-medium"
+                            onClick={() => handleNavigation(subItem.to)}
+                          >
+                            {subItem.name}
+                          </DropdownMenuItem>
+                        )}
+                      </div>
                     ))}
                   </DropdownMenuContent>
                 </DropdownMenu>
@@ -163,13 +197,33 @@ const Navbar = () => {
                           </p>
                           <div className="ml-4 mt-1 space-y-2 border-l-2 border-gray-200 pl-4">
                             {item.dropdownItems?.map((subItem) => (
-                              <button
-                                key={subItem.name}
-                                onClick={() => handleNavigation(subItem.to)}
-                                className="block text-gray-700 hover:text-primary transition-colors duration-200 py-1 w-full text-left"
-                              >
-                                {subItem.name}
-                              </button>
+                              <div key={subItem.name}>
+                                {subItem.isHeader ? (
+                                  <>
+                                    <p className="block text-gray-800 font-semibold py-1 w-full text-left text-primary">
+                                      {subItem.name}
+                                    </p>
+                                    <div className="ml-3 mt-1 space-y-2">
+                                      {subItem.subItems?.map((nestedItem) => (
+                                        <button
+                                          key={nestedItem.name}
+                                          onClick={() => handleNavigation(nestedItem.to)}
+                                          className="block text-gray-700 hover:text-primary transition-colors duration-200 py-1 w-full text-left"
+                                        >
+                                          {nestedItem.name}
+                                        </button>
+                                      ))}
+                                    </div>
+                                  </>
+                                ) : (
+                                  <button
+                                    onClick={() => handleNavigation(subItem.to)}
+                                    className="block text-gray-700 hover:text-primary transition-colors duration-200 py-1 w-full text-left"
+                                  >
+                                    {subItem.name}
+                                  </button>
+                                )}
+                              </div>
                             ))}
                           </div>
                         </div>

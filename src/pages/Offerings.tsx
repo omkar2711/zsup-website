@@ -74,7 +74,7 @@ const Offerings = () => {
                     </ul>
                   </CardContent>
                   <CardFooter className="px-8 pb-8 pt-0">
-                    <Button className="bg-blue-600 hover:bg-blue-700 text-white w-full">
+                    <Button className="bg-blue-600 hover:bg-blue-700 text-white w-full" onClick={() => window.location.href = '/contact-us'}>
                       Learn More <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </CardFooter>
@@ -108,7 +108,7 @@ const Offerings = () => {
                     </ul>
                   </CardContent>
                   <CardFooter className="px-8 pb-8 pt-0">
-                    <Button className="bg-purple-600 hover:bg-purple-700 text-white w-full">
+                    <Button className="bg-purple-600 hover:bg-purple-700 text-white w-full" onClick={() => window.location.href = '/contact-us'}>
                       Explore Platform <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </CardFooter>
@@ -142,7 +142,7 @@ const Offerings = () => {
                     </ul>
                   </CardContent>
                   <CardFooter className="px-8 pb-8 pt-0">
-                    <Button className="bg-green-600 hover:bg-green-700 text-white w-full">
+                    <Button className="bg-green-600 hover:bg-green-700 text-white w-full" onClick={() => window.location.href = '/contact-us'}>
                       View Opportunities <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </CardFooter>
@@ -191,9 +191,7 @@ const Offerings = () => {
                     <Button 
                       variant="outline" 
                       className="w-full border-blue-200 dark:border-blue-700 hover:bg-blue-100 dark:hover:bg-blue-800/50 group"
-                      onClick={() => {
-                        window.location.href = '/corporate-readiness-program';
-                      }}
+                      onClick={() => window.location.href = '/contact-us'}
                     >
                       Learn More
                       <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -229,9 +227,7 @@ const Offerings = () => {
                     <Button 
                       variant="outline" 
                       className="w-full border-purple-200 dark:border-purple-700 hover:bg-purple-100 dark:hover:bg-purple-800/50 group"
-                      onClick={() => {
-                        window.location.href = '/tech-readiness-program';
-                      }}
+                      onClick={() => window.location.href = '/contact-us'}
                     >
                       Learn More
                       <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -267,9 +263,7 @@ const Offerings = () => {
                     <Button 
                       variant="outline" 
                       className="w-full border-amber-200 dark:border-amber-700 hover:bg-amber-100 dark:hover:bg-amber-800/50 group"
-                      onClick={() => {
-                        window.location.href = '/smart-generalists-program';
-                      }}
+                      onClick={() => window.location.href = '/contact-us'}
                     >
                       Learn More
                       <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />

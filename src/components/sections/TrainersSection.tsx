@@ -324,13 +324,13 @@ export const TrainersSection = () => {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <Users2 className="h-6 w-6 text-purple-600" />
-            <h3 className="text-2xl font-bold text-center text-purple-800 dark:text-purple-400">
+            {/* <Users2 className="h-6 w-6 text-purple-600" /> */}
+            {/* <h3 className="text-2xl font-bold text-center text-purple-800 dark:text-purple-400">
               Expert Trainers & Industry Professionals
-            </h3>
+            </h3> */}
           </motion.div>
           
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {/* <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {trainers.map((trainer, index) => (
               <TrainerCard 
                 key={index} 
@@ -339,7 +339,7 @@ export const TrainersSection = () => {
                 onOpenModal={() => handleOpenTrainerModal(trainer)}
               />
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
       

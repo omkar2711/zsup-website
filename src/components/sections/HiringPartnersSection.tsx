@@ -56,13 +56,33 @@ const hiringPartners = [
 
 // Duplicate the partners to create a longer list for seamless looping
 const extendedPartners = [...hiringPartners, ...hiringPartners];
+const reversedExtendedPartners = [...hiringPartners, ...hiringPartners].reverse();
 
 const MarqueeContent = () => (
   <div className="flex gap-8">
     {extendedPartners.map((partner, index) => (
       <div
         key={index}
-        className="flex-shrink-0 h-[120px] w-[220px] rounded-xl bg-white p-5 flex items-center justify-center border border-gray-100 transition-all duration-300"
+        className="flex-shrink-0 h-[120px] w-[220px] rounded-xl  p-5 flex items-center justify-center  transition-all duration-300"
+      >
+        <div className="w-full h-full flex items-center justify-center">
+          <img
+            src={partner.logo}
+            alt={partner.name}
+            className="max-w-full max-h-full object-contain"
+          />
+        </div>
+      </div>
+    ))}
+  </div>
+);
+
+const ReverseMarqueeContent = () => (
+  <div className="flex gap-8">
+    {reversedExtendedPartners.map((partner, index) => (
+      <div
+        key={index}
+        className="flex-shrink-0 h-[120px] w-[220px] rounded-xl  p-5 flex items-center justify-center transition-all duration-300"
       >
         <div className="w-full h-full flex items-center justify-center">
           <img
@@ -114,7 +134,7 @@ const HiringPartnersSection = () => {
           <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-white to-transparent z-10" />
         </div>
 
-        {/* Marquee Container - Second Row (reverse direction) */}
+        {/* Marquee Container - Second Row (reverse direction and order) */}
         <div className="overflow-hidden relative mt-8">
           <motion.div
             initial={{ x: "-50%" }}
@@ -127,7 +147,7 @@ const HiringPartnersSection = () => {
             }}
             className="w-fit flex"
           >
-            <MarqueeContent />
+            <ReverseMarqueeContent />
           </motion.div>
 
           {/* Gradient Overlays */}

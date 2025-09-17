@@ -21,6 +21,25 @@ const MarqueeContent = () => (
   </div>
 );
 
+const ReverseMarqueeContent = () => (
+  <div className="flex gap-10">
+    {[...duplicatedCollegeLogos].reverse().map((item, index) => (
+      <div
+        key={index}
+        className="flex-shrink-0 w-[250px] h-[160px]  p-6 flex items-center justify-center  dark:border-gray-700 group transition-all duration-300"
+      >
+        <div className="relative w-full h-full flex items-center justify-center">
+          <img
+            src={item.logo}
+            alt={item.name}
+            className="w-full h-full object-contain dark:filter dark:brightness-0 dark:invert transition-opacity duration-300"
+          />
+        </div>
+      </div>
+    ))}
+  </div>
+);
+
 const TrustedSection = () => {
   return (
     <section className="py-24 relative overflow-hidden bg-white dark:bg-gray-900">
@@ -60,7 +79,7 @@ const TrustedSection = () => {
           <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-white dark:from-gray-900 to-transparent z-10" />
         </div>
 
-        {/* Second Marquee - Reverse Direction */}
+        {/* Second Marquee - Reverse Direction with Reversed Content */}
         <div className="overflow-hidden relative mt-8">
           <motion.div
             initial={{ x: "-50%" }}
@@ -73,7 +92,7 @@ const TrustedSection = () => {
             }}
             className="w-fit flex"
           >
-            <MarqueeContent />
+            <ReverseMarqueeContent />
           </motion.div>
 
           {/* Gradient Overlays */}
