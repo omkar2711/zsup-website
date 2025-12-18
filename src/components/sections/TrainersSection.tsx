@@ -94,7 +94,7 @@ const FounderCard: React.FC<{ trainer: TrainerInfo; index: number }> = ({ traine
   );
 };
 
-// Trainer Card Component - Compact with modal
+// Trainer Card Component - Redesigned to match the reference image
 const TrainerCard: React.FC<{ trainer: TrainerInfo; index: number; onOpenModal: () => void }> = ({ 
   trainer, 
   index, 
@@ -108,56 +108,75 @@ const TrainerCard: React.FC<{ trainer: TrainerInfo; index: number; onOpenModal: 
       viewport={{ once: true }}
       className="col-span-1"
     >
-      <Card 
-        className="h-full hover:shadow-xl transition-all duration-300 group relative overflow-hidden border-gray-200 dark:border-gray-700 cursor-pointer"
-        onClick={onOpenModal}
-      >
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        <div className="absolute h-1 top-0 left-0 right-0 bg-gradient-to-r from-purple-500 to-indigo-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-        <CardContent className="p-6">
-          <div className="flex flex-col items-center text-center">
-            <div className="w-full aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-purple-100 to-indigo-100 dark:from-purple-900 dark:to-indigo-900 p-1 shadow-lg transform group-hover:scale-105 transition-transform duration-300 mb-4">
+      <Card className="h-[520px] hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700 rounded-3xl overflow-hidden bg-white dark:bg-gray-800 flex flex-col">
+        <CardContent className="p-8 flex flex-col flex-1">
+          {/* Header Section */}
+          <div className="flex items-start gap-4 mb-4">
+            <div className="w-24 h-24 rounded-full overflow-hidden flex-shrink-0 bg-gray-100 dark:bg-gray-700">
               <img 
                 src={trainer.image} 
                 alt={trainer.name}
-                className="w-full h-full object-cover rounded-xl"
+                className="w-full h-full object-cover"
               />
             </div>
-            
-            <Badge 
-              variant="secondary"
-              className="bg-gradient-to-r from-purple-500 to-indigo-500 text-white hover:from-purple-600 hover:to-indigo-600 mb-2"
-            >
-              {trainer.role}
-            </Badge>
-            
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-              {trainer.name}
-            </h3>
-            
-            {trainer.specializations && (
-              <div className="flex flex-wrap justify-center gap-1">
-                {trainer.specializations.slice(0, 3).map((spec, idx) => (
-                  <Badge key={idx} variant="outline" className="text-xs border-gray-200 text-gray-600 bg-gray-50">
-                    {spec}
-                  </Badge>
-                ))}
-                {trainer.specializations.length > 3 && (
-                  <Badge variant="outline" className="text-xs border-gray-200 text-gray-600 bg-gray-50">
-                    +{trainer.specializations.length - 3} more
-                  </Badge>
-                )}
-              </div>
-            )}
-            
-            <Button 
-              variant="ghost" 
-              size="sm" 
-              className="mt-4 text-indigo-600 hover:text-indigo-800 hover:bg-indigo-50"
-            >
-              View Profile
-            </Button>
+            <div className="flex-1 min-w-0 pt-2">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                {trainer.name}
+              </h3>
+              {trainer.companies && trainer.companies.length > 0 && (
+                <div className="flex items-center gap-2">
+                  {trainer.companies.map((logo, idx) => (
+                    <div key={idx} className="h-12 flex items-center">
+                      <img 
+                        src={logo} 
+                        alt={`Company ${idx + 1}`}
+                        className="h-full w-auto object-contain max-w-[160px]"
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
+
+          {/* Role Badge */}
+          <div className="mb-4">
+            <div className="flex items-center gap-2 text-gray-900 dark:text-white mb-3">
+              <Briefcase className="w-5 h-5 text-red-500" />
+              <span className="font-semibold">{trainer.role}</span>
+            </div>
+          </div>
+
+          {/* Bio Section */}
+          <div className="mb-6 flex-1">
+            <div className="flex items-start gap-2 mb-2">
+              <Award className="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" />
+              <div className="flex-1">
+                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                  {trainer.bio}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* LinkedIn Link */}
+          {trainer.linkedin && (
+            <div className="pt-4 border-t border-gray-100 dark:border-gray-700 mt-auto">
+              <a 
+                href={trainer.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors font-medium"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <LinkedinIcon className="w-5 h-5" />
+                <span>LinkedIn Profile</span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </a>
+            </div>
+          )}
         </CardContent>
       </Card>
     </motion.div>
@@ -318,7 +337,7 @@ export const TrainersSection = () => {
         {/* Trainers Section */}
         <div>
           <motion.div 
-            className="flex items-center justify-center mb-12 gap-3"
+            className="flex items-center justify-center mb-12 gap-3 "
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -330,16 +349,17 @@ export const TrainersSection = () => {
             </h3> */}
           </motion.div>
           
-          {/* <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="flex flex-wrap gap-8 justify-center max-w-8xl mx-auto">
             {trainers.map((trainer, index) => (
-              <TrainerCard 
-                key={index} 
-                trainer={trainer} 
-                index={index} 
-                onOpenModal={() => handleOpenTrainerModal(trainer)}
-              />
+              <div key={index} className="w-full sm:w-[420px] xl:w-[440px]">
+                <TrainerCard 
+                  trainer={trainer} 
+                  index={index}  
+                  onOpenModal={() => handleOpenTrainerModal(trainer)}
+                />
+              </div>
             ))}
-          </div> */}
+          </div>
         </div>
       </div>
       
