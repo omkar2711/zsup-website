@@ -42,7 +42,7 @@ export const trainersData: TrainerInfo[] = [
   },
   {
     name: "Shubham Lal",
-    role: "Founder AI Linc, Software Developer II",
+    role: "Software Developer II at Microsoft",
     image: shubhamImage,
     bio: "Shubham Lal, with 8 years at Microsoft since 2017, has contributed to major business verticals like Windows, Office 365, and Teams. He has mentored over 5,000 students, assisted 15+ ed-tech firms, and spoken at 60+ events on technology and career development. Shubham also runs a B2B venture supporting ed-tech companies with operational and product solutions.",
     currentCompany: "Microsoft",
@@ -59,7 +59,7 @@ export const trainersData: TrainerInfo[] = [
   },
   {
     name: "Sumit Shukla",
-    role: "Director AI",
+    role: "Director of AI at Scaletrix.AI",
     image: sumitImage,
     bio: "Sumit Shukla is a Data Science and Machine Learning instructor with 5+ years of experience at top e-learning firms and collaborations with leading universities and analytics companies. Delivered 20,000+ hours of instruction and recognized as a Subject Matter Expert. Featured on Josh Talk, with a full memoir on YouTube.",
     currentCompany: "Scaletrix.AI",
