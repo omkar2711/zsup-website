@@ -216,7 +216,6 @@ const ContactUs = () => {
                       <h3 className="text-lg font-semibold mb-1">Phone Number</h3>
                       <p className="text-gray-600 dark:text-gray-400">
                         +91 80500 70534<br />
-                        +91 97383 15872
                       </p>
                     </div>
                   </motion.div>

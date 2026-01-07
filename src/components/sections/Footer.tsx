@@ -79,7 +79,7 @@ const FooterSection = () => {
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-gray-300 flex-shrink-0" />
                 <span className="text-gray-300">
-                  +91 80500 70534 / +91 97383 15872
+                  +91 80500 70534 
                 </span>
               </li>
               <li className="flex items-center gap-3">
