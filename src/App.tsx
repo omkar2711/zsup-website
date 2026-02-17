@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
+import JobListings from "./pages/JobListings";
 import ManagementReadinessProgram from "./pages/CorporateReadinessProgram";
 import TechnologyReadinessProgram from "./pages/TechReadinessProgram";
 import SmartGeneralistsProgram from "./pages/SmartGeneralistsProgram";
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/job-listings" element={<JobListings />} />
           <Route path="/corporate-readiness-program" element={<ManagementReadinessProgram />} />
           <Route path="/tech-readiness-program" element={<TechnologyReadinessProgram />} />
           <Route path="/smart-generalists-program" element={<SmartGeneralistsProgram />} />
