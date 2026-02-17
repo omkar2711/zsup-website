@@ -67,8 +67,11 @@ const JobListings = () => {
     const fetchJobs = async () => {
       try {
         setLoading(true);
+        // Using allOrigins CORS proxy to bypass CORS restrictions
+        const corsProxyUrl = 'https://api.allorigins.win/raw?url=';
+        const apiUrl = 'https://be-app.ailinc.com/jobs/api/getjobs/';
         const response = await fetch(
-          'https://be-app.ailinc.com/jobs/api/getjobs/'
+          corsProxyUrl + encodeURIComponent(apiUrl)
         );
         if (!response.ok) {
           throw new Error('Failed to fetch jobs');
@@ -218,10 +221,9 @@ const JobListings = () => {
               {/* Location Filter */}
               <Select value={selectedLocation} onValueChange={setSelectedLocation}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Select Location" />
+                  <SelectValue placeholder="All Locations" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All Locations</SelectItem>
                   {locations.map((location) => (
                     <SelectItem key={location} value={location}>
                       {location}
@@ -233,10 +235,9 @@ const JobListings = () => {
               {/* Experience Filter */}
               <Select value={selectedExperience} onValueChange={setSelectedExperience}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Experience" />
+                  <SelectValue placeholder="All Experience" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All Experience</SelectItem>
                   {experiences.map((exp) => (
                     <SelectItem key={exp} value={exp}>
                       {exp}
@@ -248,10 +249,9 @@ const JobListings = () => {
               {/* Salary Filter */}
               <Select value={selectedSalary} onValueChange={setSalaryRange}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Salary Range" />
+                  <SelectValue placeholder="All Salaries" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All Salaries</SelectItem>
                   {salaryRanges.map((salary) => (
                     <SelectItem key={salary} value={salary}>
                       {salary}
