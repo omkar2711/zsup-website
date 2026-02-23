@@ -67,16 +67,38 @@ const JobListings = () => {
     const fetchJobs = async () => {
       try {
         setLoading(true);
-        // Using allOrigins CORS proxy to bypass CORS restrictions
-        const corsProxyUrl = 'https://api.allorigins.win/raw?url=';
         const apiUrl = 'https://be-app.ailinc.com/jobs/api/getjobs/';
-        const response = await fetch(
-          corsProxyUrl + encodeURIComponent(apiUrl)
-        );
+        const response = await fetch(apiUrl, {
+          headers: {
+            Accept: 'application/json',
+          },
+        });
         if (!response.ok) {
-          throw new Error('Failed to fetch jobs');
+          throw new Error(
+            `Failed to fetch jobs (HTTP ${response.status})`
+          );
         }
+
+        const contentType = response.headers.get('content-type') || '';
+        if (!contentType.includes('application/json')) {
+          const rawResponse = await response.text();
+          const responsePreview = rawResponse
+            .replace(/\s+/g, ' ')
+            .slice(0, 100);
+
+          throw new Error(
+            `Unexpected API response format. Expected JSON but received ${contentType || 'unknown type'}${
+              responsePreview ? `: ${responsePreview}` : ''
+            }`
+          );
+        }
+
         const data: ApiResponse = await response.json();
+
+        if (!data || !Array.isArray(data.results)) {
+          throw new Error('Invalid jobs response payload');
+        }
+
         setJobs(data.results);
         setFilteredJobs(data.results);
         setError(null);
