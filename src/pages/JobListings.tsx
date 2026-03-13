@@ -59,8 +59,6 @@ const JobListings = () => {
   // Filter states
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedLocation, setSelectedLocation] = useState('');
-  const [selectedExperience, setSelectedExperience] = useState('');
-  const [selectedSalary, setSalaryRange] = useState('');
 
   // Fetch jobs from API
   useEffect(() => {
@@ -141,25 +139,9 @@ const JobListings = () => {
       );
     }
 
-    // Experience filter
-    if (selectedExperience) {
-      filtered = filtered.filter((job) =>
-        job.experience
-          .toLowerCase()
-          .includes(selectedExperience.toLowerCase())
-      );
-    }
-
-    // Salary filter
-    if (selectedSalary) {
-      filtered = filtered.filter((job) =>
-        job.salary.toLowerCase().includes(selectedSalary)
-      );
-    }
-
     setFilteredJobs(filtered);
     setCurrentPage(1); // Reset to first page when filters change
-  }, [searchTerm, selectedLocation, selectedExperience, selectedSalary, jobs]);
+  }, [searchTerm, selectedLocation, jobs]);
 
   // Pagination
   const totalPages = Math.ceil(filteredJobs.length / itemsPerPage);
@@ -217,18 +199,10 @@ const JobListings = () => {
   const locations = Array.from(
     new Set(jobs.map((job) => job.location.split(',')[0].trim()))
   ).sort();
-  const experiences = Array.from(
-    new Set(
-      jobs.map((job) => job.experience).filter((exp) => exp && exp.trim())
-    )
-  ).sort();
-  const salaryRanges = Array.from(new Set(jobs.map((job) => job.salary)));
 
   const handleClearFilters = () => {
     setSearchTerm('');
     setSelectedLocation('');
-    setSelectedExperience('');
-    setSalaryRange('');
   };
 
   return (
@@ -248,7 +222,7 @@ const JobListings = () => {
           </h1>
           <p className="text-xl text-blue-100">
             Discover career opportunities from top companies. Filter by location,
-            experience, and salary to find your perfect job.
+            role, and skills to find your perfect job.
           </p>
         </motion.div>
       </section>
@@ -270,7 +244,7 @@ const JobListings = () => {
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {/* Search Bar */}
               <div className="lg:col-span-2">
                 <div className="relative">
@@ -298,40 +272,10 @@ const JobListings = () => {
                 </SelectContent>
               </Select>
 
-              {/* Experience Filter */}
-              <Select value={selectedExperience} onValueChange={setSelectedExperience}>
-                <SelectTrigger>
-                  <SelectValue placeholder="All Experience" />
-                </SelectTrigger>
-                <SelectContent>
-                  {experiences.map((exp) => (
-                    <SelectItem key={exp} value={exp}>
-                      {exp}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-
-              {/* Salary Filter */}
-              <Select value={selectedSalary} onValueChange={setSalaryRange}>
-                <SelectTrigger>
-                  <SelectValue placeholder="All Salaries" />
-                </SelectTrigger>
-                <SelectContent>
-                  {salaryRanges.map((salary) => (
-                    <SelectItem key={salary} value={salary}>
-                      {salary}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
             </div>
 
             {/* Clear Filters Button */}
-            {(searchTerm ||
-              selectedLocation ||
-              selectedExperience ||
-              selectedSalary) && (
+            {(searchTerm || selectedLocation) && (
               <div className="mt-4 flex justify-end">
                 <Button
                   onClick={handleClearFilters}

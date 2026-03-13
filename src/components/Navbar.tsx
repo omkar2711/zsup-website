@@ -69,6 +69,7 @@ const Navbar = () => {
   const navItems: NavItem[] = [
     { name: "Home", to: "/" },
     { name: "About Us", to: "/about-us" },
+    { name: "Job Listings", to: "/job-listings" },
     { name: "Programs", hasDropdown: true, dropdownItems: offeringsDropdownItems },
     { name: "Contact Us", to: "/contact-us" }
   ];
