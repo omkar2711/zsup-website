@@ -67,7 +67,7 @@ const JobListings = () => {
     const fetchJobs = async () => {
       try {
         setLoading(true);
-        const apiUrl = 'https://be-app.ailinc.com/jobs/api/getjobs/';
+        const apiUrl = '/jobs-api/getjobs/';
         const response = await fetch(apiUrl, {
           headers: {
             Accept: 'application/json',

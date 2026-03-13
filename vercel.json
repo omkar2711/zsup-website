@@ -1,5 +1,9 @@
 {
   "routes": [
+    {
+      "src": "/jobs-api/(.*)",
+      "dest": "https://be-app.ailinc.com/jobs/api/$1"
+    },
     { "handle": "filesystem" },
     { "src": "/.*", "dest": "/index.html" }
   ]

@@ -8,6 +8,13 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    proxy: {
+      "/jobs-api": {
+        target: "https://be-app.ailinc.com",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/jobs-api/, "/jobs/api"),
+      },
+    },
   },
   plugins: [
     react(),
