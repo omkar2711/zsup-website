@@ -169,6 +169,50 @@ const JobListings = () => {
     startIndex + itemsPerPage
   );
 
+  const getPaginationItems = (): Array<number | string> => {
+    if (totalPages <= 7) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
+    }
+
+    const candidatePages = new Set<number>([1, totalPages]);
+
+    for (let i = -2; i <= 2; i += 1) {
+      const page = currentPage + i;
+      if (page >= 1 && page <= totalPages) {
+        candidatePages.add(page);
+      }
+    }
+
+    if (currentPage <= 4) {
+      for (let page = 1; page <= 5; page += 1) {
+        candidatePages.add(page);
+      }
+    }
+
+    if (currentPage >= totalPages - 3) {
+      for (let page = totalPages - 4; page <= totalPages; page += 1) {
+        if (page >= 1) {
+          candidatePages.add(page);
+        }
+      }
+    }
+
+    const sortedPages = Array.from(candidatePages).sort((a, b) => a - b);
+    const items: Array<number | string> = [];
+
+    sortedPages.forEach((page, index) => {
+      const prevPage = sortedPages[index - 1];
+      if (index > 0 && page - prevPage > 1) {
+        items.push(`ellipsis-${prevPage}-${page}`);
+      }
+      items.push(page);
+    });
+
+    return items;
+  };
+
+  const paginationItems = getPaginationItems();
+
   // Extract unique filter options
   const locations = Array.from(
     new Set(jobs.map((job) => job.location.split(',')[0].trim()))
@@ -480,23 +524,35 @@ const JobListings = () => {
                     Previous
                   </Button>
 
-                  {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                    (page) => (
+                  {paginationItems.map((item) => {
+                    if (typeof item === 'string') {
+                      return (
+                        <span
+                          key={item}
+                          className="px-2 text-gray-500 select-none"
+                          aria-hidden="true"
+                        >
+                          ...
+                        </span>
+                      );
+                    }
+
+                    return (
                       <Button
-                        key={page}
-                        variant={currentPage === page ? 'default' : 'outline'}
+                        key={item}
+                        variant={currentPage === item ? 'default' : 'outline'}
                         size="sm"
-                        onClick={() => setCurrentPage(page)}
+                        onClick={() => setCurrentPage(item)}
                         className={
-                          currentPage === page
+                          currentPage === item
                             ? 'bg-blue-600 text-white'
                             : ''
-                        }
+                      }
                       >
-                        {page}
+                        {item}
                       </Button>
-                    )
-                  )}
+                    );
+                  })}
 
                   <Button
                     variant="outline"
